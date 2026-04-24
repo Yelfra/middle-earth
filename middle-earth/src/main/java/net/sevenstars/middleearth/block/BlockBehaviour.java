@@ -1,0 +1,72 @@
+package net.sevenstars.middleearth.block;
+
+import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
+import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
+import net.minecraft.block.Block;
+
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * A collection of helper methods to apply behaviors to a BlockFamily or a singular Block
+ */
+public class BlockBehaviour {
+
+    // TODO: @Yelfra | Relocate later, and register elements
+    public static Map<Block, Integer> FUEL = new HashMap<>();
+
+    public static void registerFlammable(Block block, int burn, int spread) {
+        FlammableBlockRegistry.getDefaultInstance().add(block, burn, spread);
+    }
+
+    public static void registerFlammable(BlockFamily blockFamily, int burn, int spread) {
+        for (Block block : blockFamily.blocks()) {
+            registerFlammable(block, burn, spread);
+        }
+    }
+
+    public static void registerOxidizablePair(Block fromBlock, Block toBlock) {
+        OxidizableBlocksRegistry.registerOxidizableBlockPair(fromBlock, toBlock);
+    }
+
+    public static void registerOxidizablePair(BlockFamily fromFamily, BlockFamily toFamily) {
+        for (YelfraBlockForm form : fromFamily.forms()) {
+            if (toFamily.has(form)) {
+                registerOxidizablePair(fromFamily.get(form), toFamily.get(form));
+            }
+        }
+    }
+
+    public static void registerWaxablePair(Block fromBlock, Block toBlock) {
+        OxidizableBlocksRegistry.registerWaxableBlockPair(fromBlock, toBlock);
+    }
+
+    public static void registerWaxablePair(BlockFamily fromFamily, BlockFamily toFamily) {
+        for (YelfraBlockForm form : fromFamily.forms()) {
+            if (toFamily.has(form)) {
+                registerWaxablePair(fromFamily.get(form), toFamily.get(form));
+            }
+        }
+    }
+
+    public static void registerCompost(Block block, float chance) {
+        CompostingChanceRegistry.INSTANCE.add(block, chance);
+    }
+
+    public static void registerFuel(Block block, int fuel) {
+        FUEL.put(block, fuel);
+    }
+
+    // TODO: @Yelfra | Hardcoded wood fuel values
+    public static void registerFuel(BlockFamily blockFamily) {
+        for (YelfraBlockForm form : blockFamily.forms()) {
+            switch (form) {
+                case BUTTON -> registerFuel(blockFamily.get(form), 100);
+                case SLAB, VERTICAL_SLAB -> registerFuel(blockFamily.get(form), 150);
+                case DOOR, TRAPDOOR -> registerFuel(blockFamily.get(form), 200);
+                default -> registerFuel(blockFamily.get(form), 300);
+            }
+        }
+    }
+}
