@@ -1,6 +1,7 @@
 package net.sevenstars.middleearth.block;
 
-public enum YelfraBlockForm implements BlockForm {
+public enum BasicBlockForm implements BlockForm {
+    // @formatter:off
     BASE            (""),
     SLAB            ("_slab"),
     VERTICAL_SLAB   ("_vertical_slab"),
@@ -18,18 +19,18 @@ public enum YelfraBlockForm implements BlockForm {
     CHAIR           ("_chair", true),
     BENCH           ("_bench", true),
     LADDER          ("_ladder", false);
-
+    // @formatter:on
     // TODO: @Yelfra | Add transparent vertical slab? Panel?
     // TODO: possibly missing bar variants (as in iron bars)
 
     private final String suffix;
     private final boolean requiresType; // Type is applied in BlockFormSet, this parameter is mostly for safety
 
-    YelfraBlockForm(String suffix) {
+    BasicBlockForm(String suffix) {
         this(suffix, false);
     }
 
-    YelfraBlockForm(String suffix, boolean requiresType) {
+    BasicBlockForm(String suffix, boolean requiresType) {
         this.suffix = suffix;
         this.requiresType = requiresType;
     }
