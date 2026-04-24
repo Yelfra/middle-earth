@@ -18,7 +18,7 @@ import net.sevenstars.middleearth.block.special.pointedBlocks.PointedIzherabanBl
 import net.sevenstars.middleearth.block.special.pointedBlocks.PointedLimestoneBlock;
 import net.sevenstars.middleearth.item.utils.ItemGroupsME;
 
-import static net.sevenstars.middleearth.block.YelfraBlockForm.*;
+import static net.sevenstars.middleearth.block.BasicBlockForm.*;
 
 public class YelfraModBlocks {
     public static final float DIRT_STRENGTH = 0.6f;
@@ -102,7 +102,7 @@ public class YelfraModBlocks {
             "treated_wood_rope_fence",
             FenceBlock::new,
             AbstractBlock.Settings.copy(Blocks.OAK_FENCE),
-            ItemGroupsME.WOOD_BLOCKS_CONTENTS); // TODO: @Yelfra | Implement droppable in new fence class?
+            ItemGroupsME.WOOD_BLOCKS_CONTENTS); // TODO: @Yelfra | Used to be droppable - Implement droppable in new fence class?
 
     // region DIRT, GRASS, SOIL
     public static final Block SNOWY_GRASS_BLOCK = YelfraBlockRegistration.registerBlock(
@@ -110,39 +110,39 @@ public class YelfraModBlocks {
             Block::new,
             AbstractBlock.Settings.copy(Blocks.GRASS_BLOCK),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final BlockFamily SNOWY_DIRT = YelfraBlockFactory.registerFamily(
-            new YelfraBlockFamilyConfig(
-                    "snowy_dirt",
+    public static final BlockFamily<BasicBlockForm> SNOWY_DIRT = BlockFactory.registerFamily(
+            "snowy_dirt",
+            new BlockFamilySettings(
                     AbstractBlock.Settings.copy(Blocks.COARSE_DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
-                    .formSet(YelfraBlockFormSet.SOIL)
+                    .formSet(BasicBlockFormSet.SOIL)
                     .group(ItemGroupsME.MISC_BLOCKS_CONTENTS)
     );
-    public static final BlockFamily DRY_DIRT = YelfraBlockFactory.registerFamily(
-            new YelfraBlockFamilyConfig(
-                    "dry_dirt",
+    public static final BlockFamily<BasicBlockForm> DRY_DIRT = BlockFactory.registerFamily(
+            "dry_dirt",
+            new BlockFamilySettings(
                     AbstractBlock.Settings.copy(Blocks.DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
-                    .formSet(YelfraBlockFormSet.SOIL)
+                    .formSet(BasicBlockFormSet.SOIL)
                     .group(ItemGroupsME.MISC_BLOCKS_CONTENTS)
     );
-    public static final BlockFamily GRASSY_DIRT = YelfraBlockFactory.registerFamily(
-            new YelfraBlockFamilyConfig(
-                    "grassy_dirt",
+    public static final BlockFamily<BasicBlockForm> GRASSY_DIRT = BlockFactory.registerFamily(
+            "grassy_dirt",
+            new BlockFamilySettings(
                     AbstractBlock.Settings.copy(Blocks.DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
-                    .formSet(YelfraBlockFormSet.SOIL)
+                    .formSet(BasicBlockFormSet.SOIL)
                     .group(ItemGroupsME.MISC_BLOCKS_CONTENTS)
     );
-    public static final BlockFamily PEBBLED_GRASS = YelfraBlockFactory.registerFamily(
-            new YelfraBlockFamilyConfig(
-                    "pebbled_grass",
+    public static final BlockFamily<BasicBlockForm> PEBBLED_GRASS = BlockFactory.registerFamily(
+            "pebbled_grass",
+            new BlockFamilySettings(
                     AbstractBlock.Settings.copy(Blocks.COBBLESTONE))
-                    .formSet(YelfraBlockFormSet.SOIL)
+                    .formSet(BasicBlockFormSet.SOIL)
                     .group(ItemGroupsME.MISC_BLOCKS_CONTENTS)
     );
-    public static final BlockFamily COBBLY_DIRT = YelfraBlockFactory.registerFamily(
-            new YelfraBlockFamilyConfig(
-                    "cobbly_dirt",
+    public static final BlockFamily<BasicBlockForm> COBBLY_DIRT = BlockFactory.registerFamily(
+            "cobbly_dirt",
+            new BlockFamilySettings(
                     AbstractBlock.Settings.copy(Blocks.COARSE_DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
-                    .formSet(YelfraBlockFormSet.SOIL)
+                    .formSet(BasicBlockFormSet.SOIL)
                     .group(ItemGroupsME.MISC_BLOCKS_CONTENTS)
     );
 
@@ -161,52 +161,52 @@ public class YelfraModBlocks {
             (settings) -> new StairsBlock(MIRE.getDefaultState(), settings), AbstractBlock.Settings.copy(MIRE),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
 
-    public static final BlockFamily TURF = YelfraBlockFactory.registerFamily(
-            new YelfraBlockFamilyConfig(
-                    "turf",
+    public static final BlockFamily<BasicBlockForm> TURF = BlockFactory.registerFamily(
+            "turf",
+            new BlockFamilySettings(
                     AbstractBlock.Settings.copy(Blocks.DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRASS))
-                    .formSet(new YelfraBlockFormSet(BASE, SLAB, VERTICAL_SLAB, STAIRS))
+                    .formSet(new BasicBlockFormSet(BASE, SLAB, VERTICAL_SLAB, STAIRS))
                     .group(ItemGroupsME.MISC_BLOCKS_CONTENTS)
     );
 
-    public static final BlockFamily DIRTY_ROOTS = YelfraBlockFactory.registerFamily(
-            new YelfraBlockFamilyConfig(
-                    "dirty_roots",
+    public static final BlockFamily<BasicBlockForm> DIRTY_ROOTS = BlockFactory.registerFamily(
+            "dirty_roots",
+            new BlockFamilySettings(
                     AbstractBlock.Settings.copy(Blocks.DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
-                    .formSet(YelfraBlockFormSet.SOIL)
+                    .formSet(BasicBlockFormSet.SOIL)
                     .group(ItemGroupsME.MISC_BLOCKS_CONTENTS)
     );
 
-    public static final BlockFamily FOUL_DIRT = YelfraBlockFactory.registerFamily(
-            new YelfraBlockFamilyConfig(
-                    "foul_dirt",
+    public static final BlockFamily<BasicBlockForm> FOUL_DIRT = BlockFactory.registerFamily(
+            "foul_dirt",
+            new BlockFamilySettings(
                     AbstractBlock.Settings.copy(Blocks.COARSE_DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
-                    .formSet(YelfraBlockFormSet.SOIL)
+                    .formSet(BasicBlockFormSet.SOIL)
                     .group(ItemGroupsME.MISC_BLOCKS_CONTENTS)
     );
 
-    public static final BlockFamily ASHEN_DIRT = YelfraBlockFactory.registerFamily(
-            new YelfraBlockFamilyConfig(
-                    "ashen_dirt",
+    public static final BlockFamily<BasicBlockForm> ASHEN_DIRT = BlockFactory.registerFamily(
+            "ashen_dirt",
+            new BlockFamilySettings(
                     AbstractBlock.Settings.copy(Blocks.DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
-                    .formSet(YelfraBlockFormSet.SOIL)
+                    .formSet(BasicBlockFormSet.SOIL)
                     .group(ItemGroupsME.MISC_BLOCKS_CONTENTS)
     );
-    public static final BlockFamily COBBLY_ASHEN_DIRT = YelfraBlockFactory.registerFamily(
-            new YelfraBlockFamilyConfig(
-                    "cobbly_ashen_dirt",
+    public static final BlockFamily<BasicBlockForm> COBBLY_ASHEN_DIRT = BlockFactory.registerFamily(
+            "cobbly_ashen_dirt",
+            new BlockFamilySettings(
                     AbstractBlock.Settings.copy(Blocks.COARSE_DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
-                    .formSet(YelfraBlockFormSet.SOIL)
+                    .formSet(BasicBlockFormSet.SOIL)
                     .group(ItemGroupsME.MISC_BLOCKS_CONTENTS)
     );
     // endregion
 
     // region CHALKSOIL
-    public static final BlockFamily CHALKSOIL = YelfraBlockFactory.registerFamily(
-            new YelfraBlockFamilyConfig(
-                    "chalksoil",
+    public static final BlockFamily<BasicBlockForm> CHALKSOIL = BlockFactory.registerFamily(
+            "chalksoil",
+            new BlockFamilySettings(
                     AbstractBlock.Settings.copy(Blocks.DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
-                    .formSet(YelfraBlockFormSet.SOIL)
+                    .formSet(BasicBlockFormSet.SOIL)
                     .group(ItemGroupsME.MISC_BLOCKS_CONTENTS)
     );
     public static final Block CHALKSOIL_GRASS_BLOCK = YelfraBlockRegistration.registerBlock(
@@ -214,18 +214,18 @@ public class YelfraModBlocks {
             (settings) -> new CustomGrassBlock(settings, CHALKSOIL.get(BASE)),
             AbstractBlock.Settings.copy(Blocks.GRASS_BLOCK),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final BlockFamily GRASSY_CHALKSOIL = YelfraBlockFactory.registerFamily(
-            new YelfraBlockFamilyConfig(
-                    "grassy_chalksoil",
+    public static final BlockFamily<BasicBlockForm> GRASSY_CHALKSOIL = BlockFactory.registerFamily(
+            "grassy_chalksoil",
+            new BlockFamilySettings(
                     AbstractBlock.Settings.copy(Blocks.DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
-                    .formSet(YelfraBlockFormSet.SOIL)
+                    .formSet(BasicBlockFormSet.SOIL)
                     .group(ItemGroupsME.MISC_BLOCKS_CONTENTS)
     );
-    public static final BlockFamily COARSE_CHALKSOIL = YelfraBlockFactory.registerFamily(
-            new YelfraBlockFamilyConfig(
-                    "coarse_chalksoil",
+    public static final BlockFamily<BasicBlockForm> COARSE_CHALKSOIL = BlockFactory.registerFamily(
+            "coarse_chalksoil",
+            new BlockFamilySettings(
                     AbstractBlock.Settings.copy(Blocks.DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
-                    .formSet(YelfraBlockFormSet.SOIL)
+                    .formSet(BasicBlockFormSet.SOIL)
                     .group(ItemGroupsME.MISC_BLOCKS_CONTENTS)
     );
     public static final Block CHALKSOIL_PATH = YelfraBlockRegistration.registerBlock(
@@ -241,11 +241,11 @@ public class YelfraModBlocks {
     // endregion
 
     // region LOAM
-    public static final BlockFamily LOAM = YelfraBlockFactory.registerFamily(
-            new YelfraBlockFamilyConfig(
-                    "loam",
+    public static final BlockFamily<BasicBlockForm> LOAM = BlockFactory.registerFamily(
+            "loam",
+            new BlockFamilySettings(
                     AbstractBlock.Settings.copy(Blocks.DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
-                    .formSet(YelfraBlockFormSet.SOIL)
+                    .formSet(BasicBlockFormSet.SOIL)
                     .group(ItemGroupsME.MISC_BLOCKS_CONTENTS)
     );
     public static final Block LOAM_GRASS_BLOCK = YelfraBlockRegistration.registerBlock(
@@ -253,18 +253,18 @@ public class YelfraModBlocks {
             (settings) -> new CustomGrassBlock(settings, LOAM.get(BASE)),
             AbstractBlock.Settings.copy(Blocks.GRASS_BLOCK),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final BlockFamily GRASSY_LOAM = YelfraBlockFactory.registerFamily(
-            new YelfraBlockFamilyConfig(
-                    "grassy_loam",
+    public static final BlockFamily<BasicBlockForm> GRASSY_LOAM = BlockFactory.registerFamily(
+            "grassy_loam",
+            new BlockFamilySettings(
                     AbstractBlock.Settings.copy(Blocks.DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
-                    .formSet(YelfraBlockFormSet.SOIL)
+                    .formSet(BasicBlockFormSet.SOIL)
                     .group(ItemGroupsME.MISC_BLOCKS_CONTENTS)
     );
-    public static final BlockFamily COARSE_LOAM = YelfraBlockFactory.registerFamily(
-            new YelfraBlockFamilyConfig(
-                    "coarse_loam",
+    public static final BlockFamily<BasicBlockForm> COARSE_LOAM = BlockFactory.registerFamily(
+            "coarse_loam",
+            new BlockFamilySettings(
                     AbstractBlock.Settings.copy(Blocks.DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
-                    .formSet(YelfraBlockFormSet.SOIL)
+                    .formSet(BasicBlockFormSet.SOIL)
                     .group(ItemGroupsME.MISC_BLOCKS_CONTENTS)
     );
     public static final Block LOAM_PATH = YelfraBlockRegistration.registerBlock(
@@ -280,11 +280,11 @@ public class YelfraModBlocks {
     // endregion
 
     // region PEAT
-    public static final BlockFamily PEAT = YelfraBlockFactory.registerFamily(
-            new YelfraBlockFamilyConfig(
-                    "PEAT",
+    public static final BlockFamily<BasicBlockForm> PEAT = BlockFactory.registerFamily(
+            "peat",
+            new BlockFamilySettings(
                     AbstractBlock.Settings.copy(Blocks.DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
-                    .formSet(YelfraBlockFormSet.SOIL)
+                    .formSet(BasicBlockFormSet.SOIL)
                     .group(ItemGroupsME.MISC_BLOCKS_CONTENTS)
     );
     public static final Block PEAT_GRASS_BLOCK = YelfraBlockRegistration.registerBlock(
@@ -292,18 +292,18 @@ public class YelfraModBlocks {
             (settings) -> new CustomGrassBlock(settings, PEAT.get(BASE)),
             AbstractBlock.Settings.copy(Blocks.GRASS_BLOCK),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final BlockFamily GRASSY_PEAT = YelfraBlockFactory.registerFamily(
-            new YelfraBlockFamilyConfig(
-                    "grassy_peat",
+    public static final BlockFamily<BasicBlockForm> GRASSY_PEAT = BlockFactory.registerFamily(
+            "grassy_peat",
+            new BlockFamilySettings(
                     AbstractBlock.Settings.copy(Blocks.DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
-                    .formSet(YelfraBlockFormSet.SOIL)
+                    .formSet(BasicBlockFormSet.SOIL)
                     .group(ItemGroupsME.MISC_BLOCKS_CONTENTS)
     );
-    public static final BlockFamily COARSE_PEAT = YelfraBlockFactory.registerFamily(
-            new YelfraBlockFamilyConfig(
-                    "coarse_peat",
+    public static final BlockFamily<BasicBlockForm> COARSE_PEAT = BlockFactory.registerFamily(
+            "coarse_peat",
+            new BlockFamilySettings(
                     AbstractBlock.Settings.copy(Blocks.DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
-                    .formSet(YelfraBlockFormSet.SOIL)
+                    .formSet(BasicBlockFormSet.SOIL)
                     .group(ItemGroupsME.MISC_BLOCKS_CONTENTS)
     );
     public static final Block PEAT_PATH = YelfraBlockRegistration.registerBlock(
@@ -319,11 +319,11 @@ public class YelfraModBlocks {
     // endregion
 
     // region SILT
-    public static final BlockFamily SILT = YelfraBlockFactory.registerFamily(
-            new YelfraBlockFamilyConfig(
-                    "silt",
+    public static final BlockFamily<BasicBlockForm> SILT = BlockFactory.registerFamily(
+            "silt",
+            new BlockFamilySettings(
                     AbstractBlock.Settings.copy(Blocks.DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
-                    .formSet(YelfraBlockFormSet.SOIL)
+                    .formSet(BasicBlockFormSet.SOIL)
                     .group(ItemGroupsME.MISC_BLOCKS_CONTENTS)
     );
     public static final Block SILT_GRASS_BLOCK = YelfraBlockRegistration.registerBlock(
@@ -331,18 +331,18 @@ public class YelfraModBlocks {
             (settings) -> new CustomGrassBlock(settings, SILT.get(BASE)),
             AbstractBlock.Settings.copy(Blocks.GRASS_BLOCK),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final BlockFamily GRASSY_SILT = YelfraBlockFactory.registerFamily(
-            new YelfraBlockFamilyConfig(
-                    "grassy_silt",
+    public static final BlockFamily<BasicBlockForm> GRASSY_SILT = BlockFactory.registerFamily(
+            "grassy_silt",
+            new BlockFamilySettings(
                     AbstractBlock.Settings.copy(Blocks.DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
-                    .formSet(YelfraBlockFormSet.SOIL)
+                    .formSet(BasicBlockFormSet.SOIL)
                     .group(ItemGroupsME.MISC_BLOCKS_CONTENTS)
     );
-    public static final BlockFamily COARSE_SILT = YelfraBlockFactory.registerFamily(
-            new YelfraBlockFamilyConfig(
-                    "coarse_silt",
+    public static final BlockFamily<BasicBlockForm> COARSE_SILT = BlockFactory.registerFamily(
+            "coarse_silt",
+            new BlockFamilySettings(
                     AbstractBlock.Settings.copy(Blocks.DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
-                    .formSet(YelfraBlockFormSet.SOIL)
+                    .formSet(BasicBlockFormSet.SOIL)
                     .group(ItemGroupsME.MISC_BLOCKS_CONTENTS)
     );
     public static final Block SILT_PATH = YelfraBlockRegistration.registerBlock(
@@ -389,180 +389,20 @@ public class YelfraModBlocks {
 
     // TODO: @Yelfra | Helper method for base, cross, left, right, pillar, diamond
     // region WATTLE
-    public static final Block WATTLE_AND_BRICK = YelfraBlockRegistration.registerBlock(
-            "wattle_and_brick",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block WATTLE_AND_BRICK_CROSS = YelfraBlockRegistration.registerBlock(
-            "wattle_and_brick_cross",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block WATTLE_AND_BRICK_RIGHT = YelfraBlockRegistration.registerBlock(
-            "wattle_and_brick_right",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block WATTLE_AND_BRICK_LEFT = YelfraBlockRegistration.registerBlock(
-            "wattle_and_brick_left",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block WATTLE_AND_BRICK_PILLAR = YelfraBlockRegistration.registerBlock(
-            "wattle_and_brick_pillar",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block WATTLE_AND_BRICK_DIAMOND = YelfraBlockRegistration.registerBlock(
-            "wattle_and_brick_diamond",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-
-    public static final Block WATTLE_AND_WHITE_DAUB = YelfraBlockRegistration.registerBlock(
-            "wattle_and_white_daub",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block WATTLE_AND_WHITE_DAUB_CROSS = YelfraBlockRegistration.registerBlock(
-            "wattle_and_white_daub_cross",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block WATTLE_AND_WHITE_DAUB_RIGHT = YelfraBlockRegistration.registerBlock(
-            "wattle_and_white_daub_right",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block WATTLE_AND_WHITE_DAUB_LEFT = YelfraBlockRegistration.registerBlock(
-            "wattle_and_white_daub_left",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block WATTLE_AND_WHITE_DAUB_PILLAR = YelfraBlockRegistration.registerBlock(
-            "wattle_and_white_daub_pillar",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block WATTLE_AND_WHITE_DAUB_DIAMOND = YelfraBlockRegistration.registerBlock(
-            "wattle_and_white_daub_diamond",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-
-    public static final Block BLACK_WATTLE_AND_WHITE_DAUB = YelfraBlockRegistration.registerBlock(
-            "black_wattle_and_white_daub",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block BLACK_WATTLE_AND_WHITE_DAUB_CROSS = YelfraBlockRegistration.registerBlock(
-            "black_wattle_and_white_daub_cross",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block BLACK_WATTLE_AND_WHITE_DAUB_RIGHT = YelfraBlockRegistration.registerBlock(
-            "black_wattle_and_white_daub_right",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block BLACK_WATTLE_AND_WHITE_DAUB_LEFT = YelfraBlockRegistration.registerBlock(
-            "black_wattle_and_white_daub_left",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block BLACK_WATTLE_AND_WHITE_DAUB_PILLAR = YelfraBlockRegistration.registerBlock(
-            "black_wattle_and_white_daub_pillar",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block BLACK_WATTLE_AND_WHITE_DAUB_DIAMOND = YelfraBlockRegistration.registerBlock(
-            "black_wattle_and_white_daub_diamond",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-
-    public static final Block GREEN_WATTLE_AND_WHITE_DAUB = YelfraBlockRegistration.registerBlock(
-            "green_wattle_and_white_daub",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block GREEN_WATTLE_AND_WHITE_DAUB_CROSS = YelfraBlockRegistration.registerBlock(
-            "green_wattle_and_white_daub_cross",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block GREEN_WATTLE_AND_WHITE_DAUB_RIGHT = YelfraBlockRegistration.registerBlock(
-            "green_wattle_and_white_daub_right",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block GREEN_WATTLE_AND_WHITE_DAUB_LEFT = YelfraBlockRegistration.registerBlock(
-            "green_wattle_and_white_daub_left",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block GREEN_WATTLE_AND_WHITE_DAUB_PILLAR = YelfraBlockRegistration.registerBlock(
-            "green_wattle_and_white_daub_pillar",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block GREEN_WATTLE_AND_WHITE_DAUB_DIAMOND = YelfraBlockRegistration.registerBlock(
-            "green_wattle_and_white_daub_diamond",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-
-    public static final Block RED_WATTLE_AND_WHITE_DAUB = YelfraBlockRegistration.registerBlock(
-            "red_wattle_and_white_daub",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block RED_WATTLE_AND_WHITE_DAUB_CROSS = YelfraBlockRegistration.registerBlock(
-            "red_wattle_and_white_daub_cross",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block RED_WATTLE_AND_WHITE_DAUB_RIGHT = YelfraBlockRegistration.registerBlock(
-            "red_wattle_and_white_daub_right",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block RED_WATTLE_AND_WHITE_DAUB_LEFT = YelfraBlockRegistration.registerBlock(
-            "red_wattle_and_white_daub_left",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block RED_WATTLE_AND_WHITE_DAUB_PILLAR = YelfraBlockRegistration.registerBlock(
-            "red_wattle_and_white_daub_pillar",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block RED_WATTLE_AND_WHITE_DAUB_DIAMOND = YelfraBlockRegistration.registerBlock(
-            "red_wattle_and_white_daub_diamond",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-
-    public static final Block DARK_WATTLE_AND_DARK_DAUB = YelfraBlockRegistration.registerBlock(
-            "dark_wattle_and_dark_daub",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block DARK_WATTLE_AND_DARK_DAUB_CROSS = YelfraBlockRegistration.registerBlock(
-            "dark_wattle_and_dark_daub_cross",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block DARK_WATTLE_AND_DARK_DAUB_RIGHT = YelfraBlockRegistration.registerBlock(
-            "dark_wattle_and_dark_daub_right",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block DARK_WATTLE_AND_DARK_DAUB_LEFT = YelfraBlockRegistration.registerBlock(
-            "dark_wattle_and_dark_daub_left",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block DARK_WATTLE_AND_DARK_DAUB_PILLAR = YelfraBlockRegistration.registerBlock(
-            "dark_wattle_and_dark_daub_pillar",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block DARK_WATTLE_AND_DARK_DAUB_DIAMOND = YelfraBlockRegistration.registerBlock(
-            "dark_wattle_and_dark_daub_diamond",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-
-    public static final Block WATTLE_AND_YELLOW_DAUB = YelfraBlockRegistration.registerBlock(
-            "wattle_and_yellow_daub",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block WATTLE_AND_YELLOW_DAUB_CROSS = YelfraBlockRegistration.registerBlock(
-            "wattle_and_yellow_daub_cross",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block WATTLE_AND_YELLOW_DAUB_RIGHT = YelfraBlockRegistration.registerBlock(
-            "wattle_and_yellow_daub_right",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block WATTLE_AND_YELLOW_DAUB_LEFT = YelfraBlockRegistration.registerBlock(
-            "wattle_and_yellow_daub_left",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block WATTLE_AND_YELLOW_DAUB_PILLAR = YelfraBlockRegistration.registerBlock(
-            "wattle_and_yellow_daub_pillar",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block WATTLE_AND_YELLOW_DAUB_DIAMOND = YelfraBlockRegistration.registerBlock(
-            "wattle_and_yellow_daub_diamond",
-            Block::new, AbstractBlock.Settings.copy(Blocks.PACKED_MUD),
-            ItemGroupsME.MISC_BLOCKS_CONTENTS);
+    public static final BlockFamily<WattleBlockForm> WATTLE_AND_BRICK = BlockFactory.registerWattleFamily(
+            "wattle_and_brick", BlockFamilySettings.WATTLE_AND_DAUB());
+    public static final BlockFamily<WattleBlockForm> WATTLE_AND_WHITE_DAUB = BlockFactory.registerWattleFamily(
+            "wattle_and_white_daub", BlockFamilySettings.WATTLE_AND_DAUB());
+    public static final BlockFamily<WattleBlockForm> BLACK_WATTLE_AND_WHITE_DAUB = BlockFactory.registerWattleFamily(
+            "black_wattle_and_white_daub", BlockFamilySettings.WATTLE_AND_DAUB());
+    public static final BlockFamily<WattleBlockForm> GREEN_WATTLE_AND_WHITE_DAUB = BlockFactory.registerWattleFamily(
+            "green_wattle_and_white_daub", BlockFamilySettings.WATTLE_AND_DAUB());
+    public static final BlockFamily<WattleBlockForm> RED_WATTLE_AND_WHITE_DAUB = BlockFactory.registerWattleFamily(
+            "red_wattle_and_white_daub", BlockFamilySettings.WATTLE_AND_DAUB());
+    public static final BlockFamily<WattleBlockForm> DARK_WATTLE_AND_WHITE_DAUB = BlockFactory.registerWattleFamily(
+            "dark_wattle_and_white_daub", BlockFamilySettings.WATTLE_AND_DAUB());
+    public static final BlockFamily<WattleBlockForm> WATTLE_AND_YELLOW_DAUB = BlockFactory.registerWattleFamily(
+            "wattle_and_yellow_daub", BlockFamilySettings.WATTLE_AND_DAUB());
     //endregion
 
     // region METAL

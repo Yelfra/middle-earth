@@ -1,36 +1,43 @@
 package net.sevenstars.middleearth.block;
 
 import net.minecraft.block.Block;
-import org.jetbrains.annotations.NotNull;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Represents a simple container for closely related (and together-registered) blocks.
  * Ex: stone (base block), stone_stairs, stone_slab, stone_wall, ...
  */
-public final class BlockFamily {
+public final class BlockFamily <F extends BlockForm> implements Iterable<Block> {
 
-    private final Map<YelfraBlockForm, Block> family;
+    private final Map<F, Block> family;
 
-    public BlockFamily(Map<YelfraBlockForm, Block> family) {
+    public BlockFamily(Map<F, Block> family) {
         this.family = Map.copyOf(family);
         BlockFamilies.ALL.add(this);
     }
 
-    public Block get(YelfraBlockForm form) {
+    public Block get(F form) {
         return family.get(form);
     }
 
-    public boolean has(YelfraBlockForm form) {
+    public boolean has(F form) {
         return family.containsKey(form);
     }
 
-    public Set<YelfraBlockForm> forms() {
+    public Set<F> forms() {
         return family.keySet();
     }
 
     public Collection<Block> blocks() {
         return family.values();
+    }
+
+    @Override
+    public Iterator<Block> iterator() {
+        return blocks().iterator();
     }
 }

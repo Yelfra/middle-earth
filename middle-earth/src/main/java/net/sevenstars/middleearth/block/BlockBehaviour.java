@@ -16,11 +16,27 @@ public class BlockBehaviour {
     // TODO: @Yelfra | Relocate later, and register elements
     public static Map<Block, Integer> FUEL = new HashMap<>();
 
+    public static void registerFuel(Block block, int fuel) {
+        FUEL.put(block, fuel);
+    }
+
+    // TODO: @Yelfra | Hardcoded wood fuel values
+    public static void registerFuel(BlockFamily<BasicBlockForm> blockFamily) {
+        for (BasicBlockForm form : blockFamily.forms()) {
+            switch (form) {
+                case BUTTON -> registerFuel(blockFamily.get(form), 100);
+                case SLAB, VERTICAL_SLAB -> registerFuel(blockFamily.get(form), 150);
+                case DOOR, TRAPDOOR -> registerFuel(blockFamily.get(form), 200);
+                default -> registerFuel(blockFamily.get(form), 300);
+            }
+        }
+    }
+
     public static void registerFlammable(Block block, int burn, int spread) {
         FlammableBlockRegistry.getDefaultInstance().add(block, burn, spread);
     }
 
-    public static void registerFlammable(BlockFamily blockFamily, int burn, int spread) {
+    public static void registerFlammable(BlockFamily<?> blockFamily, int burn, int spread) {
         for (Block block : blockFamily.blocks()) {
             registerFlammable(block, burn, spread);
         }
@@ -30,8 +46,8 @@ public class BlockBehaviour {
         OxidizableBlocksRegistry.registerOxidizableBlockPair(fromBlock, toBlock);
     }
 
-    public static void registerOxidizablePair(BlockFamily fromFamily, BlockFamily toFamily) {
-        for (YelfraBlockForm form : fromFamily.forms()) {
+    public static <F extends BlockForm> void registerOxidizablePair(BlockFamily<F> fromFamily, BlockFamily<F> toFamily) {
+        for (F form : fromFamily.forms()) {
             if (toFamily.has(form)) {
                 registerOxidizablePair(fromFamily.get(form), toFamily.get(form));
             }
@@ -42,8 +58,8 @@ public class BlockBehaviour {
         OxidizableBlocksRegistry.registerWaxableBlockPair(fromBlock, toBlock);
     }
 
-    public static void registerWaxablePair(BlockFamily fromFamily, BlockFamily toFamily) {
-        for (YelfraBlockForm form : fromFamily.forms()) {
+    public static <F extends BlockForm> void registerWaxablePair(BlockFamily<F> fromFamily, BlockFamily<F> toFamily) {
+        for (F form : fromFamily.forms()) {
             if (toFamily.has(form)) {
                 registerWaxablePair(fromFamily.get(form), toFamily.get(form));
             }
@@ -52,21 +68,5 @@ public class BlockBehaviour {
 
     public static void registerCompost(Block block, float chance) {
         CompostingChanceRegistry.INSTANCE.add(block, chance);
-    }
-
-    public static void registerFuel(Block block, int fuel) {
-        FUEL.put(block, fuel);
-    }
-
-    // TODO: @Yelfra | Hardcoded wood fuel values
-    public static void registerFuel(BlockFamily blockFamily) {
-        for (YelfraBlockForm form : blockFamily.forms()) {
-            switch (form) {
-                case BUTTON -> registerFuel(blockFamily.get(form), 100);
-                case SLAB, VERTICAL_SLAB -> registerFuel(blockFamily.get(form), 150);
-                case DOOR, TRAPDOOR -> registerFuel(blockFamily.get(form), 200);
-                default -> registerFuel(blockFamily.get(form), 300);
-            }
-        }
     }
 }

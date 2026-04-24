@@ -1,6 +1,7 @@
 package net.sevenstars.middleearth.block.registry;
 
 import net.minecraft.block.*;
+import net.minecraft.registry.Registries;
 import net.minecraft.sound.BlockSoundGroup;
 import net.sevenstars.middleearth.MiddleEarth;
 import net.sevenstars.middleearth.block.*;
@@ -74,11 +75,12 @@ public class ExpandedVanillaBlocks {
     }
 
     // Helper method to reduce family boilerplate
-    private static BlockFamily registerFamily(Block block) {
-        return YelfraBlockFactory.registerFamilyWithBase(
+    private static BlockFamily<BasicBlockForm> registerFamily(Block block) {
+        return BlockFactory.registerFamilyWithBase(
                 block,
-                new YelfraBlockFamilyConfig(block)
-                        .formSet(YelfraBlockFormSet.REGULAR_NO_BASE)
+                Registries.BLOCK.getId(block).getPath(), // TODO: @Yelfra | Might be useful as a util method
+                new BlockFamilySettings(block)
+                        .formSet(BasicBlockFormSet.REGULAR_NO_BASE)
                         .group(ItemGroupsME.MISC_BLOCKS_CONTENTS)
         );
     }
@@ -213,25 +215,25 @@ public class ExpandedVanillaBlocks {
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
     // endregion
 
-    public static final BlockFamily PACKED_MUD = registerFamily(Blocks.PACKED_MUD);
+    public static final BlockFamily<BasicBlockForm> PACKED_MUD = registerFamily(Blocks.PACKED_MUD);
 
     // region WOOL
-    public static final BlockFamily BLACK_WOOL = registerFamily(Blocks.BLACK_WOOL);
-    public static final BlockFamily BLUE_WOOL = registerFamily(Blocks.BLUE_WOOL);
-    public static final BlockFamily BROWN_WOOL = registerFamily(Blocks.BROWN_WOOL);
-    public static final BlockFamily CYAN_WOOL = registerFamily(Blocks.CYAN_WOOL);
-    public static final BlockFamily GRAY_WOOL = registerFamily(Blocks.GRAY_WOOL);
-    public static final BlockFamily GREEN_WOOL = registerFamily(Blocks.GREEN_WOOL);
-    public static final BlockFamily LIGHT_BLUE_WOOL = registerFamily(Blocks.LIGHT_BLUE_WOOL);
-    public static final BlockFamily LIGHT_GRAY_WOOL = registerFamily(Blocks.LIGHT_GRAY_WOOL);
-    public static final BlockFamily LIME_WOOL = registerFamily(Blocks.LIME_WOOL);
-    public static final BlockFamily MAGENTA_WOOL = registerFamily(Blocks.MAGENTA_WOOL);
-    public static final BlockFamily ORANGE_WOOL = registerFamily(Blocks.ORANGE_WOOL);
-    public static final BlockFamily PINK_WOOL = registerFamily(Blocks.PINK_WOOL);
-    public static final BlockFamily PURPLE_WOOL = registerFamily(Blocks.PURPLE_WOOL);
-    public static final BlockFamily RED_WOOL = registerFamily(Blocks.RED_WOOL);
-    public static final BlockFamily WHITE_WOOL = registerFamily(Blocks.WHITE_WOOL);
-    public static final BlockFamily YELLOW_WOOL = registerFamily(Blocks.YELLOW_WOOL);
+    public static final BlockFamily<BasicBlockForm> BLACK_WOOL = registerFamily(Blocks.BLACK_WOOL);
+    public static final BlockFamily<BasicBlockForm> BLUE_WOOL = registerFamily(Blocks.BLUE_WOOL);
+    public static final BlockFamily<BasicBlockForm> BROWN_WOOL = registerFamily(Blocks.BROWN_WOOL);
+    public static final BlockFamily<BasicBlockForm> CYAN_WOOL = registerFamily(Blocks.CYAN_WOOL);
+    public static final BlockFamily<BasicBlockForm> GRAY_WOOL = registerFamily(Blocks.GRAY_WOOL);
+    public static final BlockFamily<BasicBlockForm> GREEN_WOOL = registerFamily(Blocks.GREEN_WOOL);
+    public static final BlockFamily<BasicBlockForm> LIGHT_BLUE_WOOL = registerFamily(Blocks.LIGHT_BLUE_WOOL);
+    public static final BlockFamily<BasicBlockForm> LIGHT_GRAY_WOOL = registerFamily(Blocks.LIGHT_GRAY_WOOL);
+    public static final BlockFamily<BasicBlockForm> LIME_WOOL = registerFamily(Blocks.LIME_WOOL);
+    public static final BlockFamily<BasicBlockForm> MAGENTA_WOOL = registerFamily(Blocks.MAGENTA_WOOL);
+    public static final BlockFamily<BasicBlockForm> ORANGE_WOOL = registerFamily(Blocks.ORANGE_WOOL);
+    public static final BlockFamily<BasicBlockForm> PINK_WOOL = registerFamily(Blocks.PINK_WOOL);
+    public static final BlockFamily<BasicBlockForm> PURPLE_WOOL = registerFamily(Blocks.PURPLE_WOOL);
+    public static final BlockFamily<BasicBlockForm> RED_WOOL = registerFamily(Blocks.RED_WOOL);
+    public static final BlockFamily<BasicBlockForm> WHITE_WOOL = registerFamily(Blocks.WHITE_WOOL);
+    public static final BlockFamily<BasicBlockForm> YELLOW_WOOL = registerFamily(Blocks.YELLOW_WOOL);
     // endregion
 
     // region VANILLA SLABS
