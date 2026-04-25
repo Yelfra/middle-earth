@@ -17,7 +17,6 @@ public final class BlockFamily <F extends BlockForm> implements Iterable<Block> 
 
     public BlockFamily(Map<F, Block> family) {
         this.family = Map.copyOf(family);
-        BlockFamilies.ALL.add(this);
     }
 
     public Block get(F form) {
