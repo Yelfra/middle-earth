@@ -8,6 +8,8 @@ import net.minecraft.block.Block;
 import java.util.HashMap;
 import java.util.Map;
 
+import static net.sevenstars.middleearth.block.BasicBlockForm.*;
+
 /**
  * A collection of helper methods to apply behaviors to a BlockFamily or a singular Block
  */
@@ -21,13 +23,16 @@ public class BlockBehaviour {
     }
 
     // TODO: @Yelfra | Hardcoded wood fuel values
-    public static void registerFuel(BlockFamily<BasicBlockForm> blockFamily) {
-        for (BasicBlockForm form : blockFamily.forms()) {
-            switch (form) {
-                case BUTTON -> registerFuel(blockFamily.get(form), 100);
-                case SLAB, VERTICAL_SLAB -> registerFuel(blockFamily.get(form), 150);
-                case DOOR, TRAPDOOR -> registerFuel(blockFamily.get(form), 200);
-                default -> registerFuel(blockFamily.get(form), 300);
+    // Currently only supports WOOD BasicBlockForm
+    public static <F extends Enum<F> & BlockForm> void registerFuel(BlockFamily<F> blockFamily) {
+        for (F form : blockFamily.forms()) {
+            if (form instanceof BasicBlockForm) {
+                switch (form) {
+                    case BUTTON -> registerFuel(blockFamily.get(form), 100);
+                    case SLAB, VERTICAL_SLAB -> registerFuel(blockFamily.get(form), 150);
+                    case DOOR, TRAPDOOR -> registerFuel(blockFamily.get(form), 200);
+                    default -> registerFuel(blockFamily.get(form), 300);
+                }
             }
         }
     }
@@ -46,7 +51,7 @@ public class BlockBehaviour {
         OxidizableBlocksRegistry.registerOxidizableBlockPair(fromBlock, toBlock);
     }
 
-    public static <F extends BlockForm> void registerOxidizablePair(BlockFamily<F> fromFamily, BlockFamily<F> toFamily) {
+    public static <F extends Enum<F> & BlockForm> void registerOxidizablePair(BlockFamily<F> fromFamily, BlockFamily<F> toFamily) {
         for (F form : fromFamily.forms()) {
             if (toFamily.has(form)) {
                 registerOxidizablePair(fromFamily.get(form), toFamily.get(form));
@@ -58,7 +63,7 @@ public class BlockBehaviour {
         OxidizableBlocksRegistry.registerWaxableBlockPair(fromBlock, toBlock);
     }
 
-    public static <F extends BlockForm> void registerWaxablePair(BlockFamily<F> fromFamily, BlockFamily<F> toFamily) {
+    public static <F extends Enum<F> & BlockForm> void registerWaxablePair(BlockFamily<F> fromFamily, BlockFamily<F> toFamily) {
         for (F form : fromFamily.forms()) {
             if (toFamily.has(form)) {
                 registerWaxablePair(fromFamily.get(form), toFamily.get(form));

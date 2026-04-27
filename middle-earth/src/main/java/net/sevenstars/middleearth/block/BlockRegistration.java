@@ -21,7 +21,7 @@ import java.util.function.Function;
 /**
  * Used for registering a new block or fetching an already existing vanilla block
  */
-public class YelfraBlockRegistration {
+public class BlockRegistration {
 
     public static Block getOrRegisterBlock(
             String name,
@@ -43,10 +43,19 @@ public class YelfraBlockRegistration {
             AbstractBlock.Settings settings,
             List<ItemStack> group
     ) {
+        // Construct block
+        Block block = factory.apply(settings.registryKey(keyOfBlock(name)));
+
+        return registerBlock(name, block, group);
+    }
+
+    public static Block registerBlock(
+            String name,
+            Block block,
+            List<ItemStack> group
+    ) {
         // Register block
         Identifier id = MiddleEarth.of(name);
-
-        Block block = factory.apply(settings.registryKey(keyOfBlock(name)));
         Registry.register(Registries.BLOCK, id, block);
 
         // Register block item
@@ -66,6 +75,21 @@ public class YelfraBlockRegistration {
         return block;
     }
 
+    public static <F extends Enum<F> & BlockForm> BlockFamily<F> registerBlockFamily(BlockFamily<F> blockFamily, List<ItemStack> group) {
+        for (F form : blockFamily.forms()) {
+            String name = blockFamily.getName();
+            if (form != BasicBlockForm.BASE) {
+                name = normalizeName(name);
+            }
+            name = form.getPrefix() + name + form.getSuffix();
+
+            Block block = blockFamily.get(form);
+            registerBlock(name, block, group);
+        }
+
+        return blockFamily;
+    }
+
     public static Block getVanillaBlock(String name) {
         return Registries.BLOCK.get(Identifier.ofVanilla(name));
     }
@@ -81,5 +105,11 @@ public class YelfraBlockRegistration {
 
     public static RegistryKey<Item> keyOfItem(String name) {
         return RegistryKey.of(RegistryKeys.ITEM, MiddleEarth.of(name));
+    }
+
+    private static String normalizeName(String name) {
+        return name.replace("_bricks", "_brick")
+                .replace("_tiles", "_tile")
+                .replace("_block", "");
     }
 }
