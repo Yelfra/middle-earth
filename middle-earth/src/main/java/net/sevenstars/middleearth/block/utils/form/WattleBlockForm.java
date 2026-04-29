@@ -1,10 +1,11 @@
-package net.sevenstars.middleearth.block;
+package net.sevenstars.middleearth.block.utils.form;
 
 import net.minecraft.block.Block;
+import net.sevenstars.middleearth.block.utils.BlockConfig;
 
 public enum WattleBlockForm implements BlockForm {
     // @formatter:off
-    BASE    ("",            (config, base) -> new Block(config.settings)),
+    PLAIN   ("",            (config, base) -> new Block(config.settings)),
     CROSS   ("_cross",      (config, base) -> new Block(config.settings)),
     RIGHT   ("_right",      (config, base) -> new Block(config.settings)),
     LEFT    ("_left",       (config, base) -> new Block(config.settings)),

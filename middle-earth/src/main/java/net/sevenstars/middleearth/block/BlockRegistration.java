@@ -12,6 +12,11 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 import net.sevenstars.middleearth.MiddleEarth;
+import net.sevenstars.middleearth.block.utils.BlockCollection;
+import net.sevenstars.middleearth.block.utils.BlockFamily;
+import net.sevenstars.middleearth.block.utils.form.BasicBlockForm;
+import net.sevenstars.middleearth.block.utils.form.BlockForm;
+import net.sevenstars.middleearth.block.utils.variant.BlockVariant;
 import net.sevenstars.middleearth.datageneration.content.TranslationEntries;
 import net.sevenstars.middleearth.registries.RegistryAliasesME;
 
@@ -19,7 +24,7 @@ import java.util.List;
 import java.util.function.Function;
 
 /**
- * Used for registering a new block or fetching an already existing vanilla block
+ * Used for registering a new block or fetching an already existing vanilla block.
  */
 public class BlockRegistration {
 
@@ -29,12 +34,23 @@ public class BlockRegistration {
             AbstractBlock.Settings settings,
             List<ItemStack> group
     ) {
-        // Get vanilla block if already registered
         if (isVanillaBlockRegistered(name)) {
             return getVanillaBlock(name);
         }
 
         return registerBlock(name, factory, settings, group);
+    }
+
+    public static Block getOrRegisterBlock(
+            String name,
+            Block block,
+            List<ItemStack> group
+    ) {
+        if (isVanillaBlockRegistered(block)) {
+            return block;
+        }
+
+        return registerBlock(name, block, group);
     }
 
     public static Block registerBlock(
@@ -77,25 +93,23 @@ public class BlockRegistration {
 
     public static <F extends Enum<F> & BlockForm> BlockFamily<F> registerBlockFamily(BlockFamily<F> blockFamily, List<ItemStack> group) {
         for (F form : blockFamily.forms()) {
-            String name = blockFamily.getName();
-            if (form != BasicBlockForm.BASE) {
-                name = normalizeName(name);
-            }
-            name = form.getPrefix() + name + form.getSuffix();
-
+            String name = normalizeName(form.getPrefix() + blockFamily.getName() + form.getSuffix());
             Block block = blockFamily.get(form);
-            registerBlock(name, block, group);
+
+            getOrRegisterBlock(name, block, group);
         }
 
         return blockFamily;
     }
 
-    public static Block getVanillaBlock(String name) {
-        return Registries.BLOCK.get(Identifier.ofVanilla(name));
-    }
+    public static <F extends Enum<F> & BlockForm, V extends Enum<V> & BlockVariant> BlockCollection<V, F> registerBlockCollection(
+            BlockCollection<V, F> collection, List<ItemStack> group
+    ) {
+        for (BlockFamily<F> family : collection) {
+            registerBlockFamily(family, group);
+        }
 
-    public static boolean isVanillaBlockRegistered(String name) {
-        return Registries.BLOCK.get(Identifier.ofVanilla(name)) != Blocks.AIR;
+        return collection;
     }
 
     // TODO: @Yelfra | Move to a special utils class?
@@ -107,9 +121,22 @@ public class BlockRegistration {
         return RegistryKey.of(RegistryKeys.ITEM, MiddleEarth.of(name));
     }
 
+    private static Block getVanillaBlock(String name) {
+        return Registries.BLOCK.get(Identifier.ofVanilla(name));
+    }
+
+    private static boolean isVanillaBlockRegistered(Block block) {
+        return Registries.BLOCK.getId(block).getNamespace().equals("minecraft");
+    }
+
+    private static boolean isVanillaBlockRegistered(String name) {
+        return Registries.BLOCK.get(Identifier.ofVanilla(name)) != Blocks.AIR;
+    }
+
     private static String normalizeName(String name) {
-        return name.replace("_bricks", "_brick")
-                .replace("_tiles", "_tile")
-                .replace("_block", "");
+        name = name.startsWith("_") ? name.substring(1) : name;
+        return name.replace("bricks_", "brick_")
+                .replace("tiles_", "tile_")
+                .replace("block_", "");
     }
 }

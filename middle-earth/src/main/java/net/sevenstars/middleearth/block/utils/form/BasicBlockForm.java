@@ -1,13 +1,14 @@
-package net.sevenstars.middleearth.block;
+package net.sevenstars.middleearth.block.utils.form;
 
 import net.minecraft.block.*;
+import net.sevenstars.middleearth.block.utils.BlockConfig;
 import net.sevenstars.middleearth.block.special.*;
 import net.sevenstars.middleearth.block.special.verticalSlabs.TransparentVerticalSlab;
 import net.sevenstars.middleearth.block.special.verticalSlabs.VerticalSlabBlock;
 
 public enum BasicBlockForm implements BlockForm {
     // @formatter:off
-    BASE            ("",                (config, base) -> createBase(config)),
+    BASE            ("",                (config, base) -> createBase(config, base)),
     SLAB            ("_slab",           (config, base) -> createSlab(config)),
     VERTICAL_SLAB   ("_vertical_slab",  (config, base) -> createVerticalSlab(config)),
     STAIRS          ("_stairs",         (config, base) -> createStairs(config, base.getDefaultState())),
@@ -57,7 +58,10 @@ public enum BasicBlockForm implements BlockForm {
 
     /* Form Constructors */
     // region BASIC
-    private static Block createBase(BlockConfig<BasicBlockForm> config) {
+    private static Block createBase(BlockConfig<BasicBlockForm> config, Block base) {
+        if (base != null) {
+            return base;
+        }
         // TODO: @Yelfra | Oxidizable pillar blocks?
         if (config.oxidationLevel != null) {
             return new OxidizableBlock(config.oxidationLevel, config.settings);

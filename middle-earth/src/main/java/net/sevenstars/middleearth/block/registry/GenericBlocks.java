@@ -5,6 +5,10 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.sevenstars.middleearth.MiddleEarth;
 import net.minecraft.block.*;
 import net.sevenstars.middleearth.block.*;
+import net.sevenstars.middleearth.block.utils.BlockConfig;
+import net.sevenstars.middleearth.block.utils.BlockFamily;
+import net.sevenstars.middleearth.block.utils.form.BasicBlockForm;
+import net.sevenstars.middleearth.block.utils.form.BlockFormSet;
 import net.sevenstars.middleearth.item.utils.ItemGroupsME;
 
 public class GenericBlocks {

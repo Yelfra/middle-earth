@@ -1,14 +1,14 @@
-package net.sevenstars.middleearth.block;
+package net.sevenstars.middleearth.block.utils.form;
 
-import net.minecraft.block.BlockSetType;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
 import java.util.EnumSet;
 import java.util.Iterator;
 
-import static net.sevenstars.middleearth.block.BasicBlockForm.*;
-import static net.sevenstars.middleearth.block.GemBlockForm.*;
+import static net.sevenstars.middleearth.block.utils.form.BasicBlockForm.*;
+import static net.sevenstars.middleearth.block.utils.form.GemBlockForm.*;
+import static net.sevenstars.middleearth.block.utils.form.WattleBlockForm.*;
 
 public class BlockFormSet<F extends Enum<F> & BlockForm> implements Iterable<F> {
 
@@ -56,6 +56,12 @@ public class BlockFormSet<F extends Enum<F> & BlockForm> implements Iterable<F> 
                     STAIRS,
                     WALL
             );
+    public static final BlockFormSet<BasicBlockForm> STONE_PILLAR =
+            new BlockFormSet<>(
+                    BASE,
+                    VERTICAL_SLAB,
+                    WALL
+            );
     public static final BlockFormSet<BasicBlockForm> STONE_COMPLETE =
             new BlockFormSet<>(
                     BASE,
@@ -100,6 +106,18 @@ public class BlockFormSet<F extends Enum<F> & BlockForm> implements Iterable<F> 
             new BlockFormSet<>(
                     BASE_T,
                     VERTICAL_SLAB_T
+            );
+    // endregion
+
+    // region WATTLE_AND_DAUB
+    public static final BlockFormSet<WattleBlockForm> WATTLE_AND_DAUB =
+            new BlockFormSet<>(
+                    PLAIN,
+                    CROSS,
+                    RIGHT,
+                    LEFT,
+                    PILLAR,
+                    DIAMOND
             );
     // endregion
 

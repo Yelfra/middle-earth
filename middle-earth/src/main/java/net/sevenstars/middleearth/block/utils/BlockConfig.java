@@ -1,8 +1,9 @@
-package net.sevenstars.middleearth.block;
+package net.sevenstars.middleearth.block.utils;
 
 import net.minecraft.block.*;
 import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.sound.BlockSoundGroup;
+import net.sevenstars.middleearth.block.utils.form.*;
 import org.jetbrains.annotations.Nullable;
 
 /**
@@ -12,9 +13,9 @@ import org.jetbrains.annotations.Nullable;
 public final class BlockConfig<F extends Enum<F> & BlockForm> {
 
     public enum BlockMaterial {
-        WOOD    (BlockSetType.OAK),
-        STONE   (BlockSetType.STONE),
-        METAL   (BlockSetType.COPPER);
+        WOOD(BlockSetType.OAK),
+        STONE(BlockSetType.STONE),
+        METAL(BlockSetType.COPPER);
 
         public final BlockSetType type;
 
@@ -138,9 +139,11 @@ public final class BlockConfig<F extends Enum<F> & BlockForm> {
                 .formSet(BlockFormSet.REGULAR)
                 .material(BlockMaterial.METAL);
     }
+    // endregion
 
-    public static BlockConfig<BasicBlockForm> WATTLE_AND_DAUB() {
-        return new BlockConfig<>(AbstractBlock.Settings.copy(Blocks.PACKED_MUD));
+    // region WATTLE_AND_DAUB
+    public static BlockConfig<WattleBlockForm> WATTLE_AND_DAUB() {
+        return new BlockConfig<WattleBlockForm>(AbstractBlock.Settings.copy(Blocks.PACKED_MUD)).formSet(BlockFormSet.WATTLE_AND_DAUB);
     }
     // endregion
 
@@ -148,6 +151,12 @@ public final class BlockConfig<F extends Enum<F> & BlockForm> {
     // This preset is solely used to pass the form set to BlockFamily constructor - GemBlockForm doesn't use BlockConfig
     public static BlockConfig<GemBlockForm> GEM() {
         return new BlockConfig<GemBlockForm>(Blocks.AMETHYST_BLOCK).formSet(BlockFormSet.GEM_COMPLETE);
+    }
+    // endregion
+
+    // region ORE
+    public static BlockConfig<OreBlockForm> ORE() {
+        return new BlockConfig<>(Blocks.STONE);
     }
     // endregion
 }

@@ -4,11 +4,14 @@ import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 import net.minecraft.block.Block;
+import net.sevenstars.middleearth.block.utils.BlockFamily;
+import net.sevenstars.middleearth.block.utils.form.BasicBlockForm;
+import net.sevenstars.middleearth.block.utils.form.BlockForm;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static net.sevenstars.middleearth.block.BasicBlockForm.*;
+import static net.sevenstars.middleearth.block.utils.form.BasicBlockForm.*;
 
 /**
  * A collection of helper methods to apply behaviors to a BlockFamily or a singular Block

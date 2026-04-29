@@ -1,6 +1,7 @@
-package net.sevenstars.middleearth.block;
+package net.sevenstars.middleearth.block.utils.form;
 
 import net.minecraft.block.Block;
+import net.sevenstars.middleearth.block.utils.BlockConfig;
 
 /**
  * An interface used for the purpose of polymorphism when dealing with BlockFamily.

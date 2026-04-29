@@ -1,9 +1,8 @@
-package net.sevenstars.middleearth.block;
+package net.sevenstars.middleearth.block.utils.variant;
 
 import java.util.EnumSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 public class BlockVariantSet<V extends Enum<V> & BlockVariant> implements Iterable<V> {
 

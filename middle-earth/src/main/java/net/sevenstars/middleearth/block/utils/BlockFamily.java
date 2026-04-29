@@ -1,11 +1,14 @@
-package net.sevenstars.middleearth.block;
+package net.sevenstars.middleearth.block.utils;
 
 import net.minecraft.block.Block;
+import net.sevenstars.middleearth.block.utils.form.BasicBlockForm;
+import net.sevenstars.middleearth.block.utils.form.BlockForm;
+import net.sevenstars.middleearth.block.utils.form.GemBlockForm;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 
-import static net.sevenstars.middleearth.block.GemBlockForm.*;
+import static net.sevenstars.middleearth.block.utils.form.GemBlockForm.*;
 
 /**
  * Represents a container for closely related (and together-registered) blocks - and their block forms.
@@ -24,15 +27,14 @@ public final class BlockFamily<F extends Enum<F> & BlockForm> implements Iterabl
         Map<F, Block> map = new HashMap<>();
 
         for (F form : config.formSet) {
-            // In case no base was provided outside the set, the first form is taken as base
             // Could be done explicitly but this saves work and base is intuitively put as the first form
-            if (base == null && form == BasicBlockForm.BASE) {
-                base = form.create(config, null);
+            if (form == BasicBlockForm.BASE) {
+                base = form.create(config, base);
                 map.put(form, base);
                 continue;
             }
             // Budding constructor logic could not be put into the enum class itself, so it's implemented here
-            if (form == GemBlockForm.BUDDING) {
+            else if (form == GemBlockForm.BUDDING) {
                 map.put(form, GemBlockForm.createBudding(
                         map.get(SMALL_BUD),
                         map.get(MEDIUM_BUD),
