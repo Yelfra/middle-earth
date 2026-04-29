@@ -27,7 +27,7 @@ public class BlockBehaviour {
 
     // TODO: @Yelfra | Hardcoded wood fuel values
     // Currently only supports WOOD BasicBlockForm
-    public static <F extends Enum<F> & BlockForm> void registerFuel(BlockFamily<F> blockFamily) {
+    public static <F extends Enum<F> & BlockForm<F>> void registerFuel(BlockFamily<F> blockFamily) {
         for (F form : blockFamily.forms()) {
             if (form instanceof BasicBlockForm) {
                 switch (form) {
@@ -54,7 +54,7 @@ public class BlockBehaviour {
         OxidizableBlocksRegistry.registerOxidizableBlockPair(fromBlock, toBlock);
     }
 
-    public static <F extends Enum<F> & BlockForm> void registerOxidizablePair(BlockFamily<F> fromFamily, BlockFamily<F> toFamily) {
+    public static <F extends Enum<F> & BlockForm<F>> void registerOxidizablePair(BlockFamily<F> fromFamily, BlockFamily<F> toFamily) {
         for (F form : fromFamily.forms()) {
             if (toFamily.has(form)) {
                 registerOxidizablePair(fromFamily.get(form), toFamily.get(form));
@@ -66,7 +66,7 @@ public class BlockBehaviour {
         OxidizableBlocksRegistry.registerWaxableBlockPair(fromBlock, toBlock);
     }
 
-    public static <F extends Enum<F> & BlockForm> void registerWaxablePair(BlockFamily<F> fromFamily, BlockFamily<F> toFamily) {
+    public static <F extends Enum<F> & BlockForm<F>> void registerWaxablePair(BlockFamily<F> fromFamily, BlockFamily<F> toFamily) {
         for (F form : fromFamily.forms()) {
             if (toFamily.has(form)) {
                 registerWaxablePair(fromFamily.get(form), toFamily.get(form));

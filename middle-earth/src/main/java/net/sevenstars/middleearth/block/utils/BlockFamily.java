@@ -14,7 +14,7 @@ import static net.sevenstars.middleearth.block.utils.form.GemBlockForm.*;
  * Represents a container for closely related (and together-registered) blocks - and their block forms.
  * Ex: stone (base block), stone_stairs, stone_slab, stone_wall, ...
  */
-public final class BlockFamily<F extends Enum<F> & BlockForm> implements Iterable<Block> {
+public final class BlockFamily<F extends Enum<F> & BlockForm<F>> implements Iterable<Block> {
 
     private final Map<F, Block> family;
     private final String name;

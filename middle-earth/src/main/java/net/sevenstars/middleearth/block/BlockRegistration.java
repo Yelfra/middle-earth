@@ -91,7 +91,7 @@ public class BlockRegistration {
         return block;
     }
 
-    public static <F extends Enum<F> & BlockForm> BlockFamily<F> registerBlockFamily(BlockFamily<F> blockFamily, List<ItemStack> group) {
+    public static <F extends Enum<F> & BlockForm<F>> BlockFamily<F> registerBlockFamily(BlockFamily<F> blockFamily, List<ItemStack> group) {
         for (F form : blockFamily.forms()) {
             String name = normalizeName(form.getPrefix() + blockFamily.getName() + form.getSuffix());
             Block block = blockFamily.get(form);
@@ -102,7 +102,7 @@ public class BlockRegistration {
         return blockFamily;
     }
 
-    public static <F extends Enum<F> & BlockForm, V extends Enum<V> & BlockVariant> BlockCollection<V, F> registerBlockCollection(
+    public static <F extends Enum<F> & BlockForm<F>, V extends Enum<V> & BlockVariant<F>> BlockCollection<V, F> registerBlockCollection(
             BlockCollection<V, F> collection, List<ItemStack> group
     ) {
         for (BlockFamily<F> family : collection) {

@@ -10,7 +10,7 @@ import org.jetbrains.annotations.Nullable;
  * Grouped characteristics needed for creating a BlockFamily.
  * Designed as an extension/wrapper to AbstractBlock.Settings and other parameters.
  */
-public final class BlockConfig<F extends Enum<F> & BlockForm> {
+public final class BlockConfig<F extends Enum<F> & BlockForm<F>> {
 
     public enum BlockMaterial {
         WOOD(BlockSetType.OAK),

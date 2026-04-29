@@ -10,7 +10,7 @@ import static net.sevenstars.middleearth.block.utils.form.BasicBlockForm.*;
 import static net.sevenstars.middleearth.block.utils.form.GemBlockForm.*;
 import static net.sevenstars.middleearth.block.utils.form.WattleBlockForm.*;
 
-public class BlockFormSet<F extends Enum<F> & BlockForm> implements Iterable<F> {
+public class BlockFormSet<F extends Enum<F> & BlockForm<F>> implements Iterable<F> {
 
     private final EnumSet<F> formSet;
 

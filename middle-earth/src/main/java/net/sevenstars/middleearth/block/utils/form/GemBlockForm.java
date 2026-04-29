@@ -6,7 +6,7 @@ import net.sevenstars.middleearth.block.special.gemstones.CustomBuddingGemBlock;
 
 import java.util.List;
 
-public enum GemBlockForm implements BlockForm {
+public enum GemBlockForm implements BlockForm<GemBlockForm> {
     // @formatter:off
     BLOCK       ("",            "_block",   (config, base) -> createBlock()),
     CLUSTER     ("",            "_cluster", (config, base) -> createCluster()),
@@ -37,8 +37,8 @@ public enum GemBlockForm implements BlockForm {
     }
 
     @Override
-    public Block create(BlockConfig<?> config, Block base) {
-        return factory.apply((BlockConfig<GemBlockForm>) config, base);
+    public Block create(BlockConfig<GemBlockForm> config, Block base) {
+        return factory.apply(config, base);
     }
 
     /* Form Constructors */

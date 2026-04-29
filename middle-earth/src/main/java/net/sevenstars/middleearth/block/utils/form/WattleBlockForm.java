@@ -3,7 +3,7 @@ package net.sevenstars.middleearth.block.utils.form;
 import net.minecraft.block.Block;
 import net.sevenstars.middleearth.block.utils.BlockConfig;
 
-public enum WattleBlockForm implements BlockForm {
+public enum WattleBlockForm implements BlockForm<WattleBlockForm> {
     // @formatter:off
     PLAIN   ("",            (config, base) -> new Block(config.settings)),
     CROSS   ("_cross",      (config, base) -> new Block(config.settings)),
@@ -32,7 +32,7 @@ public enum WattleBlockForm implements BlockForm {
     }
 
     @Override
-    public Block create(BlockConfig<?> config, Block base) {
-        return factory.apply((BlockConfig<WattleBlockForm>) config, base);
+    public Block create(BlockConfig<WattleBlockForm> config, Block base) {
+        return factory.apply(config, base);
     }
 }

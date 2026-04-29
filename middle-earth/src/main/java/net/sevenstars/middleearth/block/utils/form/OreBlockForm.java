@@ -4,7 +4,7 @@ import net.minecraft.block.*;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.sevenstars.middleearth.block.utils.BlockConfig;
 
-public enum OreBlockForm implements BlockForm {
+public enum OreBlockForm implements BlockForm<OreBlockForm> {
     // @formatter:off
     ORIGIN              ("", "",                (config, base) -> base), // Base blocks get used as the stone of the ore
 
@@ -39,8 +39,8 @@ public enum OreBlockForm implements BlockForm {
     }
 
     @Override
-    public Block create(BlockConfig<?> config, Block base) {
-        return factory.apply((BlockConfig<OreBlockForm>) config, base);
+    public Block create(BlockConfig<OreBlockForm> config, Block base) {
+        return factory.apply(config, base);
     }
 
     /* Form Constructors */
@@ -77,7 +77,7 @@ public enum OreBlockForm implements BlockForm {
         return new Block(createSettings(Blocks.IRON_ORE, base));
     }
 
-    // Settings helper method - copies strength from base block to ore block
+    /// Settings helper method - Take ore block's settings, but apply base block's strength
     private static AbstractBlock.Settings createSettings(Block block, Block base) {
         AbstractBlock.Settings settings = AbstractBlock.Settings.copy(block);
         if (base != null) {
@@ -85,53 +85,4 @@ public enum OreBlockForm implements BlockForm {
         }
         return settings;
     }
-
-    // TODO: @Yelfra | Make sure the blocks are created as before
-//    if (ores.contains(OreBlocks.ORES.COAL_ORE)) {
-//        coal_ore = ModNatureBlocks.registerBlock(
-//                rockName + "coal_ore", (settings) -> new ExperienceDroppingBlock(UniformIntProvider.create(0, 2), settings),
-//                AbstractBlock.Settings.copy(Blocks.COAL_ORE).strength(STONE_STRENGTH * strength_mult, 3 * strength_mult), true);
-//    }
-//
-//        if (ores.contains(OreBlocks.ORES.COPPER_ORE)) {
-//        copper_ore = ModNatureBlocks.registerBlock(
-//                rockName + "copper_ore", Block::new, AbstractBlock.Settings.copy(Blocks.COPPER_ORE).strength(
-//                        STONE_STRENGTH * strength_mult, 3 * strength_mult), true);
-//    }
-//
-//        if (ores.contains(OreBlocks.ORES.TIN_ORE)) {
-//        tin_ore = ModNatureBlocks.registerBlock(
-//                rockName + "tin_ore", Block::new, AbstractBlock.Settings.copy(Blocks.IRON_ORE).strength(
-//                        STONE_STRENGTH * strength_mult, 3 * strength_mult), true);
-//    }
-//
-//        if (ores.contains(OreBlocks.ORES.LEAD_ORE)) {
-//        lead_ore = ModNatureBlocks.registerBlock(
-//                rockName + "lead_ore", Block::new, AbstractBlock.Settings.copy(Blocks.IRON_ORE).strength(
-//                        STONE_STRENGTH * strength_mult, 3 * strength_mult), true);
-//    }
-//
-//        if (ores.contains(OreBlocks.ORES.SILVER_ORE)) {
-//        silver_ore = ModNatureBlocks.registerBlock(
-//                rockName + "silver_ore", Block::new, AbstractBlock.Settings.copy(Blocks.IRON_ORE).strength(
-//                        STONE_STRENGTH * strength_mult, 3 * strength_mult), true);
-//    }
-//
-//        if (ores.contains(OreBlocks.ORES.GOLD_ORE)) {
-//        gold_ore = ModNatureBlocks.registerBlock(
-//                rockName + "gold_ore", Block::new, AbstractBlock.Settings.copy(Blocks.GOLD_ORE).strength(
-//                        STONE_STRENGTH * strength_mult, 3 * strength_mult), true);
-//    }
-//
-//        if (ores.contains(OreBlocks.ORES.IRON_ORE)) {
-//        iron_ore = ModNatureBlocks.registerBlock(
-//                rockName + "iron_ore", Block::new, AbstractBlock.Settings.copy(Blocks.IRON_ORE).strength(
-//                        STONE_STRENGTH * strength_mult, 3 * strength_mult), true);
-//    }
-//
-//        if (ores.contains(OreBlocks.ORES.MITHRIL_ORE)) {
-//        mithril_ore = ModNatureBlocks.registerBlock(
-//                rockName + "mithril_ore", Block::new, AbstractBlock.Settings.copy(Blocks.IRON_ORE).strength(
-//                        STONE_STRENGTH * strength_mult, 3 * strength_mult), true);
-//    }
 }

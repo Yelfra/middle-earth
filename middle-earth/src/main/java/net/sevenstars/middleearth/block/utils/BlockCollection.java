@@ -14,28 +14,28 @@ import java.util.function.UnaryOperator;
  * Ex. STONE - Families of stone, stone bricks, cobblestone, chiseled stone,...
  * Used as an alternative to creating each BlockFamily with very similar characteristics separately.
  */
-public final class BlockCollection<V extends Enum<V> & BlockVariant, F extends Enum<F> & BlockForm> implements Iterable<BlockFamily<F>> {
+public final class BlockCollection<V extends Enum<V> & BlockVariant<F>, F extends Enum<F> & BlockForm<F>> implements Iterable<BlockFamily<F>> {
 
     private final Map<V, BlockFamily<F>> collection;
 
     /// Constructor independent of variants that keeps default variant configs.
-    public BlockCollection(String baseName, BlockVariantSet<V> variants) {
+    public BlockCollection(String baseName, BlockVariantSet<V, F> variants) {
         this(baseName, variants, (config, variant) -> config);
     }
 
     /// Constructor independent of variants - Modifies configs of all passed variants in the same way.
-    public BlockCollection(String baseName, BlockVariantSet<V> variants, UnaryOperator<BlockConfig<F>> configModifier) {
+    public BlockCollection(String baseName, BlockVariantSet<V, F> variants, UnaryOperator<BlockConfig<F>> configModifier) {
         this(baseName, variants, (config, variant) -> configModifier.apply(config));
     }
 
     /// Variant-dependent constructor - Modifies configs of all passed variants, but can be used to modify variant configs separately.
-    public BlockCollection(String baseName, BlockVariantSet<V> variants, BiFunction<BlockConfig<F>, V, BlockConfig<F>> configModifier) {
+    public BlockCollection(String baseName, BlockVariantSet<V, F> variants, BiFunction<BlockConfig<F>, V, BlockConfig<F>> configModifier) {
         Map<V, BlockFamily<F>> map = new EnumMap<>(variants.iterator().next().getDeclaringClass()); // Alternative to something such as <>(V.class())
 
         for (V variant : variants) {
             String name = variant.getPrefix() + baseName + variant.getSuffix();
 
-            BlockConfig<F> config = (BlockConfig<F>) variant.getConfig();
+            BlockConfig<F> config = variant.getConfig();
             if (configModifier != null) {
                 config = configModifier.apply(config, variant);
             }

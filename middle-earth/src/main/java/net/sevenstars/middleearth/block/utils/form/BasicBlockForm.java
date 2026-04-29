@@ -6,7 +6,7 @@ import net.sevenstars.middleearth.block.special.*;
 import net.sevenstars.middleearth.block.special.verticalSlabs.TransparentVerticalSlab;
 import net.sevenstars.middleearth.block.special.verticalSlabs.VerticalSlabBlock;
 
-public enum BasicBlockForm implements BlockForm {
+public enum BasicBlockForm implements BlockForm<BasicBlockForm> {
     // @formatter:off
     BASE            ("",                (config, base) -> createBase(config, base)),
     SLAB            ("_slab",           (config, base) -> createSlab(config)),
@@ -52,8 +52,8 @@ public enum BasicBlockForm implements BlockForm {
     }
 
     @Override
-    public Block create(BlockConfig<?> config, Block base) {
-        return factory.apply((BlockConfig<BasicBlockForm>) config, base);
+    public Block create(BlockConfig<BasicBlockForm> config, Block base) {
+        return factory.apply(config, base);
     }
 
     /* Form Constructors */

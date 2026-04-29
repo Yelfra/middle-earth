@@ -7,7 +7,7 @@ import java.util.function.Supplier;
 
 import static net.sevenstars.middleearth.block.utils.form.BlockFormSet.*;
 
-public enum StoneBlockVariant implements BlockVariant {
+public enum StoneBlockVariant implements BlockVariant<BasicBlockForm> {
     // @formatter:off
     // TODO: @Yelfra | Some pillar variants such as POLISHED_BLOCKS_PILLAR in StoneBlockSets weren't marked as pillars
     BASE_BLOCKS                     ("", "",                            () -> BlockConfig.STONE().formSet(STONE_COMPLETE)),
@@ -78,20 +78,22 @@ public enum StoneBlockVariant implements BlockVariant {
         this.hardnessModifier = hardnessModifier;
     }
 
+    @Override
     public String getPrefix() {
         return prefix;
     }
 
+    @Override
     public String getSuffix() {
         return suffix;
-    }
-
-    public float getHardnessModifier() {
-        return hardnessModifier;
     }
 
     @Override
     public BlockConfig<BasicBlockForm> getConfig() {
         return config.get();
+    }
+
+    public float getHardnessModifier() {
+        return hardnessModifier;
     }
 }
