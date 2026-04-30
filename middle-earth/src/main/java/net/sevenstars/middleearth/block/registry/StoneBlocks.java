@@ -4,7 +4,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.MapColor;
 import net.minecraft.sound.BlockSoundGroup;
 import net.sevenstars.middleearth.MiddleEarth;
-import net.sevenstars.middleearth.block.*;
+import net.sevenstars.middleearth.block.BlockRegistration;
 import net.sevenstars.middleearth.block.utils.BlockCollection;
 import net.sevenstars.middleearth.block.utils.form.BasicBlockForm;
 import net.sevenstars.middleearth.block.utils.variant.BlockVariantSet;

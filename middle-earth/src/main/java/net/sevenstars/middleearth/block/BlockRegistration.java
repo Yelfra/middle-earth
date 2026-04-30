@@ -14,7 +14,6 @@ import net.minecraft.util.Identifier;
 import net.sevenstars.middleearth.MiddleEarth;
 import net.sevenstars.middleearth.block.utils.BlockCollection;
 import net.sevenstars.middleearth.block.utils.BlockFamily;
-import net.sevenstars.middleearth.block.utils.form.BasicBlockForm;
 import net.sevenstars.middleearth.block.utils.form.BlockForm;
 import net.sevenstars.middleearth.block.utils.variant.BlockVariant;
 import net.sevenstars.middleearth.datageneration.content.TranslationEntries;

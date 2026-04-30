@@ -1,10 +1,13 @@
 package net.sevenstars.middleearth.block.registry;
 
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.MapColor;
+import net.minecraft.block.Oxidizable;
 import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.sound.BlockSoundGroup;
 import net.sevenstars.middleearth.MiddleEarth;
-import net.minecraft.block.*;
-import net.sevenstars.middleearth.block.*;
+import net.sevenstars.middleearth.block.BlockBehaviour;
+import net.sevenstars.middleearth.block.BlockRegistration;
 import net.sevenstars.middleearth.block.utils.BlockConfig;
 import net.sevenstars.middleearth.block.utils.BlockFamily;
 import net.sevenstars.middleearth.block.utils.form.BasicBlockForm;

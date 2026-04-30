@@ -5,12 +5,8 @@ import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.ColorCode;
 import net.sevenstars.middleearth.MiddleEarth;
-import net.sevenstars.middleearth.block.*;
-import net.sevenstars.middleearth.block.utils.BlockConfig;
-import net.sevenstars.middleearth.block.utils.BlockFamily;
-import net.sevenstars.middleearth.block.utils.form.BasicBlockForm;
-import net.sevenstars.middleearth.block.utils.form.BlockFormSet;
-import net.sevenstars.middleearth.block.utils.form.WattleBlockForm;
+import net.sevenstars.middleearth.block.BlockBehaviour;
+import net.sevenstars.middleearth.block.BlockRegistration;
 import net.sevenstars.middleearth.block.special.LayersBlock;
 import net.sevenstars.middleearth.block.special.SpikesBlock;
 import net.sevenstars.middleearth.block.special.StoneMyceliumBlock;
@@ -21,6 +17,11 @@ import net.sevenstars.middleearth.block.special.pointedBlocks.PointedDolomiteBlo
 import net.sevenstars.middleearth.block.special.pointedBlocks.PointedGalonnBlock;
 import net.sevenstars.middleearth.block.special.pointedBlocks.PointedIzherabanBlock;
 import net.sevenstars.middleearth.block.special.pointedBlocks.PointedLimestoneBlock;
+import net.sevenstars.middleearth.block.utils.BlockConfig;
+import net.sevenstars.middleearth.block.utils.BlockFamily;
+import net.sevenstars.middleearth.block.utils.form.BasicBlockForm;
+import net.sevenstars.middleearth.block.utils.form.BlockFormSet;
+import net.sevenstars.middleearth.block.utils.form.WattleBlockForm;
 import net.sevenstars.middleearth.item.utils.ItemGroupsME;
 
 import static net.sevenstars.middleearth.block.utils.form.BasicBlockForm.*;

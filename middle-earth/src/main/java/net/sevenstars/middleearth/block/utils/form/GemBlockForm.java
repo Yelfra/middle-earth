@@ -1,8 +1,8 @@
 package net.sevenstars.middleearth.block.utils.form;
 
 import net.minecraft.block.*;
-import net.sevenstars.middleearth.block.utils.BlockConfig;
 import net.sevenstars.middleearth.block.special.gemstones.CustomBuddingGemBlock;
+import net.sevenstars.middleearth.block.utils.BlockConfig;
 
 import java.util.List;
 

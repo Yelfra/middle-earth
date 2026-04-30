@@ -1,7 +1,7 @@
 package net.sevenstars.middleearth.block.registry;
 
 import net.sevenstars.middleearth.MiddleEarth;
-import net.sevenstars.middleearth.block.*;
+import net.sevenstars.middleearth.block.BlockRegistration;
 import net.sevenstars.middleearth.block.utils.BlockConfig;
 import net.sevenstars.middleearth.block.utils.BlockFamily;
 import net.sevenstars.middleearth.block.utils.form.GemBlockForm;

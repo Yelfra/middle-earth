@@ -4,16 +4,17 @@ import net.minecraft.block.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.sound.BlockSoundGroup;
 import net.sevenstars.middleearth.MiddleEarth;
-import net.sevenstars.middleearth.block.*;
-import net.sevenstars.middleearth.block.utils.BlockConfig;
-import net.sevenstars.middleearth.block.utils.BlockFamily;
-import net.sevenstars.middleearth.block.utils.form.BasicBlockForm;
-import net.sevenstars.middleearth.block.utils.form.BlockFormSet;
+import net.sevenstars.middleearth.block.BlockBehaviour;
+import net.sevenstars.middleearth.block.BlockRegistration;
 import net.sevenstars.middleearth.block.special.LayersBlock;
 import net.sevenstars.middleearth.block.special.OxidizablePaneBlock;
 import net.sevenstars.middleearth.block.special.OxidizableVerticalSlabBlock;
 import net.sevenstars.middleearth.block.special.OxidizableWallBlock;
 import net.sevenstars.middleearth.block.special.verticalSlabs.VerticalSlabBlock;
+import net.sevenstars.middleearth.block.utils.BlockConfig;
+import net.sevenstars.middleearth.block.utils.BlockFamily;
+import net.sevenstars.middleearth.block.utils.form.BasicBlockForm;
+import net.sevenstars.middleearth.block.utils.form.BlockFormSet;
 import net.sevenstars.middleearth.item.utils.ItemGroupsME;
 
 public class ExpandedVanillaBlocks {

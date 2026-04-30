@@ -1,22 +1,13 @@
 package net.sevenstars.middleearth.block.registry;
 
-import net.sevenstars.middleearth.MiddleEarth;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.ExperienceDroppingBlock;
-import net.minecraft.util.math.intprovider.UniformIntProvider;
+import net.sevenstars.middleearth.MiddleEarth;
 import net.sevenstars.middleearth.block.BlockRegistration;
-import net.sevenstars.middleearth.block.registration.ModNatureBlocks;
-import net.sevenstars.middleearth.block.registration.StoneBlockSets;
 import net.sevenstars.middleearth.block.utils.BlockConfig;
 import net.sevenstars.middleearth.block.utils.BlockFamily;
 import net.sevenstars.middleearth.block.utils.form.BlockFormSet;
 import net.sevenstars.middleearth.block.utils.form.OreBlockForm;
 import net.sevenstars.middleearth.item.utils.ItemGroupsME;
-
-import java.util.Arrays;
-import java.util.List;
 
 import static net.sevenstars.middleearth.block.utils.form.BasicBlockForm.BASE;
 import static net.sevenstars.middleearth.block.utils.form.OreBlockForm.*;
