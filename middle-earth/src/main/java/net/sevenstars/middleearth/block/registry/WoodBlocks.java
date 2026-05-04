@@ -1,5 +1,6 @@
 package net.sevenstars.middleearth.block.registry;
 
+import net.minecraft.block.Blocks;
 import net.minecraft.block.MapColor;
 import net.minecraft.sound.BlockSoundGroup;
 import net.sevenstars.middleearth.MiddleEarth;
@@ -488,6 +489,7 @@ public class WoodBlocks {
     ).flammable().fuel(WOOD_FUEL_TICKS).strippablePair(WOOD_BLOCKS, STRIPPED_WOOD_BLOCKS);
     // endregion
 
+    // TODO: @Yelfra | Possible tweak of values for these to make them "weaker" wood alternatives
     // region ROTTEN, SCORCHED, DEAD
     public static final BlockCollection<WoodBlockVariant> ROTTEN_WOOD = BlockRegistration.registerBlockCollection(
             new BlockCollection<>(
@@ -500,6 +502,7 @@ public class WoodBlocks {
             ),
             ItemGroupsME.WOOD_BLOCKS_CONTENTS
     ).flammable().fuel(WOOD_FUEL_TICKS).strippablePair(WOOD_BLOCKS, STRIPPED_WOOD_BLOCKS);
+    // TODO: @Yelfra | Removed flammability from scorched wood
     public static final BlockCollection<WoodBlockVariant> SCORCHED_WOOD = BlockRegistration.registerBlockCollection(
             new BlockCollection<>(
                     "scorched",
@@ -510,7 +513,7 @@ public class WoodBlocks {
                     }
             ),
             ItemGroupsME.WOOD_BLOCKS_CONTENTS
-    ).flammable().fuel(WOOD_FUEL_TICKS).strippablePair(WOOD_BLOCKS, STRIPPED_WOOD_BLOCKS);
+    ).fuel(WOOD_FUEL_TICKS).strippablePair(WOOD_BLOCKS, STRIPPED_WOOD_BLOCKS);
     public static final BlockCollection<WoodBlockVariant> DEAD_WOOD = BlockRegistration.registerBlockCollection(
             new BlockCollection<>(
                     "dead",
