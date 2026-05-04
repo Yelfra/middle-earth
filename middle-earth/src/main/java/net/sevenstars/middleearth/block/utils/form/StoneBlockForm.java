@@ -1,26 +1,22 @@
 package net.sevenstars.middleearth.block.utils.form;
 
-import net.minecraft.block.Block;
+import net.minecraft.block.*;
 import net.minecraft.item.ItemStack;
+import net.sevenstars.middleearth.block.special.RocksBlock;
 import net.sevenstars.middleearth.block.utils.BlockConfig;
 import net.sevenstars.middleearth.item.utils.ItemGroupsME;
 
 import java.util.List;
 
-public enum WattleBlockForm implements BlockForm {
+public enum StoneBlockForm implements BlockForm {
     // @formatter:off
-    PLAIN   ("",            (config, base) -> new Block(config.settings)),
-    CROSS   ("_cross",      (config, base) -> new Block(config.settings)),
-    RIGHT   ("_right",      (config, base) -> new Block(config.settings)),
-    LEFT    ("_left",       (config, base) -> new Block(config.settings)),
-    PILLAR  ("_pillar",     (config, base) -> new Block(config.settings)),
-    DIAMOND ("_diamond",    (config, base) -> new Block(config.settings));
+    ROCKS           ("_rocks",          (config, base) -> createRocks(config));
     // @formatter:on
 
     private final String suffix;
     private final FormFactory<BlockConfig, Block, Block> factory;
 
-    WattleBlockForm(String suffix, FormFactory<BlockConfig, Block, Block> factory) {
+    StoneBlockForm(String suffix, FormFactory<BlockConfig, Block, Block> factory) {
         this.suffix = suffix;
         this.factory = factory;
     }
@@ -42,6 +38,11 @@ public enum WattleBlockForm implements BlockForm {
 
     @Override
     public List<List<ItemStack>> getItemGroups() {
-        return List.of(ItemGroupsME.MISC_BLOCKS_CONTENTS); // TODO: @Yelfra | Perhaps a new "Building Blocks" tab?
+        return List.of(ItemGroupsME.STONE_BLOCKS_CONTENTS);
+    }
+
+    /* Form Constructors */
+    private static Block createRocks(BlockConfig config) {
+        return new RocksBlock(config.settings.nonOpaque());
     }
 }

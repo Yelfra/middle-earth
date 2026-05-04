@@ -13,7 +13,6 @@ import net.sevenstars.middleearth.block.special.OxidizableWallBlock;
 import net.sevenstars.middleearth.block.special.verticalSlabs.VerticalSlabBlock;
 import net.sevenstars.middleearth.block.utils.BlockConfig;
 import net.sevenstars.middleearth.block.utils.BlockFamily;
-import net.sevenstars.middleearth.block.utils.form.BasicBlockForm;
 import net.sevenstars.middleearth.block.utils.form.BlockFormSet;
 import net.sevenstars.middleearth.item.utils.ItemGroupsME;
 
@@ -23,6 +22,7 @@ public class ExpandedVanillaBlocks {
         MiddleEarth.LOGGER.logDebugMsg("Registering ExpandedVanillaBlocks for " + MiddleEarth.MOD_ID);
 
         registerFlammable();
+        registerFuel();
         registerOxidizable();
         registerWaxable();
     }
@@ -46,6 +46,26 @@ public class ExpandedVanillaBlocks {
         BlockBehaviour.registerFlammable(RED_WOOL, woolBurn, woolSpread);
         BlockBehaviour.registerFlammable(WHITE_WOOL, woolBurn, woolSpread);
         BlockBehaviour.registerFlammable(YELLOW_WOOL, woolBurn, woolSpread);
+    }
+
+    private static void registerFuel() {
+        int woolFuelTicks = 100;
+        BlockBehaviour.registerFuel(BLACK_WOOL, woolFuelTicks);
+        BlockBehaviour.registerFuel(BLUE_WOOL, woolFuelTicks);
+        BlockBehaviour.registerFuel(BROWN_WOOL, woolFuelTicks);
+        BlockBehaviour.registerFuel(CYAN_WOOL, woolFuelTicks);
+        BlockBehaviour.registerFuel(GRAY_WOOL, woolFuelTicks);
+        BlockBehaviour.registerFuel(GREEN_WOOL, woolFuelTicks);
+        BlockBehaviour.registerFuel(LIGHT_BLUE_WOOL, woolFuelTicks);
+        BlockBehaviour.registerFuel(LIGHT_GRAY_WOOL, woolFuelTicks);
+        BlockBehaviour.registerFuel(LIME_WOOL, woolFuelTicks);
+        BlockBehaviour.registerFuel(MAGENTA_WOOL, woolFuelTicks);
+        BlockBehaviour.registerFuel(ORANGE_WOOL, woolFuelTicks);
+        BlockBehaviour.registerFuel(PINK_WOOL, woolFuelTicks);
+        BlockBehaviour.registerFuel(PURPLE_WOOL, woolFuelTicks);
+        BlockBehaviour.registerFuel(RED_WOOL, woolFuelTicks);
+        BlockBehaviour.registerFuel(WHITE_WOOL, woolFuelTicks);
+        BlockBehaviour.registerFuel(YELLOW_WOOL, woolFuelTicks);
     }
 
     private static void registerOxidizable() {
@@ -80,11 +100,11 @@ public class ExpandedVanillaBlocks {
     }
 
     // Helper method to reduce family boilerplate
-    private static BlockFamily<BasicBlockForm> registerFamily(Block block) {
+    private static BlockFamily registerFamily(Block block) {
         return BlockRegistration.registerBlockFamily(
-                new BlockFamily<>(
+                new BlockFamily(
                         Registries.BLOCK.getId(block).getPath(),
-                        new BlockConfig<BasicBlockForm>(block).formSet(BlockFormSet.REGULAR_NO_BASE),
+                        new BlockConfig(block).formSet(BlockFormSet.SIMPLE_NO_BASE),
                         block
                 ),
                 ItemGroupsME.MISC_BLOCKS_CONTENTS);
@@ -220,25 +240,25 @@ public class ExpandedVanillaBlocks {
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
     // endregion
 
-    public static final BlockFamily<BasicBlockForm> PACKED_MUD = registerFamily(Blocks.PACKED_MUD);
+    public static final BlockFamily PACKED_MUD = registerFamily(Blocks.PACKED_MUD);
 
     // region WOOL
-    public static final BlockFamily<BasicBlockForm> BLACK_WOOL = registerFamily(Blocks.BLACK_WOOL);
-    public static final BlockFamily<BasicBlockForm> BLUE_WOOL = registerFamily(Blocks.BLUE_WOOL);
-    public static final BlockFamily<BasicBlockForm> BROWN_WOOL = registerFamily(Blocks.BROWN_WOOL);
-    public static final BlockFamily<BasicBlockForm> CYAN_WOOL = registerFamily(Blocks.CYAN_WOOL);
-    public static final BlockFamily<BasicBlockForm> GRAY_WOOL = registerFamily(Blocks.GRAY_WOOL);
-    public static final BlockFamily<BasicBlockForm> GREEN_WOOL = registerFamily(Blocks.GREEN_WOOL);
-    public static final BlockFamily<BasicBlockForm> LIGHT_BLUE_WOOL = registerFamily(Blocks.LIGHT_BLUE_WOOL);
-    public static final BlockFamily<BasicBlockForm> LIGHT_GRAY_WOOL = registerFamily(Blocks.LIGHT_GRAY_WOOL);
-    public static final BlockFamily<BasicBlockForm> LIME_WOOL = registerFamily(Blocks.LIME_WOOL);
-    public static final BlockFamily<BasicBlockForm> MAGENTA_WOOL = registerFamily(Blocks.MAGENTA_WOOL);
-    public static final BlockFamily<BasicBlockForm> ORANGE_WOOL = registerFamily(Blocks.ORANGE_WOOL);
-    public static final BlockFamily<BasicBlockForm> PINK_WOOL = registerFamily(Blocks.PINK_WOOL);
-    public static final BlockFamily<BasicBlockForm> PURPLE_WOOL = registerFamily(Blocks.PURPLE_WOOL);
-    public static final BlockFamily<BasicBlockForm> RED_WOOL = registerFamily(Blocks.RED_WOOL);
-    public static final BlockFamily<BasicBlockForm> WHITE_WOOL = registerFamily(Blocks.WHITE_WOOL);
-    public static final BlockFamily<BasicBlockForm> YELLOW_WOOL = registerFamily(Blocks.YELLOW_WOOL);
+    public static final BlockFamily BLACK_WOOL = registerFamily(Blocks.BLACK_WOOL);
+    public static final BlockFamily BLUE_WOOL = registerFamily(Blocks.BLUE_WOOL);
+    public static final BlockFamily BROWN_WOOL = registerFamily(Blocks.BROWN_WOOL);
+    public static final BlockFamily CYAN_WOOL = registerFamily(Blocks.CYAN_WOOL);
+    public static final BlockFamily GRAY_WOOL = registerFamily(Blocks.GRAY_WOOL);
+    public static final BlockFamily GREEN_WOOL = registerFamily(Blocks.GREEN_WOOL);
+    public static final BlockFamily LIGHT_BLUE_WOOL = registerFamily(Blocks.LIGHT_BLUE_WOOL);
+    public static final BlockFamily LIGHT_GRAY_WOOL = registerFamily(Blocks.LIGHT_GRAY_WOOL);
+    public static final BlockFamily LIME_WOOL = registerFamily(Blocks.LIME_WOOL);
+    public static final BlockFamily MAGENTA_WOOL = registerFamily(Blocks.MAGENTA_WOOL);
+    public static final BlockFamily ORANGE_WOOL = registerFamily(Blocks.ORANGE_WOOL);
+    public static final BlockFamily PINK_WOOL = registerFamily(Blocks.PINK_WOOL);
+    public static final BlockFamily PURPLE_WOOL = registerFamily(Blocks.PURPLE_WOOL);
+    public static final BlockFamily RED_WOOL = registerFamily(Blocks.RED_WOOL);
+    public static final BlockFamily WHITE_WOOL = registerFamily(Blocks.WHITE_WOOL);
+    public static final BlockFamily YELLOW_WOOL = registerFamily(Blocks.YELLOW_WOOL);
     // endregion
 
     // region VANILLA SLABS
@@ -267,9 +287,9 @@ public class ExpandedVanillaBlocks {
             SlabBlock::new,
             AbstractBlock.Settings.copy(Blocks.MOSS_BLOCK),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    //endregion
+    // endregion
 
-    //region VANILLA STAIRS
+    // region VANILLA STAIRS
     public static final Block DIRT_STAIRS = BlockRegistration.registerBlock(
             "dirt_stairs",
             (settings) -> new StairsBlock(Blocks.DIRT.getDefaultState(), settings),
@@ -295,9 +315,9 @@ public class ExpandedVanillaBlocks {
             (settings) -> new StairsBlock(Blocks.MOSS_BLOCK.getDefaultState(), settings),
             AbstractBlock.Settings.copy(Blocks.MOSS_BLOCK),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    //endregion
+    // endregion
 
-    //region VANILLA VERTICAL SLABS
+    // region VANILLA VERTICAL SLABS
     public static final Block BRICK_VERTICAL_SLAB = BlockRegistration.registerBlock(
             "brick_vertical_slab",
             VerticalSlabBlock::new,
@@ -383,9 +403,9 @@ public class ExpandedVanillaBlocks {
             VerticalSlabBlock::new,
             AbstractBlock.Settings.copy(Blocks.SMOOTH_QUARTZ_SLAB),
             ItemGroupsME.STONE_BLOCKS_CONTENTS);
-    //endregion
+    // endregion
 
-    //region VANILLA LAYERS
+    // region VANILLA LAYERS
     public static final Block GRAVEL_LAYER = BlockRegistration.registerBlock(
             "gravel_layer",
             (settings) -> new LayersBlock(settings, Blocks.GRAVEL),
@@ -396,5 +416,5 @@ public class ExpandedVanillaBlocks {
             (settings) -> new LayersBlock(settings, Blocks.SAND),
             AbstractBlock.Settings.copy(Blocks.SAND),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    //endregion
+    // endregion
 }

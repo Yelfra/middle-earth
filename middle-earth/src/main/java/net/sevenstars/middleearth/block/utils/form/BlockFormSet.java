@@ -2,134 +2,114 @@ package net.sevenstars.middleearth.block.utils.form;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Collections;
-import java.util.EnumSet;
-import java.util.Iterator;
+import java.util.*;
 
 import static net.sevenstars.middleearth.block.utils.form.BasicBlockForm.*;
 import static net.sevenstars.middleearth.block.utils.form.GemBlockForm.*;
+import static net.sevenstars.middleearth.block.utils.form.StoneBlockForm.ROCKS;
 import static net.sevenstars.middleearth.block.utils.form.WattleBlockForm.*;
+import static net.sevenstars.middleearth.block.utils.form.WoodBlockForm.*;
 
-public class BlockFormSet<F extends Enum<F> & BlockForm<F>> implements Iterable<F> {
+public class BlockFormSet implements Iterable<BlockForm> {
 
-    private final EnumSet<F> formSet;
+    private final Set<BlockForm> formSet = new LinkedHashSet<>(); // Had to ditch EnumSet because of wildcard
 
-    @SafeVarargs
-    public BlockFormSet(F... forms) {
-        if (forms.length == 0) throw new IllegalArgumentException("Empty form set");
-
-        this.formSet = EnumSet.noneOf(forms[0].getDeclaringClass());
+    public BlockFormSet(BlockForm... forms) {
+        if (forms.length == 0) {
+            throw new IllegalArgumentException("Empty form set");
+        }
         Collections.addAll(this.formSet, forms);
     }
 
-    public boolean contains(F form) {
+    public BlockFormSet(BlockFormSet preset, BlockForm... forms) {
+        if (preset == null) {
+            throw new IllegalArgumentException("Preset cannot be null");
+        } else if (forms.length == 0) {
+            throw new IllegalArgumentException("Empty form set");
+        }
+        this.formSet.addAll(preset.formSet);
+        Collections.addAll(this.formSet, forms);
+    }
+
+    public boolean contains(BlockForm form) {
         return formSet.contains(form);
     }
 
     @Override
-    public @NotNull Iterator<F> iterator() {
+    public @NotNull Iterator<BlockForm> iterator() {
         return Collections.unmodifiableSet(formSet).iterator();
     }
 
     /* PRESETS */
-    // TODO: @Yelfra | Mushroom, stem sets; separate redstone and decorative set?
-    // region BASIC
-    public static final BlockFormSet<BasicBlockForm> REGULAR =
-            new BlockFormSet<>(
-                    BASE,
-                    SLAB,
-                    VERTICAL_SLAB,
-                    STAIRS
-            );
-    // FormSet preset useful for expanding vanilla blocks, without including the existing block itself
-    public static final BlockFormSet<BasicBlockForm> REGULAR_NO_BASE =
-            new BlockFormSet<>(
-                    SLAB,
-                    VERTICAL_SLAB,
-                    STAIRS
-            );
-    public static final BlockFormSet<BasicBlockForm> STONE_BASIC =
-            new BlockFormSet<>(
-                    BASE,
-                    SLAB,
-                    VERTICAL_SLAB,
-                    STAIRS,
-                    WALL
-            );
-    public static final BlockFormSet<BasicBlockForm> STONE_PILLAR =
-            new BlockFormSet<>(
-                    BASE,
-                    VERTICAL_SLAB,
-                    WALL
-            );
-    public static final BlockFormSet<BasicBlockForm> STONE_COMPLETE =
-            new BlockFormSet<>(
-                    BASE,
-                    SLAB,
-                    VERTICAL_SLAB,
-                    STAIRS,
-                    WALL,
-                    TRAPDOOR,
-                    PRESSURE_PLATE,
-                    BUTTON,
-                    ROCKS,
-                    STOOL,
-                    TABLE,
-                    CHAIR
-                    //,BENCH // TODO: @Yelfra | StoneBenchBlock doesn't exist
-            );
-    public static final BlockFormSet<BasicBlockForm> WOOD_BASIC =
-            new BlockFormSet<>(
-                    BASE, // Log
-                    // TODO: @Yelfra | Add specific case for wood (log wall on all sides)
-                    SLAB,
-                    VERTICAL_SLAB,
-                    STAIRS,
-                    WALL
-            );
-    public static final BlockFormSet<BasicBlockForm> PLANKS_BASIC =
-            new BlockFormSet<>(
-                    BASE,
-                    SLAB,
-                    VERTICAL_SLAB,
-                    STAIRS,
-                    FENCE,
-                    FENCE_GATE
-            );
-    public static final BlockFormSet<BasicBlockForm> SOIL =
-            new BlockFormSet<>(
-                    BASE,
-                    SLAB,
-                    STAIRS
-            );
-    public static final BlockFormSet<BasicBlockForm> TRANSPARENT =
-            new BlockFormSet<>(
-                    BASE_T,
-                    VERTICAL_SLAB_T
-            );
+    // region COMMON
+    public static final BlockFormSet SIMPLE = new BlockFormSet(
+            BASE, SLAB, VERTICAL_SLAB, STAIRS
+    );
+    /// FormSet preset useful for expanding vanilla blocks, without including the existing block itself.
+    public static final BlockFormSet SIMPLE_NO_BASE = new BlockFormSet(
+            SLAB, VERTICAL_SLAB, STAIRS
+    );
+    public static final BlockFormSet REGULAR = new BlockFormSet(
+            BASE, SLAB, VERTICAL_SLAB, STAIRS, WALL
+    );
+    public static final BlockFormSet REDSTONE = new BlockFormSet(
+            FENCE_GATE, DOOR, TRAPDOOR, PRESSURE_PLATE, BUTTON
+    );
+    public static final BlockFormSet FURNITURE = new BlockFormSet(
+            TABLE, CHAIR, STOOL, LADDER, BENCH
+    );
+    public static final BlockFormSet TRANSPARENT = new BlockFormSet(
+            BASE_T, VERTICAL_SLAB_T
+    );
     // endregion
 
-    // region WATTLE_AND_DAUB
-    public static final BlockFormSet<WattleBlockForm> WATTLE_AND_DAUB =
-            new BlockFormSet<>(
-                    PLAIN,
-                    CROSS,
-                    RIGHT,
-                    LEFT,
-                    PILLAR,
-                    DIAMOND
-            );
+    // region STONE
+    public static final BlockFormSet STONE_PILLAR = new BlockFormSet(
+            BASE, VERTICAL_SLAB, WALL
+    );
+    public static final BlockFormSet STONE_DECOR = new BlockFormSet(
+            ROCKS, TABLE, CHAIR, STOOL, LADDER
+    );
+    public static final BlockFormSet STONE_REDSTONE = new BlockFormSet(
+            TRAPDOOR, PRESSURE_PLATE, BUTTON
+    );
     // endregion
 
-    // region GEM
-    public static final BlockFormSet<GemBlockForm> GEM_COMPLETE =
-            new BlockFormSet<>(
-                    BLOCK,
-                    SMALL_BUD,
-                    MEDIUM_BUD,
-                    LARGE_BUD,
-                    CLUSTER,
-                    BUDDING
-            );
+    // region WOOD
+    public static final BlockFormSet WOOD = new BlockFormSet(
+            LOG, BASE, SLAB, VERTICAL_SLAB, STAIRS, WALL, FENCE
+    );
+    public static final BlockFormSet STRIPPED_WOOD = new BlockFormSet(
+            STRIPPED_LOG, BASE, SLAB, VERTICAL_SLAB, STAIRS, WALL, FENCE
+    );
+    public static final BlockFormSet PLANKS = new BlockFormSet(
+            BASE, SLAB, VERTICAL_SLAB, STAIRS, FENCE
+    );
+    public static final BlockFormSet MUSHROOM = new BlockFormSet(
+            STEM, SLAB, VERTICAL_SLAB, STAIRS, FENCE
+    );
+    public static final BlockFormSet STRIPPED_MUSHROOM = new BlockFormSet(
+            STRIPPED_STEM, SLAB, VERTICAL_SLAB, STAIRS, FENCE
+    );
+    public static final BlockFormSet HYPHAE = new BlockFormSet(
+            HYPHAE_STEM, BASE, SLAB, VERTICAL_SLAB, STAIRS, FENCE
+    );
+    public static final BlockFormSet STRIPPED_HYPHAE = new BlockFormSet(
+            STRIPPED_HYPHAE_STEM, BASE, SLAB, VERTICAL_SLAB, STAIRS, FENCE
+    );
+    // endregion
+
+    // region MISC
+    public static final BlockFormSet SOIL = new BlockFormSet(
+            BASE, SLAB, STAIRS
+    );
+
+    public static final BlockFormSet WATTLE_AND_DAUB = new BlockFormSet(
+            PLAIN, CROSS, RIGHT, LEFT, PILLAR, DIAMOND
+    );
+
+    public static final BlockFormSet GEM_COMPLETE = new BlockFormSet(
+            BLOCK, SMALL_BUD, MEDIUM_BUD, LARGE_BUD, CLUSTER, BUDDING
+    );
     // endregion
 }

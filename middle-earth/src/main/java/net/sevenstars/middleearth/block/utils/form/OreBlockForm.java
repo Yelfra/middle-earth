@@ -4,13 +4,15 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.ExperienceDroppingBlock;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.sevenstars.middleearth.block.utils.BlockConfig;
+import net.sevenstars.middleearth.item.utils.ItemGroupsME;
 
-public enum OreBlockForm implements BlockForm<OreBlockForm> {
+import java.util.List;
+
+public enum OreBlockForm implements BlockForm {
     // @formatter:off
-    ORIGIN              ("", "",                (config, base) -> base), // Base blocks get used as the stone of the ore
-
     COAL                ("", "_coal_ore",       (config, base) -> createCoal(base)),
     COPPER              ("", "_copper_ore",     (config, base) -> createCopper(base)),
     TIN                 ("", "_tin_ore",        (config, base) -> createTin(base)),
@@ -23,9 +25,9 @@ public enum OreBlockForm implements BlockForm<OreBlockForm> {
 
     private final String prefix;
     private final String suffix;
-    private final FormFactory<BlockConfig<OreBlockForm>, Block, Block> factory;
+    private final FormFactory<BlockConfig, Block, Block> factory;
 
-    OreBlockForm(String prefix, String suffix, FormFactory<BlockConfig<OreBlockForm>, Block, Block> factory) {
+    OreBlockForm(String prefix, String suffix, FormFactory<BlockConfig, Block, Block> factory) {
         this.prefix = prefix;
         this.suffix = suffix;
         this.factory = factory;
@@ -42,8 +44,13 @@ public enum OreBlockForm implements BlockForm<OreBlockForm> {
     }
 
     @Override
-    public Block create(BlockConfig<OreBlockForm> config, Block base) {
+    public Block create(BlockConfig config, Block base) {
         return factory.apply(config, base);
+    }
+
+    @Override
+    public List<List<ItemStack>> getItemGroups() {
+        return List.of(ItemGroupsME.NATURE_BLOCKS_CONTENTS);
     }
 
     /* Form Constructors */

@@ -28,7 +28,7 @@ public class StoneBlocks {
     }
 
     // TODO: @Yelfra | Expanding on vanilla stone? Check ExpandedVanillaBlocks for repeated registration
-    public static final BlockCollection<StoneBlockVariant, BasicBlockForm> STONE = registerCollection(
+    public static final BlockCollection<StoneBlockVariant> STONE = registerCollection(
             new BlockCollection<>(
                     "stone",
                     new BlockVariantSet<>(
@@ -49,7 +49,7 @@ public class StoneBlocks {
                     }
             ));
 
-    public static final BlockCollection<StoneBlockVariant, BasicBlockForm> GRANITE = registerCollection(
+    public static final BlockCollection<StoneBlockVariant> GRANITE = registerCollection(
             new BlockCollection<>(
                     "granite",
                     new BlockVariantSet<>(
@@ -69,7 +69,7 @@ public class StoneBlocks {
                     }
             ));
 
-    public static final BlockCollection<StoneBlockVariant, BasicBlockForm> DIORITE = registerCollection(
+    public static final BlockCollection<StoneBlockVariant> DIORITE = registerCollection(
             new BlockCollection<>(
                     "diorite",
                     new BlockVariantSet<>(
@@ -89,7 +89,7 @@ public class StoneBlocks {
                     }
             ));
 
-    public static final BlockCollection<StoneBlockVariant, BasicBlockForm> ANDESITE = registerCollection(
+    public static final BlockCollection<StoneBlockVariant> ANDESITE = registerCollection(
             new BlockCollection<>(
                     "andesite",
                     new BlockVariantSet<>(
@@ -109,7 +109,7 @@ public class StoneBlocks {
                     }
             ));
 
-    public static final BlockCollection<StoneBlockVariant, BasicBlockForm> CALCITE = registerCollection(
+    public static final BlockCollection<StoneBlockVariant> CALCITE = registerCollection(
             new BlockCollection<>(
                     "calcite",
                     new BlockVariantSet<>(
@@ -130,7 +130,7 @@ public class StoneBlocks {
                     }
             ));
 
-    public static final BlockCollection<StoneBlockVariant, BasicBlockForm> DRIPSTONE = registerCollection(
+    public static final BlockCollection<StoneBlockVariant> DRIPSTONE = registerCollection(
             new BlockCollection<>(
                     "dripstone",
                     new BlockVariantSet<>(
@@ -144,7 +144,7 @@ public class StoneBlocks {
                     }
             ));
 
-    public static final BlockCollection<StoneBlockVariant, BasicBlockForm> DEEPSLATE = registerCollection(
+    public static final BlockCollection<StoneBlockVariant> DEEPSLATE = registerCollection(
             new BlockCollection<>(
                     "deepslate",
                     new BlockVariantSet<>(
@@ -167,7 +167,7 @@ public class StoneBlocks {
                     }
             ));
 
-    public static final BlockCollection<StoneBlockVariant, BasicBlockForm> TUFF = registerCollection(
+    public static final BlockCollection<StoneBlockVariant> TUFF = registerCollection(
             new BlockCollection<>(
                     "tuff",
                     new BlockVariantSet<>(
@@ -188,7 +188,7 @@ public class StoneBlocks {
                     }
             ));
 
-    public static final BlockCollection<StoneBlockVariant, BasicBlockForm> BASALT = registerCollection(
+    public static final BlockCollection<StoneBlockVariant> BASALT = registerCollection(
             new BlockCollection<>(
                     "basalt",
                     new BlockVariantSet<>(
@@ -209,7 +209,7 @@ public class StoneBlocks {
                     }
             ));
 
-    public static final BlockCollection<StoneBlockVariant, BasicBlockForm> BLACKSTONE = registerCollection(
+    public static final BlockCollection<StoneBlockVariant> BLACKSTONE = registerCollection(
             new BlockCollection<>(
                     "blackstone",
                     new BlockVariantSet<>(
@@ -230,7 +230,7 @@ public class StoneBlocks {
                     }
             ));
 
-    public static final BlockCollection<StoneBlockVariant, BasicBlockForm> DOLOMITE = registerCollection(
+    public static final BlockCollection<StoneBlockVariant> DOLOMITE = registerCollection(
             new BlockCollection<>(
                     "dolomite",
                     new BlockVariantSet<>(
@@ -251,7 +251,7 @@ public class StoneBlocks {
                     }
             ));
 
-    public static final BlockCollection<StoneBlockVariant, BasicBlockForm> SLATE = registerCollection(
+    public static final BlockCollection<StoneBlockVariant> SLATE = registerCollection(
             new BlockCollection<>(
                     "slate",
                     new BlockVariantSet<>(
@@ -272,7 +272,7 @@ public class StoneBlocks {
                     }
             ));
 
-    public static final BlockCollection<StoneBlockVariant, BasicBlockForm> NURGON = registerCollection(
+    public static final BlockCollection<StoneBlockVariant> NURGON = registerCollection(
             new BlockCollection<>(
                     "nurgon",
                     new BlockVariantSet<>(
@@ -294,7 +294,7 @@ public class StoneBlocks {
                     }
             ));
 
-    public static final BlockCollection<StoneBlockVariant, BasicBlockForm> MEDGON = registerCollection(
+    public static final BlockCollection<StoneBlockVariant> MEDGON = registerCollection(
             new BlockCollection<>(
                     "medgon",
                     new BlockVariantSet<>(
@@ -316,7 +316,7 @@ public class StoneBlocks {
                     }
             ));
 
-    public static final BlockCollection<StoneBlockVariant, BasicBlockForm> CHALK = registerCollection(
+    public static final BlockCollection<StoneBlockVariant> CHALK = registerCollection(
             new BlockCollection<>(
                     "chalk",
                     new BlockVariantSet<>(
@@ -329,7 +329,7 @@ public class StoneBlocks {
                     }
             ));
 
-    public static final BlockCollection<StoneBlockVariant, BasicBlockForm> GNEISS = registerCollection(
+    public static final BlockCollection<StoneBlockVariant> GNEISS = registerCollection(
             new BlockCollection<>(
                     "gneiss",
                     new BlockVariantSet<>(
@@ -350,7 +350,7 @@ public class StoneBlocks {
                     }
             ));
 
-    public static final BlockCollection<StoneBlockVariant, BasicBlockForm> ZIGILABAN = registerCollection(
+    public static final BlockCollection<StoneBlockVariant> ZIGILABAN = registerCollection(
             new BlockCollection<>(
                     "zigilaban",
                     new BlockVariantSet<>(
@@ -371,7 +371,7 @@ public class StoneBlocks {
                     }
             ));
 
-    public static final BlockCollection<StoneBlockVariant, BasicBlockForm> GALONN = registerCollection(
+    public static final BlockCollection<StoneBlockVariant> GALONN = registerCollection(
             new BlockCollection<>(
                     "galonn",
                     new BlockVariantSet<>(
@@ -392,7 +392,7 @@ public class StoneBlocks {
                     }
             ));
 
-    public static final BlockCollection<StoneBlockVariant, BasicBlockForm> LIMESTONE = registerCollection(
+    public static final BlockCollection<StoneBlockVariant> LIMESTONE = registerCollection(
             new BlockCollection<>(
                     "limestone",
                     new BlockVariantSet<>(
@@ -413,7 +413,7 @@ public class StoneBlocks {
                     }
             ));
 
-    public static final BlockCollection<StoneBlockVariant, BasicBlockForm> IZHERABAN = registerCollection(
+    public static final BlockCollection<StoneBlockVariant> IZHERABAN = registerCollection(
             new BlockCollection<>(
                     "izheraban",
                     new BlockVariantSet<>(
@@ -434,7 +434,7 @@ public class StoneBlocks {
                     }
             ));
 
-    public static final BlockCollection<StoneBlockVariant, BasicBlockForm> TRAVERTINE = registerCollection(
+    public static final BlockCollection<StoneBlockVariant> TRAVERTINE = registerCollection(
             new BlockCollection<>(
                     "travertine",
                     new BlockVariantSet<>(
@@ -449,7 +449,7 @@ public class StoneBlocks {
                     }
             ));
 
-    public static final BlockCollection<StoneBlockVariant, BasicBlockForm> GABBRO = registerCollection(
+    public static final BlockCollection<StoneBlockVariant> GABBRO = registerCollection(
             new BlockCollection<>(
                     "gabbro",
                     new BlockVariantSet<>(
@@ -470,7 +470,7 @@ public class StoneBlocks {
                     }
             ));
 
-    public static final BlockCollection<StoneBlockVariant, BasicBlockForm> BURZUM_GABBRO = registerCollection(
+    public static final BlockCollection<StoneBlockVariant> BURZUM_GABBRO = registerCollection(
             new BlockCollection<>(
                     "burzum_gabbro",
                     new BlockVariantSet<>(
@@ -487,7 +487,7 @@ public class StoneBlocks {
                     }
             ));
 
-    public static final BlockCollection<StoneBlockVariant, BasicBlockForm> ASHENSTONE = registerCollection(
+    public static final BlockCollection<StoneBlockVariant> ASHENSTONE = registerCollection(
             new BlockCollection<>(
                     "ashenstone",
                     new BlockVariantSet<>(
@@ -508,7 +508,7 @@ public class StoneBlocks {
                     }
             ));
 
-    public static final BlockCollection<StoneBlockVariant, BasicBlockForm> PUMICE = registerCollection(
+    public static final BlockCollection<StoneBlockVariant> PUMICE = registerCollection(
             new BlockCollection<>(
                     "pumice",
                     new BlockVariantSet<>(
@@ -529,7 +529,7 @@ public class StoneBlocks {
                     }
             ));
 
-    public static final BlockCollection<StoneBlockVariant, BasicBlockForm> KHAGALABAN = registerCollection(
+    public static final BlockCollection<StoneBlockVariant> KHAGALABAN = registerCollection(
             new BlockCollection<>(
                     "khagalaban",
                     new BlockVariantSet<>(
@@ -550,7 +550,7 @@ public class StoneBlocks {
                     }
             ));
 
-    public static final BlockCollection<StoneBlockVariant, BasicBlockForm> BLUE_TUFF = registerCollection(
+    public static final BlockCollection<StoneBlockVariant> BLUE_TUFF = registerCollection(
             new BlockCollection<>(
                     "blue_tuff",
                     new BlockVariantSet<>(
@@ -571,7 +571,7 @@ public class StoneBlocks {
                     }
             ));
 
-    public static final BlockCollection<StoneBlockVariant, BasicBlockForm> SCHIST = registerCollection(
+    public static final BlockCollection<StoneBlockVariant> SCHIST = registerCollection(
             new BlockCollection<>(
                     "schist",
                     new BlockVariantSet<>(
@@ -587,7 +587,7 @@ public class StoneBlocks {
                     }
             ));
 
-    public static final BlockCollection<StoneBlockVariant, BasicBlockForm> IRONSTONE = registerCollection(
+    public static final BlockCollection<StoneBlockVariant> IRONSTONE = registerCollection(
             new BlockCollection<>(
                     "ironstone",
                     new BlockVariantSet<>(
@@ -608,7 +608,7 @@ public class StoneBlocks {
                     }
             ));
 
-    public static final BlockCollection<StoneBlockVariant, BasicBlockForm> HEMATITE = registerCollection(
+    public static final BlockCollection<StoneBlockVariant> HEMATITE = registerCollection(
             new BlockCollection<>(
                     "hematite",
                     new BlockVariantSet<>(
@@ -629,7 +629,7 @@ public class StoneBlocks {
                     }
             ));
 
-    public static final BlockCollection<StoneBlockVariant, BasicBlockForm> GREEN_TUFF = registerCollection(
+    public static final BlockCollection<StoneBlockVariant> GREEN_TUFF = registerCollection(
             new BlockCollection<>(
                     "green_tuff",
                     new BlockVariantSet<>(
@@ -648,7 +648,7 @@ public class StoneBlocks {
                     }
             ));
 
-    public static final BlockCollection<StoneBlockVariant, BasicBlockForm> GILDED_GREEN_TUFF = registerCollection(
+    public static final BlockCollection<StoneBlockVariant> GILDED_GREEN_TUFF = registerCollection(
             new BlockCollection<>(
                     "gilded_green_tuff",
                     new BlockVariantSet<>(
@@ -660,7 +660,7 @@ public class StoneBlocks {
                     }
             ));
 
-    public static final BlockCollection<StoneBlockVariant, BasicBlockForm> JADEITE = registerCollection(
+    public static final BlockCollection<StoneBlockVariant> JADEITE = registerCollection(
             new BlockCollection<>(
                     "jadeite",
                     new BlockVariantSet<>(
@@ -676,7 +676,7 @@ public class StoneBlocks {
                     }
             ));
 
-    public static final BlockCollection<StoneBlockVariant, BasicBlockForm> QUARTZITE = registerCollection(
+    public static final BlockCollection<StoneBlockVariant> QUARTZITE = registerCollection(
             new BlockCollection<>(
                     "quartzite",
                     new BlockVariantSet<>(
@@ -691,7 +691,7 @@ public class StoneBlocks {
                     }
             ));
 
-    public static final BlockCollection<StoneBlockVariant, BasicBlockForm> TAN_CLAY = registerCollection(
+    public static final BlockCollection<StoneBlockVariant> TAN_CLAY = registerCollection(
             new BlockCollection<>(
                     "tan_clay",
                     new BlockVariantSet<>(
@@ -704,7 +704,7 @@ public class StoneBlocks {
                     }
             ));
 
-    private static BlockCollection<StoneBlockVariant, BasicBlockForm> registerCollection(BlockCollection<StoneBlockVariant, BasicBlockForm> collection) {
+    private static BlockCollection<StoneBlockVariant> registerCollection(BlockCollection<StoneBlockVariant> collection) {
         return BlockRegistration.registerBlockCollection(collection, ItemGroupsME.STONE_BLOCKS_CONTENTS);
     }
 }

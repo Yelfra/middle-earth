@@ -110,48 +110,49 @@ public class ModBlocks {
             AbstractBlock.Settings.copy(Blocks.OAK_FENCE),
             ItemGroupsME.WOOD_BLOCKS_CONTENTS); // TODO: @Yelfra | Used to be droppable - Implement droppable in new fence class?
 
+    // TODO: @Yelfra | Create separate DirtBlocks class
     // region DIRT, GRASS, SOIL
     public static final Block SNOWY_GRASS_BLOCK = BlockRegistration.registerBlock(
             "snowy_grass_block",
             Block::new,
             AbstractBlock.Settings.copy(Blocks.GRASS_BLOCK),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final BlockFamily<BasicBlockForm> SNOWY_DIRT = BlockRegistration.registerBlockFamily(
-            new BlockFamily<>(
+    public static final BlockFamily SNOWY_DIRT = BlockRegistration.registerBlockFamily(
+            new BlockFamily(
                     "snowy_dirt",
-                    new BlockConfig<BasicBlockForm>(
+                    new BlockConfig(
                             AbstractBlock.Settings.copy(Blocks.COARSE_DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
                             .formSet(BlockFormSet.SOIL)),
             ItemGroupsME.MISC_BLOCKS_CONTENTS
     );
-    public static final BlockFamily<BasicBlockForm> DRY_DIRT = BlockRegistration.registerBlockFamily(
-            new BlockFamily<>(
+    public static final BlockFamily DRY_DIRT = BlockRegistration.registerBlockFamily(
+            new BlockFamily(
                     "dry_dirt",
-                    new BlockConfig<BasicBlockForm>(
+                    new BlockConfig(
                             AbstractBlock.Settings.copy(Blocks.DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
                             .formSet(BlockFormSet.SOIL)),
             ItemGroupsME.MISC_BLOCKS_CONTENTS
     );
-    public static final BlockFamily<BasicBlockForm> GRASSY_DIRT = BlockRegistration.registerBlockFamily(
-            new BlockFamily<>(
+    public static final BlockFamily GRASSY_DIRT = BlockRegistration.registerBlockFamily(
+            new BlockFamily(
                     "grassy_dirt",
-                    new BlockConfig<BasicBlockForm>(
+                    new BlockConfig(
                             AbstractBlock.Settings.copy(Blocks.DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
                             .formSet(BlockFormSet.SOIL)),
             ItemGroupsME.MISC_BLOCKS_CONTENTS
     );
-    public static final BlockFamily<BasicBlockForm> PEBBLED_GRASS = BlockRegistration.registerBlockFamily(
-            new BlockFamily<>(
+    public static final BlockFamily PEBBLED_GRASS = BlockRegistration.registerBlockFamily(
+            new BlockFamily(
                     "pebbled_grass",
-                    new BlockConfig<BasicBlockForm>(
+                    new BlockConfig(
                             AbstractBlock.Settings.copy(Blocks.COBBLESTONE))
                             .formSet(BlockFormSet.SOIL)),
             ItemGroupsME.MISC_BLOCKS_CONTENTS
     );
-    public static final BlockFamily<BasicBlockForm> COBBLY_DIRT = BlockRegistration.registerBlockFamily(
-            new BlockFamily<>(
+    public static final BlockFamily COBBLY_DIRT = BlockRegistration.registerBlockFamily(
+            new BlockFamily(
                     "cobbly_dirt",
-                    new BlockConfig<BasicBlockForm>(
+                    new BlockConfig(
                             AbstractBlock.Settings.copy(Blocks.COARSE_DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
                             .formSet(BlockFormSet.SOIL)),
             ItemGroupsME.MISC_BLOCKS_CONTENTS
@@ -162,7 +163,6 @@ public class ModBlocks {
             MudBlock::new,
             AbstractBlock.Settings.copy(Blocks.DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.MUD),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    // TODO: @Yelfra | Implement MudBlock slabs and stairs?
     public static final Block MIRE_SLAB = BlockRegistration.registerBlock(
             "mire_slab",
             SlabBlock::new, AbstractBlock.Settings.copy(MIRE),
@@ -172,45 +172,45 @@ public class ModBlocks {
             (settings) -> new StairsBlock(MIRE.getDefaultState(), settings), AbstractBlock.Settings.copy(MIRE),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
 
-    public static final BlockFamily<BasicBlockForm> TURF = BlockRegistration.registerBlockFamily(
-            new BlockFamily<>(
+    public static final BlockFamily TURF = BlockRegistration.registerBlockFamily(
+            new BlockFamily(
                     "turf",
-                    new BlockConfig<BasicBlockForm>(
+                    new BlockConfig(
                             AbstractBlock.Settings.copy(Blocks.DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRASS))
-                            .formSet(new BlockFormSet<>(BASE, SLAB, VERTICAL_SLAB, STAIRS))),
+                            .formSet(new BlockFormSet(BASE, SLAB, VERTICAL_SLAB, STAIRS))),
             ItemGroupsME.MISC_BLOCKS_CONTENTS
     );
 
-    public static final BlockFamily<BasicBlockForm> DIRTY_ROOTS = BlockRegistration.registerBlockFamily(
-            new BlockFamily<>(
+    public static final BlockFamily DIRTY_ROOTS = BlockRegistration.registerBlockFamily(
+            new BlockFamily(
                     "dirty_roots",
-                    new BlockConfig<BasicBlockForm>(
+                    new BlockConfig(
                             AbstractBlock.Settings.copy(Blocks.DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
                             .formSet(BlockFormSet.SOIL)),
             ItemGroupsME.MISC_BLOCKS_CONTENTS
     );
 
-    public static final BlockFamily<BasicBlockForm> FOUL_DIRT = BlockRegistration.registerBlockFamily(
-            new BlockFamily<>(
+    public static final BlockFamily FOUL_DIRT = BlockRegistration.registerBlockFamily(
+            new BlockFamily(
                     "foul_dirt",
-                    new BlockConfig<BasicBlockForm>(
+                    new BlockConfig(
                             AbstractBlock.Settings.copy(Blocks.COARSE_DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
                             .formSet(BlockFormSet.SOIL)),
             ItemGroupsME.MISC_BLOCKS_CONTENTS
     );
 
-    public static final BlockFamily<BasicBlockForm> ASHEN_DIRT = BlockRegistration.registerBlockFamily(
-            new BlockFamily<>(
+    public static final BlockFamily ASHEN_DIRT = BlockRegistration.registerBlockFamily(
+            new BlockFamily(
                     "ashen_dirt",
-                    new BlockConfig<BasicBlockForm>(
+                    new BlockConfig(
                             AbstractBlock.Settings.copy(Blocks.DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
                             .formSet(BlockFormSet.SOIL)),
             ItemGroupsME.MISC_BLOCKS_CONTENTS
     );
-    public static final BlockFamily<BasicBlockForm> COBBLY_ASHEN_DIRT = BlockRegistration.registerBlockFamily(
-            new BlockFamily<>(
+    public static final BlockFamily COBBLY_ASHEN_DIRT = BlockRegistration.registerBlockFamily(
+            new BlockFamily(
                     "cobbly_ashen_dirt",
-                    new BlockConfig<BasicBlockForm>(
+                    new BlockConfig(
                             AbstractBlock.Settings.copy(Blocks.COARSE_DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
                             .formSet(BlockFormSet.SOIL)),
             ItemGroupsME.MISC_BLOCKS_CONTENTS
@@ -218,10 +218,10 @@ public class ModBlocks {
     // endregion
 
     // region CHALKSOIL
-    public static final BlockFamily<BasicBlockForm> CHALKSOIL = BlockRegistration.registerBlockFamily(
-            new BlockFamily<>(
+    public static final BlockFamily CHALKSOIL = BlockRegistration.registerBlockFamily(
+            new BlockFamily(
                     "chalksoil",
-                    new BlockConfig<BasicBlockForm>(
+                    new BlockConfig(
                             AbstractBlock.Settings.copy(Blocks.DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
                             .formSet(BlockFormSet.SOIL)),
             ItemGroupsME.MISC_BLOCKS_CONTENTS
@@ -231,18 +231,18 @@ public class ModBlocks {
             (settings) -> new CustomGrassBlock(settings, CHALKSOIL.get(BASE)),
             AbstractBlock.Settings.copy(Blocks.GRASS_BLOCK),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final BlockFamily<BasicBlockForm> GRASSY_CHALKSOIL = BlockRegistration.registerBlockFamily(
-            new BlockFamily<>(
+    public static final BlockFamily GRASSY_CHALKSOIL = BlockRegistration.registerBlockFamily(
+            new BlockFamily(
                     "grassy_chalksoil",
-                    new BlockConfig<BasicBlockForm>(
+                    new BlockConfig(
                             AbstractBlock.Settings.copy(Blocks.DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
                             .formSet(BlockFormSet.SOIL)),
             ItemGroupsME.MISC_BLOCKS_CONTENTS
     );
-    public static final BlockFamily<BasicBlockForm> COARSE_CHALKSOIL = BlockRegistration.registerBlockFamily(
-            new BlockFamily<>(
+    public static final BlockFamily COARSE_CHALKSOIL = BlockRegistration.registerBlockFamily(
+            new BlockFamily(
                     "coarse_chalksoil",
-                    new BlockConfig<BasicBlockForm>(
+                    new BlockConfig(
                             AbstractBlock.Settings.copy(Blocks.DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
                             .formSet(BlockFormSet.SOIL)),
             ItemGroupsME.MISC_BLOCKS_CONTENTS
@@ -260,10 +260,10 @@ public class ModBlocks {
     // endregion
 
     // region LOAM
-    public static final BlockFamily<BasicBlockForm> LOAM = BlockRegistration.registerBlockFamily(
-            new BlockFamily<>(
+    public static final BlockFamily LOAM = BlockRegistration.registerBlockFamily(
+            new BlockFamily(
                     "loam",
-                    new BlockConfig<BasicBlockForm>(
+                    new BlockConfig(
                             AbstractBlock.Settings.copy(Blocks.DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
                             .formSet(BlockFormSet.SOIL)),
             ItemGroupsME.MISC_BLOCKS_CONTENTS
@@ -273,18 +273,18 @@ public class ModBlocks {
             (settings) -> new CustomGrassBlock(settings, LOAM.get(BASE)),
             AbstractBlock.Settings.copy(Blocks.GRASS_BLOCK),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final BlockFamily<BasicBlockForm> GRASSY_LOAM = BlockRegistration.registerBlockFamily(
-            new BlockFamily<>(
+    public static final BlockFamily GRASSY_LOAM = BlockRegistration.registerBlockFamily(
+            new BlockFamily(
                     "grassy_loam",
-                    new BlockConfig<BasicBlockForm>(
+                    new BlockConfig(
                             AbstractBlock.Settings.copy(Blocks.DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
                             .formSet(BlockFormSet.SOIL)),
             ItemGroupsME.MISC_BLOCKS_CONTENTS
     );
-    public static final BlockFamily<BasicBlockForm> COARSE_LOAM = BlockRegistration.registerBlockFamily(
-            new BlockFamily<>(
+    public static final BlockFamily COARSE_LOAM = BlockRegistration.registerBlockFamily(
+            new BlockFamily(
                     "coarse_loam",
-                    new BlockConfig<BasicBlockForm>(
+                    new BlockConfig(
                             AbstractBlock.Settings.copy(Blocks.DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
                             .formSet(BlockFormSet.SOIL)),
             ItemGroupsME.MISC_BLOCKS_CONTENTS
@@ -302,10 +302,10 @@ public class ModBlocks {
     // endregion
 
     // region PEAT
-    public static final BlockFamily<BasicBlockForm> PEAT = BlockRegistration.registerBlockFamily(
-            new BlockFamily<>(
+    public static final BlockFamily PEAT = BlockRegistration.registerBlockFamily(
+            new BlockFamily(
                     "peat",
-                    new BlockConfig<BasicBlockForm>(
+                    new BlockConfig(
                             AbstractBlock.Settings.copy(Blocks.DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
                             .formSet(BlockFormSet.SOIL)),
             ItemGroupsME.MISC_BLOCKS_CONTENTS
@@ -315,18 +315,18 @@ public class ModBlocks {
             (settings) -> new CustomGrassBlock(settings, PEAT.get(BASE)),
             AbstractBlock.Settings.copy(Blocks.GRASS_BLOCK),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final BlockFamily<BasicBlockForm> GRASSY_PEAT = BlockRegistration.registerBlockFamily(
-            new BlockFamily<>(
+    public static final BlockFamily GRASSY_PEAT = BlockRegistration.registerBlockFamily(
+            new BlockFamily(
                     "grassy_peat",
-                    new BlockConfig<BasicBlockForm>(
+                    new BlockConfig(
                             AbstractBlock.Settings.copy(Blocks.DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
                             .formSet(BlockFormSet.SOIL)),
             ItemGroupsME.MISC_BLOCKS_CONTENTS
     );
-    public static final BlockFamily<BasicBlockForm> COARSE_PEAT = BlockRegistration.registerBlockFamily(
-            new BlockFamily<>(
+    public static final BlockFamily COARSE_PEAT = BlockRegistration.registerBlockFamily(
+            new BlockFamily(
                     "coarse_peat",
-                    new BlockConfig<BasicBlockForm>(
+                    new BlockConfig(
                             AbstractBlock.Settings.copy(Blocks.DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
                             .formSet(BlockFormSet.SOIL)),
             ItemGroupsME.MISC_BLOCKS_CONTENTS
@@ -344,10 +344,10 @@ public class ModBlocks {
     // endregion
 
     // region SILT
-    public static final BlockFamily<BasicBlockForm> SILT = BlockRegistration.registerBlockFamily(
-            new BlockFamily<>(
+    public static final BlockFamily SILT = BlockRegistration.registerBlockFamily(
+            new BlockFamily(
                     "silt",
-                    new BlockConfig<BasicBlockForm>(
+                    new BlockConfig(
                             AbstractBlock.Settings.copy(Blocks.DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
                             .formSet(BlockFormSet.SOIL)),
             ItemGroupsME.MISC_BLOCKS_CONTENTS
@@ -357,18 +357,18 @@ public class ModBlocks {
             (settings) -> new CustomGrassBlock(settings, SILT.get(BASE)),
             AbstractBlock.Settings.copy(Blocks.GRASS_BLOCK),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final BlockFamily<BasicBlockForm> GRASSY_SILT = BlockRegistration.registerBlockFamily(
-            new BlockFamily<>(
+    public static final BlockFamily GRASSY_SILT = BlockRegistration.registerBlockFamily(
+            new BlockFamily(
                     "grassy_silt",
-                    new BlockConfig<BasicBlockForm>(
+                    new BlockConfig(
                             AbstractBlock.Settings.copy(Blocks.DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
                             .formSet(BlockFormSet.SOIL)),
             ItemGroupsME.MISC_BLOCKS_CONTENTS
     );
-    public static final BlockFamily<BasicBlockForm> COARSE_SILT = BlockRegistration.registerBlockFamily(
-            new BlockFamily<>(
+    public static final BlockFamily COARSE_SILT = BlockRegistration.registerBlockFamily(
+            new BlockFamily(
                     "coarse_silt",
-                    new BlockConfig<BasicBlockForm>(
+                    new BlockConfig(
                             AbstractBlock.Settings.copy(Blocks.DIRT).strength(DIRT_STRENGTH).sounds(BlockSoundGroup.GRAVEL))
                             .formSet(BlockFormSet.SOIL)),
             ItemGroupsME.MISC_BLOCKS_CONTENTS
@@ -416,36 +416,37 @@ public class ModBlocks {
     // endregion
 
     // region WATTLE
-    public static final BlockFamily<WattleBlockForm> WATTLE_AND_BRICK = BlockRegistration.registerBlockFamily(
-            new BlockFamily<>("wattle_and_brick", BlockConfig.WATTLE_AND_DAUB()),
+    public static final BlockFamily WATTLE_AND_BRICK = BlockRegistration.registerBlockFamily(
+            new BlockFamily("wattle_and_brick", BlockConfig.WATTLE_AND_DAUB()),
             ItemGroupsME.MISC_BLOCKS_CONTENTS
     );
-    public static final BlockFamily<WattleBlockForm> WATTLE_AND_WHITE_DAUB = BlockRegistration.registerBlockFamily(
-            new BlockFamily<>("wattle_and_white_daub", BlockConfig.WATTLE_AND_DAUB()),
+    public static final BlockFamily WATTLE_AND_WHITE_DAUB = BlockRegistration.registerBlockFamily(
+            new BlockFamily("wattle_and_white_daub", BlockConfig.WATTLE_AND_DAUB()),
             ItemGroupsME.MISC_BLOCKS_CONTENTS
     );
-    public static final BlockFamily<WattleBlockForm> BLACK_WATTLE_AND_WHITE_DAUB = BlockRegistration.registerBlockFamily(
-            new BlockFamily<>("black_wattle_and_white_daub", BlockConfig.WATTLE_AND_DAUB()),
+    public static final BlockFamily BLACK_WATTLE_AND_WHITE_DAUB = BlockRegistration.registerBlockFamily(
+            new BlockFamily("black_wattle_and_white_daub", BlockConfig.WATTLE_AND_DAUB()),
             ItemGroupsME.MISC_BLOCKS_CONTENTS
     );
-    public static final BlockFamily<WattleBlockForm> GREEN_WATTLE_AND_WHITE_DAUB = BlockRegistration.registerBlockFamily(
-            new BlockFamily<>("green_wattle_and_white_daub", BlockConfig.WATTLE_AND_DAUB()),
+    public static final BlockFamily GREEN_WATTLE_AND_WHITE_DAUB = BlockRegistration.registerBlockFamily(
+            new BlockFamily("green_wattle_and_white_daub", BlockConfig.WATTLE_AND_DAUB()),
             ItemGroupsME.MISC_BLOCKS_CONTENTS
     );
-    public static final BlockFamily<WattleBlockForm> RED_WATTLE_AND_WHITE_DAUB = BlockRegistration.registerBlockFamily(
-            new BlockFamily<>("red_wattle_and_white_daub", BlockConfig.WATTLE_AND_DAUB()),
+    public static final BlockFamily RED_WATTLE_AND_WHITE_DAUB = BlockRegistration.registerBlockFamily(
+            new BlockFamily("red_wattle_and_white_daub", BlockConfig.WATTLE_AND_DAUB()),
             ItemGroupsME.MISC_BLOCKS_CONTENTS
     );
-    public static final BlockFamily<WattleBlockForm> DARK_WATTLE_AND_WHITE_DAUB = BlockRegistration.registerBlockFamily(
-            new BlockFamily<>("dark_wattle_and_white_daub", BlockConfig.WATTLE_AND_DAUB()),
+    public static final BlockFamily DARK_WATTLE_AND_WHITE_DAUB = BlockRegistration.registerBlockFamily(
+            new BlockFamily("dark_wattle_and_white_daub", BlockConfig.WATTLE_AND_DAUB()),
             ItemGroupsME.MISC_BLOCKS_CONTENTS
     );
-    public static final BlockFamily<WattleBlockForm> WATTLE_AND_YELLOW_DAUB = BlockRegistration.registerBlockFamily(
-            new BlockFamily<>("wattle_and_yellow_daub", BlockConfig.WATTLE_AND_DAUB()),
+    public static final BlockFamily WATTLE_AND_YELLOW_DAUB = BlockRegistration.registerBlockFamily(
+            new BlockFamily("wattle_and_yellow_daub", BlockConfig.WATTLE_AND_DAUB()),
             ItemGroupsME.MISC_BLOCKS_CONTENTS
     );
     //endregion
 
+    // TODO: @Yelfra | Create separate MetalBlocks class
     // region METAL
     public static final Block RAW_MITHRIL_BLOCK = BlockRegistration.registerBlock(
             "raw_mithril_block",

@@ -1,12 +1,14 @@
 package net.sevenstars.middleearth.block.utils.form;
 
 import net.minecraft.block.*;
+import net.minecraft.item.ItemStack;
 import net.sevenstars.middleearth.block.special.gemstones.CustomBuddingGemBlock;
 import net.sevenstars.middleearth.block.utils.BlockConfig;
+import net.sevenstars.middleearth.item.utils.ItemGroupsME;
 
 import java.util.List;
 
-public enum GemBlockForm implements BlockForm<GemBlockForm> {
+public enum GemBlockForm implements BlockForm {
     // @formatter:off
     BLOCK       ("",            "_block",   (config, base) -> createBlock()),
     CLUSTER     ("",            "_cluster", (config, base) -> createCluster()),
@@ -18,9 +20,9 @@ public enum GemBlockForm implements BlockForm<GemBlockForm> {
 
     private final String prefix;
     private final String suffix;
-    private final FormFactory<BlockConfig<GemBlockForm>, Block, Block> factory;
+    private final FormFactory<BlockConfig, Block, Block> factory;
 
-    GemBlockForm(String prefix, String suffix, FormFactory<BlockConfig<GemBlockForm>, Block, Block> factory) {
+    GemBlockForm(String prefix, String suffix, FormFactory<BlockConfig, Block, Block> factory) {
         this.prefix = prefix;
         this.suffix = suffix;
         this.factory = factory;
@@ -37,8 +39,13 @@ public enum GemBlockForm implements BlockForm<GemBlockForm> {
     }
 
     @Override
-    public Block create(BlockConfig<GemBlockForm> config, Block base) {
+    public Block create(BlockConfig config, Block base) {
         return factory.apply(config, base);
+    }
+
+    @Override
+    public List<List<ItemStack>> getItemGroups() {
+        return List.of(ItemGroupsME.NATURE_BLOCKS_CONTENTS);
     }
 
     /* Form Constructors */

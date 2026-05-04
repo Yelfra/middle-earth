@@ -3,14 +3,14 @@ package net.sevenstars.middleearth.block.utils;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.sound.BlockSoundGroup;
-import net.sevenstars.middleearth.block.utils.form.*;
+import net.sevenstars.middleearth.block.utils.form.BlockFormSet;
 import org.jetbrains.annotations.Nullable;
 
 /**
  * Grouped characteristics needed for creating a BlockFamily.
  * Designed as an extension/wrapper to AbstractBlock.Settings and other parameters.
  */
-public final class BlockConfig<F extends Enum<F> & BlockForm<F>> {
+public final class BlockConfig {
 
     public enum BlockMaterial {
         WOOD(BlockSetType.OAK),
@@ -25,10 +25,11 @@ public final class BlockConfig<F extends Enum<F> & BlockForm<F>> {
     }
 
     public final AbstractBlock.Settings settings;
-    public BlockFormSet<F> formSet;
     public boolean isPillar;
     public @Nullable Oxidizable.OxidationLevel oxidationLevel;
     public @Nullable BlockMaterial material;
+
+    public BlockFormSet formSet; // Used in BlockFamily creation - not used in Block creation itself
 
     public BlockConfig(Block baseBlock) {
         this(AbstractBlock.Settings.copy(baseBlock));
@@ -38,57 +39,59 @@ public final class BlockConfig<F extends Enum<F> & BlockForm<F>> {
         this.settings = settings;
     }
 
-    public BlockConfig<F> pillar() {
+    public BlockConfig pillar() {
         isPillar = true;
         return this;
     }
 
-    public BlockConfig<F> formSet(BlockFormSet<F> formSet) {
+    public BlockConfig formSet(BlockFormSet formSet) {
         this.formSet = formSet;
         return this;
     }
 
-    public BlockConfig<F> oxidationLevel(Oxidizable.OxidationLevel oxidationLevel) {
+    public BlockConfig oxidationLevel(Oxidizable.OxidationLevel oxidationLevel) {
         this.oxidationLevel = oxidationLevel;
         return this;
     }
 
-    public BlockConfig<F> transparent() {
+    public BlockConfig transparent() {
         this.settings.nonOpaque().allowsSpawning(Blocks::never).solidBlock(Blocks::never).suffocates(Blocks::never).blockVision(Blocks::never);
         return this;
     }
 
-    public BlockConfig<F> material(BlockMaterial material) {
+    public BlockConfig material(BlockMaterial material) {
         this.material = material;
         return this;
     }
 
     /* PRESETS */
-    // region BASIC
-    public static BlockConfig<BasicBlockForm> STONE() {
-        return new BlockConfig<BasicBlockForm>(Blocks.STONE).material(BlockMaterial.STONE);
+    // region STONE
+    public static BlockConfig STONE() {
+        return new BlockConfig(Blocks.STONE).material(BlockMaterial.STONE);
     }
 
-    public static BlockConfig<BasicBlockForm> STONE(MapColor color) {
-        BlockConfig<BasicBlockForm> config = BlockConfig.STONE().formSet(BlockFormSet.STONE_BASIC);
+    public static BlockConfig STONE(MapColor color) {
+        BlockConfig config = BlockConfig.STONE().formSet(BlockFormSet.REGULAR);
         config.settings.mapColor(color);
         return config;
     }
 
-    public static BlockConfig<BasicBlockForm> STONE(MapColor color, BlockFormSet<BasicBlockForm> formSet) {
+    public static BlockConfig STONE(MapColor color, BlockFormSet formSet) {
         return STONE(color).formSet(formSet);
     }
 
-    public static BlockConfig<BasicBlockForm> COBBLESTONE() {
-        return new BlockConfig<BasicBlockForm>(Blocks.COBBLESTONE).material(BlockMaterial.STONE);
+    public static BlockConfig COBBLESTONE() {
+        return new BlockConfig(Blocks.COBBLESTONE).material(BlockMaterial.STONE);
+    }
+    // endregion
+
+    // region HARD_CLAY
+    public static BlockConfig HARD_CLAY(MapColor color) {
+        return BlockConfig.HARD_CLAY(color, BlockFormSet.REGULAR);
     }
 
-    public static BlockConfig<BasicBlockForm> HARD_CLAY(MapColor color) {
-        return BlockConfig.HARD_CLAY(color, BlockFormSet.STONE_BASIC);
-    }
-
-    public static BlockConfig<BasicBlockForm> HARD_CLAY(MapColor color, BlockFormSet<BasicBlockForm> formSet) {
-        return new BlockConfig<BasicBlockForm>(
+    public static BlockConfig HARD_CLAY(MapColor color, BlockFormSet formSet) {
+        return new BlockConfig(
                 AbstractBlock.Settings.create()
                         .strength(1.25f, 4.2f)
                         .mapColor(color)
@@ -98,65 +101,72 @@ public final class BlockConfig<F extends Enum<F> & BlockForm<F>> {
                 .formSet(formSet)
                 .material(BlockMaterial.STONE);
     }
+    // endregion
 
-    // TODO: @Yelfra | isPillar can be removed and appended as .isPillar() after call
-    public static BlockConfig<BasicBlockForm> WOOD_REGULAR(MapColor color) {
-        return BlockConfig.WOOD(color, BlockFormSet.REGULAR);
+    // region WOOD
+    public static BlockConfig WOOD() {
+        return new BlockConfig(Blocks.OAK_LOG).material(BlockMaterial.WOOD);
     }
 
-    public static BlockConfig<BasicBlockForm> WOOD(MapColor color, BlockFormSet<BasicBlockForm> formSet) {
-        return new BlockConfig<BasicBlockForm>(
-                AbstractBlock.Settings.create()
-                        .strength(2.0f, 3.0f)
-                        .mapColor(color)
-                        .instrument(NoteBlockInstrument.BASS)
-                        .sounds(BlockSoundGroup.WOOD)
-                        .burnable())
-                .formSet(formSet)
+    public static BlockConfig PLANKS() {
+        return new BlockConfig(Blocks.OAK_PLANKS).material(BlockMaterial.WOOD);
+    }
+
+    public static BlockConfig PLANKS_SIMPLE(MapColor color) {
+        return new BlockConfig(
+                AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)
+                        .mapColor(color))
+                .formSet(BlockFormSet.SIMPLE)
                 .material(BlockMaterial.WOOD);
     }
 
-    public static BlockConfig<BasicBlockForm> THATCH(MapColor color, Oxidizable.OxidationLevel oxidationLevel) {
-        return new BlockConfig<BasicBlockForm>(
+    public static BlockConfig LEAVES() {
+        return new BlockConfig(Blocks.OAK_LEAVES);
+    }
+    // endregion
+
+
+    // region MISC
+    public static BlockConfig MUSHROOM() {
+        return new BlockConfig(
+                AbstractBlock.Settings.copy(Blocks.MUSHROOM_STEM)
+        );
+    }
+
+    public static BlockConfig THATCH(MapColor color, Oxidizable.OxidationLevel oxidationLevel) {
+        return new BlockConfig(
                 AbstractBlock.Settings.create()
                         .strength(0.5f, 0.0f)
                         .mapColor(color)
                         .instrument(NoteBlockInstrument.BANJO)
                         .sounds(BlockSoundGroup.GRASS)
                         .burnable())
-                .formSet(BlockFormSet.REGULAR)
+                .formSet(BlockFormSet.SIMPLE)
                 .oxidationLevel(oxidationLevel);
     }
 
-    public static BlockConfig<BasicBlockForm> METAL(MapColor color) {
-        return new BlockConfig<BasicBlockForm>(
+    public static BlockConfig METAL(MapColor color) {
+        return new BlockConfig(
                 AbstractBlock.Settings.create()
                         .strength(3.0f, 6.0f)
                         .mapColor(color)
                         .instrument(NoteBlockInstrument.BASEDRUM)
                         .sounds(BlockSoundGroup.COPPER)
                         .requiresTool())
-                .formSet(BlockFormSet.REGULAR)
+                .formSet(BlockFormSet.SIMPLE)
                 .material(BlockMaterial.METAL);
     }
-    // endregion
 
-    // region WATTLE_AND_DAUB
-    public static BlockConfig<WattleBlockForm> WATTLE_AND_DAUB() {
-        return new BlockConfig<WattleBlockForm>(AbstractBlock.Settings.copy(Blocks.PACKED_MUD)).formSet(BlockFormSet.WATTLE_AND_DAUB);
+    public static BlockConfig WATTLE_AND_DAUB() {
+        return new BlockConfig(AbstractBlock.Settings.copy(Blocks.PACKED_MUD)).formSet(BlockFormSet.WATTLE_AND_DAUB);
     }
-    // endregion
 
-    // region GEM
-    // This preset is solely used to pass the form set to BlockFamily constructor - GemBlockForm doesn't use BlockConfig
-    public static BlockConfig<GemBlockForm> GEM() {
-        return new BlockConfig<GemBlockForm>(Blocks.AMETHYST_BLOCK).formSet(BlockFormSet.GEM_COMPLETE);
+    public static BlockConfig GEM() {
+        return new BlockConfig(Blocks.AMETHYST_BLOCK).formSet(BlockFormSet.GEM_COMPLETE);
     }
-    // endregion
 
-    // region ORE
-    public static BlockConfig<OreBlockForm> ORE() {
-        return new BlockConfig<>(Blocks.STONE);
+    public static BlockConfig ORE() {
+        return new BlockConfig(Blocks.STONE);
     }
     // endregion
 }
