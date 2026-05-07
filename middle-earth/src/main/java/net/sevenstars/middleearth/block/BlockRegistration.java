@@ -1,7 +1,10 @@
 package net.sevenstars.middleearth.block;
 
+import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -26,8 +29,33 @@ import java.util.function.Function;
  */
 public class BlockRegistration {
 
+    public static Block registerBlock(
+            String name,
+            Function<AbstractBlock.Settings, Block> factory,
+            AbstractBlock.Settings settings
+    ) {
+        // Construct block
+        Block block = factory.apply(settings.registryKey(BlockUtils.keyOfBlock(name)));
+
+        return registerBlock(name, block);
+    }
+
+    public static Block registerBlock(
+            String name,
+            Block block
+    ) {
+        // Register block
+        Identifier id = MiddleEarth.of(name);
+        Registry.register(Registries.BLOCK, id, block);
+
+        // Extras
+        RegistryAliasesME.aliases.add(new RegistryAliasesME.Alias(Registries.BLOCK, name));
+
+        return block;
+    }
+
     @SafeVarargs
-    public static Block getOrRegisterBlock(
+    public static Block getOrRegisterBlockWithItem(
             String name,
             Function<AbstractBlock.Settings, Block> factory,
             AbstractBlock.Settings settings,
@@ -37,11 +65,11 @@ public class BlockRegistration {
             return BlockUtils.getVanillaBlock(name);
         }
 
-        return registerBlock(name, factory, settings, itemGroups);
+        return registerBlockWithItem(name, factory, settings, itemGroups);
     }
 
     @SafeVarargs
-    public static Block getOrRegisterBlock(
+    public static Block getOrRegisterBlockWithItem(
             String name,
             Block block,
             List<ItemStack>... itemGroup
@@ -50,11 +78,11 @@ public class BlockRegistration {
             return block;
         }
 
-        return registerBlock(name, block, itemGroup);
+        return registerBlockWithItem(name, block, itemGroup);
     }
 
     @SafeVarargs
-    public static Block registerBlock(
+    public static Block registerBlockWithItem(
             String name,
             Function<AbstractBlock.Settings, Block> factory,
             AbstractBlock.Settings settings,
@@ -63,17 +91,17 @@ public class BlockRegistration {
         // Construct block
         Block block = factory.apply(settings.registryKey(BlockUtils.keyOfBlock(name)));
 
-        return registerBlock(name, block, itemGroups);
+        return registerBlockWithItem(name, block, itemGroups);
     }
 
     @SafeVarargs
-    public static Block registerBlock(
+    public static Block registerBlockWithItem(
             String name,
             Block block,
             List<ItemStack>... itemGroups
     ) {
         // Register block
-        Identifier id = MiddleEarth.of(name);
+        Identifier id = MiddleEarth.of(name); // TODO: @Yelfra | This delegates through 2 methods instead of having a designated method in an IdentifierUtils
         Registry.register(Registries.BLOCK, id, block);
 
         // Register block item
@@ -108,7 +136,7 @@ public class BlockRegistration {
                 }
             }
 
-            Block block = getOrRegisterBlock(
+            Block block = getOrRegisterBlockWithItem(
                     name,
                     blockFamily.get(form),
                     formGroups.toArray(List[]::new)
@@ -131,15 +159,18 @@ public class BlockRegistration {
         return collection;
     }
 
-    /// For blocks such as fire, water, lava blocks, etc. - which aren't obtainable by themselves.
-    public static Block registerBlockWithoutItem(
-            String name,
-            Block block
-    ) {
-        // Register block
-        Identifier id = MiddleEarth.of(name);
-        Registry.register(Registries.BLOCK, id, block);
+    public static <T extends BlockEntity> BlockEntityType<T> registerBlockEntity(String name,
+                                                                                 FabricBlockEntityTypeBuilder.Factory<? extends T> factory,
+                                                                                 Block... blocks) {
+        if (blocks.length == 0) {
+            throw new IllegalArgumentException("BlockEntityType must have at least one valid block");
+        }
 
-        return block;
+        RegistryAliasesME.aliases.add(new RegistryAliasesME.Alias(Registries.BLOCK_ENTITY_TYPE, name));
+
+        return Registry.register(
+                Registries.BLOCK_ENTITY_TYPE,
+                MiddleEarth.of(name),
+                FabricBlockEntityTypeBuilder.<T>create(factory, blocks).build());
     }
 }

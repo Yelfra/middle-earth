@@ -11,9 +11,12 @@ public class BlockInit {
         ModBlocks.register();
         GemBlocks.register();
         OreBlocks.register();
+        WoodBlocks.register();
+        NatureBlocks.register();
+        DecorativeBlocks.register(); // Register after NatureBlocks
 
-        //...
+        BlockEntities.register(); // Register after DecorativeBlocks
 
-        // TODO: @Yelfra | Vanilla block variants registry and behavior - such as fuel for white wool slabs
+        // TODO: @Yelfra | Block variants registry and behavior, call fuel
     }
 }
