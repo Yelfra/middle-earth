@@ -6,7 +6,6 @@ import net.sevenstars.middleearth.block.BlockRegistration;
 import net.sevenstars.middleearth.block.utils.BlockConfig;
 import net.sevenstars.middleearth.block.utils.BlockFamily;
 import net.sevenstars.middleearth.block.utils.form.BlockFormSet;
-import net.sevenstars.middleearth.block.utils.form.OreBlockForm;
 import net.sevenstars.middleearth.item.utils.ItemGroupsME;
 
 import static net.sevenstars.middleearth.block.utils.form.BasicBlockForm.BASE;

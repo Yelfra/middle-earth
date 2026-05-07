@@ -2,7 +2,10 @@ package net.sevenstars.middleearth.block.utils.form;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import static net.sevenstars.middleearth.block.utils.form.BasicBlockForm.*;
 import static net.sevenstars.middleearth.block.utils.form.GemBlockForm.*;

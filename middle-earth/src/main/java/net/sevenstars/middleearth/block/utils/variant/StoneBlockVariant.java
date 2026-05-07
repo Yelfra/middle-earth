@@ -1,10 +1,7 @@
 package net.sevenstars.middleearth.block.utils.variant;
 
-import net.minecraft.item.ItemStack;
 import net.sevenstars.middleearth.block.utils.BlockConfig;
-import net.sevenstars.middleearth.item.utils.ItemGroupsME;
 
-import java.util.List;
 import java.util.function.Supplier;
 
 import static net.sevenstars.middleearth.block.utils.form.BlockFormSet.*;

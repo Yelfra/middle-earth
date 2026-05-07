@@ -1,6 +1,6 @@
 package net.sevenstars.middleearth.block.utils.form;
 
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.sevenstars.middleearth.block.special.RocksBlock;
 import net.sevenstars.middleearth.block.utils.BlockConfig;

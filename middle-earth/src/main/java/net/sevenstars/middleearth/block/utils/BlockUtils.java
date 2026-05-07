@@ -47,6 +47,7 @@ public class BlockUtils {
                 .replace("stripped_stripped_", "stripped_");
     }
 
+    // TODO: @Yelfra | If unused, throw these methods out
     /// Block should be registered beforehand!
     @SafeVarargs
     public static void addBlockToGroups(Block block, List<ItemStack>... groups) {

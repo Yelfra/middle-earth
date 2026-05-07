@@ -6,7 +6,6 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.sevenstars.middleearth.MiddleEarth;
 import net.sevenstars.middleearth.block.BlockRegistration;
 import net.sevenstars.middleearth.block.utils.BlockCollection;
-import net.sevenstars.middleearth.block.utils.form.BasicBlockForm;
 import net.sevenstars.middleearth.block.utils.variant.BlockVariantSet;
 import net.sevenstars.middleearth.block.utils.variant.StoneBlockVariant;
 import net.sevenstars.middleearth.item.utils.ItemGroupsME;
