@@ -2,6 +2,7 @@ package net.sevenstars.middleearth.block.utils.form;
 
 import net.minecraft.block.*;
 import net.minecraft.item.ItemStack;
+import net.minecraft.sound.BlockSoundGroup;
 import net.sevenstars.middleearth.block.special.*;
 import net.sevenstars.middleearth.block.special.verticalSlabs.TransparentVerticalSlab;
 import net.sevenstars.middleearth.block.special.verticalSlabs.VerticalSlabBlock;
@@ -166,7 +167,7 @@ public enum BasicBlockForm implements BlockForm {
     }
 
     private static Block createLadder(BlockConfig config) {
-        return new ThickLadderBlock(config.settings.nonOpaque());
+        return new ThickLadderBlock(config.settings.nonOpaque().sounds(BlockSoundGroup.LADDER));
     }
 
     private static Block createTransparentBase(BlockConfig config) {

@@ -1,6 +1,5 @@
 package net.sevenstars.middleearth.block.registry;
 
-import net.minecraft.block.Blocks;
 import net.minecraft.block.MapColor;
 import net.minecraft.sound.BlockSoundGroup;
 import net.sevenstars.middleearth.MiddleEarth;
@@ -181,7 +180,7 @@ public class WoodBlocks {
                     "bamboo",
                     new BlockVariantSet<>(
                             PLANK_BLOCKS,
-                            FURNITURE_BLOCKS,
+                            DECORATIVE_BLOCKS,
                             SHINGLE_BLOCKS,
                             ROOFING_BLOCKS
                     ),

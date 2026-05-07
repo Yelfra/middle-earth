@@ -6,7 +6,6 @@ import java.util.EnumSet;
 import java.util.Iterator;
 import java.util.List;
 
-import static net.sevenstars.middleearth.block.utils.form.WoodBlockForm.*;
 import static net.sevenstars.middleearth.block.utils.variant.WoodBlockVariant.*;
 
 public class BlockVariantSet<V extends Enum<V> & BlockVariant> implements Iterable<V> {
@@ -35,7 +34,7 @@ public class BlockVariantSet<V extends Enum<V> & BlockVariant> implements Iterab
             STRIPPED_WOOD_BLOCKS,
             PLANK_BLOCKS,
             REDSTONE_BLOCKS,
-            FURNITURE_BLOCKS,
+            DECORATIVE_BLOCKS,
             SHINGLE_BLOCKS,
             ROOFING_BLOCKS
     );
@@ -43,7 +42,7 @@ public class BlockVariantSet<V extends Enum<V> & BlockVariant> implements Iterab
             STEM_BLOCKS,
             PLANK_BLOCKS,
             REDSTONE_BLOCKS,
-            FURNITURE_BLOCKS,
+            DECORATIVE_BLOCKS,
             SHINGLE_BLOCKS
     );
     public static final BlockVariantSet<WoodBlockVariant> HYPHAE = new BlockVariantSet<>(
@@ -51,7 +50,7 @@ public class BlockVariantSet<V extends Enum<V> & BlockVariant> implements Iterab
             STRIPPED_HYPHAE_BLOCKS,
             PLANK_BLOCKS,
             REDSTONE_BLOCKS,
-            FURNITURE_BLOCKS,
+            DECORATIVE_BLOCKS,
             SHINGLE_BLOCKS,
             ROOFING_BLOCKS
     );

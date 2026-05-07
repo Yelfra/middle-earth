@@ -5,6 +5,7 @@ import net.sevenstars.middleearth.block.utils.form.BlockFormSet;
 
 import java.util.function.Supplier;
 
+import static net.sevenstars.middleearth.block.utils.form.BasicBlockForm.LADDER;
 import static net.sevenstars.middleearth.block.utils.form.BlockFormSet.*;
 import static net.sevenstars.middleearth.block.utils.form.WoodBlockForm.LEAVES;
 import static net.sevenstars.middleearth.block.utils.form.WoodBlockForm.LEAVES_ALT;
@@ -18,9 +19,9 @@ public enum WoodBlockVariant implements BlockVariant {
     STEM_BLOCKS             ("", "_stem",               () -> BlockConfig.MUSHROOM().formSet(MUSHROOM),                     0, 0),
     STRIPPED_HYPHAE_BLOCKS  ("stripped_", "_hyphae",    () -> BlockConfig.MUSHROOM().formSet(STRIPPED_HYPHAE).pillar(),     0, 0),
 
-    PLANK_BLOCKS            ("", "_planks",             () -> BlockConfig.PLANKS().formSet(PLANKS),                         20, 5),
-    REDSTONE_BLOCKS         ("", "",                    () -> BlockConfig.PLANKS().formSet(REDSTONE),                       20, 5),
-    FURNITURE_BLOCKS        ("", "",                    () -> BlockConfig.PLANKS().formSet(FURNITURE),                      20, 5),
+    PLANK_BLOCKS            ("", "_planks",             () -> BlockConfig.PLANKS().formSet(PLANKS),                                 20, 5),
+    REDSTONE_BLOCKS         ("", "",                    () -> BlockConfig.PLANKS().formSet(REDSTONE),                               20, 5),
+    DECORATIVE_BLOCKS       ("", "",                    () -> BlockConfig.PLANKS().formSet(new BlockFormSet(FURNITURE, LADDER)),    20, 5),
 
     ROOFING_BLOCKS          ("", "_roofing",            () -> BlockConfig.PLANKS().formSet(REGULAR),                        20, 5),
     SHINGLE_BLOCKS          ("", "_shingles",           () -> BlockConfig.PLANKS().formSet(REGULAR),                        20, 5),

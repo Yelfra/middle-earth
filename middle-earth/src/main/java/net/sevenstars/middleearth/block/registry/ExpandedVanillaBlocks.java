@@ -110,44 +110,45 @@ public class ExpandedVanillaBlocks {
                 ItemGroupsME.MISC_BLOCKS_CONTENTS);
     }
 
+    // TODO: @Yelfra | Implement pane form, turn these individual blocks into a family/collection
     // region COPPER BARS
-    public static final Block COPPER_BARS = BlockRegistration.registerBlock(
+    public static final Block COPPER_BARS = BlockRegistration.registerBlockWithItem(
             "copper_bars",
             (settings) -> new OxidizablePaneBlock(Oxidizable.OxidationLevel.UNAFFECTED, settings),
             AbstractBlock.Settings.copy(Blocks.CUT_COPPER_SLAB),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block EXPOSED_COPPER_BARS = BlockRegistration.registerBlock(
+    public static final Block EXPOSED_COPPER_BARS = BlockRegistration.registerBlockWithItem(
             "exposed_copper_bars",
             (settings) -> new OxidizablePaneBlock(Oxidizable.OxidationLevel.EXPOSED, settings),
             AbstractBlock.Settings.copy(Blocks.EXPOSED_CUT_COPPER_SLAB),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block WEATHERED_COPPER_BARS = BlockRegistration.registerBlock(
+    public static final Block WEATHERED_COPPER_BARS = BlockRegistration.registerBlockWithItem(
             "weathered_copper_bars",
             (settings) -> new OxidizablePaneBlock(Oxidizable.OxidationLevel.WEATHERED, settings),
             AbstractBlock.Settings.copy(Blocks.WEATHERED_CUT_COPPER_SLAB),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block OXIDIZED_COPPER_BARS = BlockRegistration.registerBlock(
+    public static final Block OXIDIZED_COPPER_BARS = BlockRegistration.registerBlockWithItem(
             "oxidized_copper_bars",
             (settings) -> new OxidizablePaneBlock(Oxidizable.OxidationLevel.OXIDIZED, settings),
             AbstractBlock.Settings.copy(Blocks.OXIDIZED_CUT_COPPER_SLAB),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
 
-    public static final Block WAXED_COPPER_BARS = BlockRegistration.registerBlock(
+    public static final Block WAXED_COPPER_BARS = BlockRegistration.registerBlockWithItem(
             "waxed_copper_bars",
             PaneBlock::new,
             AbstractBlock.Settings.copy(Blocks.WAXED_CUT_COPPER_SLAB),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block WAXED_EXPOSED_COPPER_BARS = BlockRegistration.registerBlock(
+    public static final Block WAXED_EXPOSED_COPPER_BARS = BlockRegistration.registerBlockWithItem(
             "waxed_exposed_copper_bars",
             PaneBlock::new,
             AbstractBlock.Settings.copy(Blocks.WAXED_EXPOSED_CUT_COPPER_SLAB),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block WAXED_WEATHERED_COPPER_BARS = BlockRegistration.registerBlock(
+    public static final Block WAXED_WEATHERED_COPPER_BARS = BlockRegistration.registerBlockWithItem(
             "waxed_weathered_copper_bars",
             PaneBlock::new,
             AbstractBlock.Settings.copy(Blocks.WAXED_WEATHERED_CUT_COPPER_SLAB),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block WAXED_OXIDIZED_COPPER_BARS = BlockRegistration.registerBlock(
+    public static final Block WAXED_OXIDIZED_COPPER_BARS = BlockRegistration.registerBlockWithItem(
             "waxed_oxidized_copper_bars",
             PaneBlock::new,
             AbstractBlock.Settings.copy(Blocks.WAXED_OXIDIZED_CUT_COPPER_SLAB),
@@ -155,42 +156,42 @@ public class ExpandedVanillaBlocks {
     // endregion
 
     // region CUT COPPER WALLS
-    public static final Block CUT_COPPER_WALL = BlockRegistration.registerBlock(
+    public static final Block CUT_COPPER_WALL = BlockRegistration.registerBlockWithItem(
             "cut_copper_wall",
             (settings) -> new OxidizableWallBlock(Oxidizable.OxidationLevel.UNAFFECTED, settings),
             AbstractBlock.Settings.copy(Blocks.CUT_COPPER_SLAB),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block EXPOSED_CUT_COPPER_WALL = BlockRegistration.registerBlock(
+    public static final Block EXPOSED_CUT_COPPER_WALL = BlockRegistration.registerBlockWithItem(
             "exposed_cut_copper_wall",
             (settings) -> new OxidizableWallBlock(Oxidizable.OxidationLevel.EXPOSED, settings),
             AbstractBlock.Settings.copy(Blocks.EXPOSED_CUT_COPPER_SLAB),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block WEATHERED_CUT_COPPER_WALL = BlockRegistration.registerBlock(
+    public static final Block WEATHERED_CUT_COPPER_WALL = BlockRegistration.registerBlockWithItem(
             "weathered_cut_copper_wall",
             (settings) -> new OxidizableWallBlock(Oxidizable.OxidationLevel.WEATHERED, settings),
             AbstractBlock.Settings.copy(Blocks.WEATHERED_CUT_COPPER_SLAB),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block OXIDIZED_CUT_COPPER_WALL = BlockRegistration.registerBlock(
+    public static final Block OXIDIZED_CUT_COPPER_WALL = BlockRegistration.registerBlockWithItem(
             "oxidized_cut_copper_wall",
             (settings) -> new OxidizableWallBlock(Oxidizable.OxidationLevel.OXIDIZED, settings),
             AbstractBlock.Settings.copy(Blocks.OXIDIZED_CUT_COPPER_SLAB),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block WAXED_CUT_COPPER_WALL = BlockRegistration.registerBlock(
+    public static final Block WAXED_CUT_COPPER_WALL = BlockRegistration.registerBlockWithItem(
             "waxed_cut_copper_wall",
             WallBlock::new,
             AbstractBlock.Settings.copy(Blocks.WAXED_CUT_COPPER_SLAB),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block WAXED_EXPOSED_CUT_COPPER_WALL = BlockRegistration.registerBlock(
+    public static final Block WAXED_EXPOSED_CUT_COPPER_WALL = BlockRegistration.registerBlockWithItem(
             "waxed_exposed_cut_copper_wall",
             WallBlock::new,
             AbstractBlock.Settings.copy(Blocks.WAXED_EXPOSED_CUT_COPPER_SLAB),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block WAXED_WEATHERED_CUT_COPPER_WALL = BlockRegistration.registerBlock(
+    public static final Block WAXED_WEATHERED_CUT_COPPER_WALL = BlockRegistration.registerBlockWithItem(
             "waxed_weathered_cut_copper_wall",
             WallBlock::new,
             AbstractBlock.Settings.copy(Blocks.WAXED_WEATHERED_CUT_COPPER_SLAB),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block WAXED_OXIDIZED_CUT_COPPER_WALL = BlockRegistration.registerBlock(
+    public static final Block WAXED_OXIDIZED_CUT_COPPER_WALL = BlockRegistration.registerBlockWithItem(
             "waxed_oxidized_cut_copper_wall",
             WallBlock::new,
             AbstractBlock.Settings.copy(Blocks.WAXED_OXIDIZED_CUT_COPPER_SLAB),
@@ -198,42 +199,42 @@ public class ExpandedVanillaBlocks {
     // endregion
 
     // region CUT COPPER VERTICAL SLABS
-    public static final Block CUT_COPPER_VERTICAL_SLAB = BlockRegistration.registerBlock(
+    public static final Block CUT_COPPER_VERTICAL_SLAB = BlockRegistration.registerBlockWithItem(
             "cut_copper_vertical_slab",
             (settings) -> new OxidizableVerticalSlabBlock(Oxidizable.OxidationLevel.UNAFFECTED, settings),
             AbstractBlock.Settings.copy(Blocks.CUT_COPPER_SLAB),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block EXPOSED_CUT_COPPER_VERTICAL_SLAB = BlockRegistration.registerBlock(
+    public static final Block EXPOSED_CUT_COPPER_VERTICAL_SLAB = BlockRegistration.registerBlockWithItem(
             "exposed_cut_copper_vertical_slab",
             (settings) -> new OxidizableVerticalSlabBlock(Oxidizable.OxidationLevel.EXPOSED, settings),
             AbstractBlock.Settings.copy(Blocks.EXPOSED_CUT_COPPER_SLAB),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block WEATHERED_CUT_COPPER_VERTICAL_SLAB = BlockRegistration.registerBlock(
+    public static final Block WEATHERED_CUT_COPPER_VERTICAL_SLAB = BlockRegistration.registerBlockWithItem(
             "weathered_cut_copper_vertical_slab",
             (settings) -> new OxidizableVerticalSlabBlock(Oxidizable.OxidationLevel.WEATHERED, settings),
             AbstractBlock.Settings.copy(Blocks.WEATHERED_CUT_COPPER_SLAB),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block OXIDIZED_CUT_COPPER_VERTICAL_SLAB = BlockRegistration.registerBlock(
+    public static final Block OXIDIZED_CUT_COPPER_VERTICAL_SLAB = BlockRegistration.registerBlockWithItem(
             "oxidized_cut_copper_vertical_slab",
             (settings) -> new OxidizableVerticalSlabBlock(Oxidizable.OxidationLevel.OXIDIZED, settings),
             AbstractBlock.Settings.copy(Blocks.OXIDIZED_CUT_COPPER_SLAB),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block WAXED_CUT_COPPER_VERTICAL_SLAB = BlockRegistration.registerBlock(
+    public static final Block WAXED_CUT_COPPER_VERTICAL_SLAB = BlockRegistration.registerBlockWithItem(
             "waxed_cut_copper_vertical_slab",
             VerticalSlabBlock::new,
             AbstractBlock.Settings.copy(Blocks.WAXED_CUT_COPPER_SLAB),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block WAXED_EXPOSED_CUT_COPPER_VERTICAL_SLAB = BlockRegistration.registerBlock(
+    public static final Block WAXED_EXPOSED_CUT_COPPER_VERTICAL_SLAB = BlockRegistration.registerBlockWithItem(
             "waxed_exposed_cut_copper_vertical_slab",
             VerticalSlabBlock::new,
             AbstractBlock.Settings.copy(Blocks.WAXED_EXPOSED_CUT_COPPER_SLAB),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block WAXED_WEATHERED_CUT_COPPER_VERTICAL_SLAB = BlockRegistration.registerBlock(
+    public static final Block WAXED_WEATHERED_CUT_COPPER_VERTICAL_SLAB = BlockRegistration.registerBlockWithItem(
             "waxed_weathered_cut_copper_vertical_slab",
             VerticalSlabBlock::new,
             AbstractBlock.Settings.copy(Blocks.WAXED_WEATHERED_CUT_COPPER_SLAB),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block WAXED_OXIDIZED_CUT_COPPER_VERTICAL_SLAB = BlockRegistration.registerBlock(
+    public static final Block WAXED_OXIDIZED_CUT_COPPER_VERTICAL_SLAB = BlockRegistration.registerBlockWithItem(
             "waxed_oxidized_cut_copper_vertical_slab",
             VerticalSlabBlock::new,
             AbstractBlock.Settings.copy(Blocks.WAXED_OXIDIZED_CUT_COPPER_SLAB),
@@ -262,27 +263,27 @@ public class ExpandedVanillaBlocks {
     // endregion
 
     // region VANILLA SLABS
-    public static final Block DIRT_SLAB = BlockRegistration.registerBlock(
+    public static final Block DIRT_SLAB = BlockRegistration.registerBlockWithItem(
             "dirt_slab",
             SlabBlock::new,
             AbstractBlock.Settings.copy(Blocks.DIRT),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block COARSE_DIRT_SLAB = BlockRegistration.registerBlock(
+    public static final Block COARSE_DIRT_SLAB = BlockRegistration.registerBlockWithItem(
             "coarse_dirt_slab",
             SlabBlock::new,
             AbstractBlock.Settings.copy(Blocks.COARSE_DIRT),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block ROOTED_DIRT_SLAB = BlockRegistration.registerBlock(
+    public static final Block ROOTED_DIRT_SLAB = BlockRegistration.registerBlockWithItem(
             "rooted_dirt_slab",
             SlabBlock::new,
             AbstractBlock.Settings.copy(Blocks.ROOTED_DIRT),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block MUD_SLAB = BlockRegistration.registerBlock(
+    public static final Block MUD_SLAB = BlockRegistration.registerBlockWithItem(
             "mud_slab",
             SlabBlock::new,
             AbstractBlock.Settings.copy(Blocks.MUD),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block MOSS_SLAB = BlockRegistration.registerBlock(
+    public static final Block MOSS_SLAB = BlockRegistration.registerBlockWithItem(
             "moss_slab",
             SlabBlock::new,
             AbstractBlock.Settings.copy(Blocks.MOSS_BLOCK),
@@ -290,27 +291,27 @@ public class ExpandedVanillaBlocks {
     // endregion
 
     // region VANILLA STAIRS
-    public static final Block DIRT_STAIRS = BlockRegistration.registerBlock(
+    public static final Block DIRT_STAIRS = BlockRegistration.registerBlockWithItem(
             "dirt_stairs",
             (settings) -> new StairsBlock(Blocks.DIRT.getDefaultState(), settings),
             AbstractBlock.Settings.copy(Blocks.DIRT),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block COARSE_DIRT_STAIRS = BlockRegistration.registerBlock(
+    public static final Block COARSE_DIRT_STAIRS = BlockRegistration.registerBlockWithItem(
             "coarse_dirt_stairs",
             (settings) -> new StairsBlock(Blocks.COARSE_DIRT.getDefaultState(), settings),
             AbstractBlock.Settings.copy(Blocks.COARSE_DIRT),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block ROOTED_DIRT_STAIRS = BlockRegistration.registerBlock(
+    public static final Block ROOTED_DIRT_STAIRS = BlockRegistration.registerBlockWithItem(
             "rooted_dirt_stairs",
             (settings) -> new StairsBlock(Blocks.ROOTED_DIRT.getDefaultState(), settings),
             AbstractBlock.Settings.copy(Blocks.ROOTED_DIRT),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block MUD_STAIRS = BlockRegistration.registerBlock(
+    public static final Block MUD_STAIRS = BlockRegistration.registerBlockWithItem(
             "mud_stairs",
             (settings) -> new StairsBlock(Blocks.MUD.getDefaultState(), settings),
             AbstractBlock.Settings.copy(Blocks.DIRT).sounds(BlockSoundGroup.MUD),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block MOSS_STAIRS = BlockRegistration.registerBlock(
+    public static final Block MOSS_STAIRS = BlockRegistration.registerBlockWithItem(
             "moss_stairs",
             (settings) -> new StairsBlock(Blocks.MOSS_BLOCK.getDefaultState(), settings),
             AbstractBlock.Settings.copy(Blocks.MOSS_BLOCK),
@@ -318,87 +319,87 @@ public class ExpandedVanillaBlocks {
     // endregion
 
     // region VANILLA VERTICAL SLABS
-    public static final Block BRICK_VERTICAL_SLAB = BlockRegistration.registerBlock(
+    public static final Block BRICK_VERTICAL_SLAB = BlockRegistration.registerBlockWithItem(
             "brick_vertical_slab",
             VerticalSlabBlock::new,
             AbstractBlock.Settings.copy(Blocks.BRICK_SLAB),
             ItemGroupsME.STONE_BLOCKS_CONTENTS);
-    public static final Block MUD_BRICK_VERTICAL_SLAB = BlockRegistration.registerBlock(
+    public static final Block MUD_BRICK_VERTICAL_SLAB = BlockRegistration.registerBlockWithItem(
             "mud_brick_vertical_slab",
             VerticalSlabBlock::new,
             AbstractBlock.Settings.copy(Blocks.MUD_BRICK_SLAB),
             ItemGroupsME.STONE_BLOCKS_CONTENTS);
-    public static final Block SANDSTONE_VERTICAL_SLAB = BlockRegistration.registerBlock(
+    public static final Block SANDSTONE_VERTICAL_SLAB = BlockRegistration.registerBlockWithItem(
             "sandstone_vertical_slab",
             VerticalSlabBlock::new,
             AbstractBlock.Settings.copy(Blocks.SANDSTONE_SLAB),
             ItemGroupsME.STONE_BLOCKS_CONTENTS);
-    public static final Block SMOOTH_SANDSTONE_VERTICAL_SLAB = BlockRegistration.registerBlock(
+    public static final Block SMOOTH_SANDSTONE_VERTICAL_SLAB = BlockRegistration.registerBlockWithItem(
             "smooth_sandstone_vertical_slab",
             VerticalSlabBlock::new,
             AbstractBlock.Settings.copy(Blocks.SMOOTH_SANDSTONE_SLAB),
             ItemGroupsME.STONE_BLOCKS_CONTENTS);
-    public static final Block CUT_SANDSTONE_VERTICAL_SLAB = BlockRegistration.registerBlock(
+    public static final Block CUT_SANDSTONE_VERTICAL_SLAB = BlockRegistration.registerBlockWithItem(
             "cut_sandstone_vertical_slab",
             VerticalSlabBlock::new,
             AbstractBlock.Settings.copy(Blocks.CUT_SANDSTONE_SLAB),
             ItemGroupsME.STONE_BLOCKS_CONTENTS);
-    public static final Block RED_SANDSTONE_VERTICAL_SLAB = BlockRegistration.registerBlock(
+    public static final Block RED_SANDSTONE_VERTICAL_SLAB = BlockRegistration.registerBlockWithItem(
             "red_sandstone_vertical_slab",
             VerticalSlabBlock::new,
             AbstractBlock.Settings.copy(Blocks.RED_SANDSTONE_SLAB),
             ItemGroupsME.STONE_BLOCKS_CONTENTS);
-    public static final Block SMOOTH_RED_SANDSTONE_VERTICAL_SLAB = BlockRegistration.registerBlock(
+    public static final Block SMOOTH_RED_SANDSTONE_VERTICAL_SLAB = BlockRegistration.registerBlockWithItem(
             "smooth_red_sandstone_vertical_slab",
             VerticalSlabBlock::new,
             AbstractBlock.Settings.copy(Blocks.SMOOTH_RED_SANDSTONE_SLAB),
             ItemGroupsME.STONE_BLOCKS_CONTENTS);
-    public static final Block CUT_RED_SANDSTONE_VERTICAL_SLAB = BlockRegistration.registerBlock(
+    public static final Block CUT_RED_SANDSTONE_VERTICAL_SLAB = BlockRegistration.registerBlockWithItem(
             "cut_red_sandstone_vertical_slab",
             VerticalSlabBlock::new,
             AbstractBlock.Settings.copy(Blocks.CUT_RED_SANDSTONE_SLAB),
             ItemGroupsME.STONE_BLOCKS_CONTENTS);
-    public static final Block PRISMARINE_VERTICAL_SLAB = BlockRegistration.registerBlock(
+    public static final Block PRISMARINE_VERTICAL_SLAB = BlockRegistration.registerBlockWithItem(
             "prismarine_vertical_slab",
             VerticalSlabBlock::new,
             AbstractBlock.Settings.copy(Blocks.PRISMARINE_SLAB),
             ItemGroupsME.STONE_BLOCKS_CONTENTS);
-    public static final Block PRISMARINE_BRICK_VERTICAL_SLAB = BlockRegistration.registerBlock(
+    public static final Block PRISMARINE_BRICK_VERTICAL_SLAB = BlockRegistration.registerBlockWithItem(
             "prismarine_brick_vertical_slab",
             VerticalSlabBlock::new,
             AbstractBlock.Settings.copy(Blocks.PRISMARINE_BRICK_SLAB),
             ItemGroupsME.STONE_BLOCKS_CONTENTS);
-    public static final Block DARK_PRISMARINE_VERTICAL_SLAB = BlockRegistration.registerBlock(
+    public static final Block DARK_PRISMARINE_VERTICAL_SLAB = BlockRegistration.registerBlockWithItem(
             "dark_prismarine_vertical_slab",
             VerticalSlabBlock::new,
             AbstractBlock.Settings.copy(Blocks.DARK_PRISMARINE_SLAB),
             ItemGroupsME.STONE_BLOCKS_CONTENTS);
-    public static final Block NETHER_BRICK_VERTICAL_SLAB = BlockRegistration.registerBlock(
+    public static final Block NETHER_BRICK_VERTICAL_SLAB = BlockRegistration.registerBlockWithItem(
             "nether_brick_vertical_slab",
             VerticalSlabBlock::new,
             AbstractBlock.Settings.copy(Blocks.NETHER_BRICK_SLAB),
             ItemGroupsME.STONE_BLOCKS_CONTENTS);
-    public static final Block RED_NETHER_BRICK_VERTICAL_SLAB = BlockRegistration.registerBlock(
+    public static final Block RED_NETHER_BRICK_VERTICAL_SLAB = BlockRegistration.registerBlockWithItem(
             "red_nether_brick_vertical_slab",
             VerticalSlabBlock::new,
             AbstractBlock.Settings.copy(Blocks.RED_NETHER_BRICK_SLAB),
             ItemGroupsME.STONE_BLOCKS_CONTENTS);
-    public static final Block END_STONE_BRICK_VERTICAL_SLAB = BlockRegistration.registerBlock(
+    public static final Block END_STONE_BRICK_VERTICAL_SLAB = BlockRegistration.registerBlockWithItem(
             "end_stone_brick_vertical_slab",
             VerticalSlabBlock::new,
             AbstractBlock.Settings.copy(Blocks.END_STONE_BRICK_SLAB),
             ItemGroupsME.STONE_BLOCKS_CONTENTS);
-    public static final Block PURPUR_VERTICAL_SLAB = BlockRegistration.registerBlock(
+    public static final Block PURPUR_VERTICAL_SLAB = BlockRegistration.registerBlockWithItem(
             "purpur_vertical_slab",
             VerticalSlabBlock::new,
             AbstractBlock.Settings.copy(Blocks.PURPUR_SLAB),
             ItemGroupsME.STONE_BLOCKS_CONTENTS);
-    public static final Block QUARTZ_VERTICAL_SLAB = BlockRegistration.registerBlock(
+    public static final Block QUARTZ_VERTICAL_SLAB = BlockRegistration.registerBlockWithItem(
             "quartz_vertical_slab",
             VerticalSlabBlock::new,
             AbstractBlock.Settings.copy(Blocks.QUARTZ_SLAB),
             ItemGroupsME.STONE_BLOCKS_CONTENTS);
-    public static final Block SMOOTH_QUARTZ_VERTICAL_SLAB = BlockRegistration.registerBlock(
+    public static final Block SMOOTH_QUARTZ_VERTICAL_SLAB = BlockRegistration.registerBlockWithItem(
             "smooth_quartz_vertical_slab",
             VerticalSlabBlock::new,
             AbstractBlock.Settings.copy(Blocks.SMOOTH_QUARTZ_SLAB),
@@ -406,12 +407,12 @@ public class ExpandedVanillaBlocks {
     // endregion
 
     // region VANILLA LAYERS
-    public static final Block GRAVEL_LAYER = BlockRegistration.registerBlock(
+    public static final Block GRAVEL_LAYER = BlockRegistration.registerBlockWithItem(
             "gravel_layer",
             (settings) -> new LayersBlock(settings, Blocks.GRAVEL),
             AbstractBlock.Settings.copy(Blocks.GRAVEL),
             ItemGroupsME.MISC_BLOCKS_CONTENTS);
-    public static final Block SAND_LAYER = BlockRegistration.registerBlock(
+    public static final Block SAND_LAYER = BlockRegistration.registerBlockWithItem(
             "sand_layer",
             (settings) -> new LayersBlock(settings, Blocks.SAND),
             AbstractBlock.Settings.copy(Blocks.SAND),

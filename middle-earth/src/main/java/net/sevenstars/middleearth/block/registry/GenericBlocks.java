@@ -24,6 +24,8 @@ public class GenericBlocks {
         registerWaxable();
     }
 
+    // TODO: @Yelfra | Append behaviour to end of block families instead of through helper methods
+
     private static void registerFuels() {
         // TODO: @Yelfra | See if any of these shouldn't be fuel (or missing)
         // TODO: ... or have their fuel values tweaked (might be hardcoded to wood)
@@ -262,7 +264,7 @@ public class GenericBlocks {
     );
     // endregion
 
-    // region (Coloured) ROOF TILES
+    // region ROOF TILES
     public static final BlockFamily BLUE_ROOF_TILES = BlockRegistration.registerBlockFamily(
             new BlockFamily("blue_roof_tiles", BlockConfig.HARD_CLAY(MapColor.TERRACOTTA_BLUE)),
             ItemGroupsME.STONE_BLOCKS_CONTENTS
@@ -399,12 +401,14 @@ public class GenericBlocks {
     );
     // endregion
 
+    // TODO: @Yelfra | Move to WoodBlocks
     // region WOOD
     public static final BlockFamily WEATHERED_SHINGLES = BlockRegistration.registerBlockFamily(
             new BlockFamily("weathered_shingles", BlockConfig.PLANKS_SIMPLE(MapColor.WHITE_GRAY)),
             ItemGroupsME.WOOD_BLOCKS_CONTENTS
     );
 
+    // TODO: @Yelfra | Do sth about this
     public static final BlockFamily TREATED_WOOD = BlockRegistration.registerBlockFamily(
             new BlockFamily("treated_wood", BlockConfig.PLANKS_SIMPLE(MapColor.SPRUCE_BROWN).pillar()),
             ItemGroupsME.WOOD_BLOCKS_CONTENTS
@@ -430,6 +434,7 @@ public class GenericBlocks {
             ItemGroupsME.WOOD_BLOCKS_CONTENTS
     );
 
+    // TODO: @Yelfra | Do sth about this
     public static final BlockFamily AGED_WOOD = BlockRegistration.registerBlockFamily(
             new BlockFamily("aged_wood", BlockConfig.PLANKS_SIMPLE(MapColor.TERRACOTTA_BROWN).pillar()),
             ItemGroupsME.WOOD_BLOCKS_CONTENTS
@@ -494,6 +499,7 @@ public class GenericBlocks {
     );
     // endregion
 
+    // TODO: @Yelfra | Create collection
     // region THATCH
     public static final BlockFamily THATCH = BlockRegistration.registerBlockFamily(
             new BlockFamily("thatch", BlockConfig.THATCH(MapColor.PALE_YELLOW, Oxidizable.OxidationLevel.UNAFFECTED)),

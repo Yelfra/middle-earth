@@ -56,7 +56,7 @@ public class BlockFormSet implements Iterable<BlockForm> {
             FENCE_GATE, DOOR, TRAPDOOR, PRESSURE_PLATE, BUTTON
     );
     public static final BlockFormSet FURNITURE = new BlockFormSet(
-            TABLE, CHAIR, STOOL, LADDER, BENCH
+            TABLE, CHAIR, STOOL, BENCH
     );
     public static final BlockFormSet TRANSPARENT = new BlockFormSet(
             BASE_T, VERTICAL_SLAB_T
