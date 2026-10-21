@@ -3,6 +3,7 @@ package net.sevenstars.middleearth;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
 import net.sevenstars.api.utils.ModLogger;
+import net.sevenstars.middleearth.block.BlockInit;
 import net.sevenstars.middleearth.block.registration.*;
 import net.sevenstars.middleearth.commands.ModCommands;
 import net.sevenstars.middleearth.config.ModClientConfigs;
@@ -46,12 +47,18 @@ public class MiddleEarth implements ModInitializer {
 	public static final boolean IS_DEBUG = true;
 	public static final boolean ENABLE_INSTANT_BOOTING = true;
 	public static final ModLogger LOGGER = new ModLogger(MOD_ID, IS_DEBUG);
+
 	@Override
 	public void onInitialize() {
 		new FileUtils(getClass().getClassLoader());
 
 		LOGGER.logInfoMsg("");
 		LOGGER.logInfoMsg("================ MiddleEarth ================");
+
+		//BlockInit.register();
+		//ItemsME.register();
+		//EntitiesME.register();
+
 
 		ModServerNetworkHandler.register(new ConnectionToClient());
 		ModEvents.register();
@@ -61,7 +68,7 @@ public class MiddleEarth implements ModInitializer {
 		DataComponentTypesME.registerModComponentTypes();
 
 		ModCommands.register();
-		ModStatusEffects.registerStatusEffects();
+		ModStatusEffects.registerStatusEffects(); // TODO: @Yelfra | Delete this line duplicate
 
 		OreRockSets.registerModBlockSets();
 		WeaponItemsME.registerModItems();
