@@ -31,10 +31,10 @@ public class TorchOfOrthancBlock extends TorchBlock {
 
     @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-        if(world.isClient){
+        if (world.isClient) {
             return ActionResult.SUCCESS;
         } else {
-            if(player.getStackInHand(player.getActiveHand()).isOf(Items.FLINT_AND_STEEL) && !state.get(LIT)){
+            if (player.getStackInHand(player.getActiveHand()).isOf(Items.FLINT_AND_STEEL) && !state.get(LIT)) {
                 world.playSound(null, pos, SoundEvents.ITEM_FIRECHARGE_USE, SoundCategory.BLOCKS, 1.0F, 1.5F);
                 world.setBlockState(pos, state.cycle(LIT));
             } else if (player.getStackInHand(player.getActiveHand()).isIn(ItemTags.SHOVELS) && state.get(LIT)) {
@@ -56,10 +56,10 @@ public class TorchOfOrthancBlock extends TorchBlock {
 
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        if(state.get(LIT)){
-            double d = (double)pos.getX() + 0.5;
-            double e = (double)pos.getY() + 1.4;
-            double f = (double)pos.getZ() + 0.5;
+        if (state.get(LIT)) {
+            double d = (double) pos.getX() + 0.5;
+            double e = (double) pos.getY() + 1.4;
+            double f = (double) pos.getZ() + 0.5;
             world.addParticleClient(ParticleTypes.SMOKE, d, e, f, 0.0, 0.0, 0.0);
         }
     }

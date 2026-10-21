@@ -18,7 +18,6 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
-import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.tick.ScheduledTickView;
 
@@ -43,7 +42,7 @@ public class ThickLadderBlock extends WallMountedBlock implements Waterloggable 
 
     public ThickLadderBlock(Settings settings) {
         super(settings.nonOpaque());
-        this.setDefaultState((BlockState)((BlockState)((BlockState)this.stateManager.getDefaultState()).with(FACING, Direction.NORTH)).with(FACE, BlockFace.WALL).with(WATERLOGGED, false));
+        this.setDefaultState((BlockState) ((BlockState) ((BlockState) this.stateManager.getDefaultState()).with(FACING, Direction.NORTH)).with(FACE, BlockFace.WALL).with(WATERLOGGED, false));
     }
 
     protected BlockRenderType getRenderType(BlockState state) {
@@ -59,7 +58,7 @@ public class ThickLadderBlock extends WallMountedBlock implements Waterloggable 
     }
 
     protected BlockState rotate(BlockState state, BlockRotation rotation) {
-        return (BlockState)state.with(FACING, rotation.rotate((Direction)state.get(FACING)));
+        return (BlockState) state.with(FACING, rotation.rotate((Direction) state.get(FACING)));
     }
 
     protected boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
@@ -67,7 +66,7 @@ public class ThickLadderBlock extends WallMountedBlock implements Waterloggable 
     }
 
     protected BlockState mirror(BlockState state, BlockMirror mirror) {
-        return state.rotate(mirror.getRotation((Direction)state.get(FACING)));
+        return state.rotate(mirror.getRotation((Direction) state.get(FACING)));
     }
 
     @Override
@@ -77,16 +76,20 @@ public class ThickLadderBlock extends WallMountedBlock implements Waterloggable 
         for (Direction direction : var2) {
             BlockState blockState;
             if (direction.getAxis() == Direction.Axis.Y) {
-                if(!Objects.requireNonNull(ctx.getPlayer()).isSneaking()){
-                    blockState = (BlockState) ((BlockState) this.getDefaultState().with(FACE, BlockFace.WALL)).with(FACING, ctx.getHorizontalPlayerFacing().getOpposite()).with(WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER);;
+                if (!Objects.requireNonNull(ctx.getPlayer()).isSneaking()) {
+                    blockState = (BlockState) ((BlockState) this.getDefaultState().with(FACE, BlockFace.WALL)).with(FACING, ctx.getHorizontalPlayerFacing().getOpposite()).with(WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER);
+                    ;
                 } else {
-                    blockState = (BlockState) ((BlockState) this.getDefaultState().with(FACE, direction == Direction.UP ? BlockFace.CEILING : BlockFace.FLOOR)).with(FACING, ctx.getHorizontalPlayerFacing()).with(WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER);;
+                    blockState = (BlockState) ((BlockState) this.getDefaultState().with(FACE, direction == Direction.UP ? BlockFace.CEILING : BlockFace.FLOOR)).with(FACING, ctx.getHorizontalPlayerFacing()).with(WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER);
+                    ;
                 }
             } else {
-                if(!Objects.requireNonNull(ctx.getPlayer()).isSneaking()) {
-                    blockState = (BlockState) ((BlockState) this.getDefaultState().with(FACE, BlockFace.WALL)).with(FACING, direction.getOpposite()).with(WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER);;
+                if (!Objects.requireNonNull(ctx.getPlayer()).isSneaking()) {
+                    blockState = (BlockState) ((BlockState) this.getDefaultState().with(FACE, BlockFace.WALL)).with(FACING, direction.getOpposite()).with(WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER);
+                    ;
                 } else {
-                    blockState = (BlockState) ((BlockState) this.getDefaultState().with(FACE, (ctx.getHitPos().y - (double)ctx.getBlockPos().getY() > 0.5) ? BlockFace.CEILING : BlockFace.FLOOR)).with(FACING, direction.getOpposite()).with(WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER);;
+                    blockState = (BlockState) ((BlockState) this.getDefaultState().with(FACE, (ctx.getHitPos().y - (double) ctx.getBlockPos().getY() > 0.5) ? BlockFace.CEILING : BlockFace.FLOOR)).with(FACING, direction.getOpposite()).with(WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER);
+                    ;
                 }
             }
             if (blockState.canPlaceAt(ctx.getWorld(), ctx.getBlockPos())) {
@@ -113,9 +116,9 @@ public class ThickLadderBlock extends WallMountedBlock implements Waterloggable 
 
     @Override
     protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        if(state.get(FACE) == BlockFace.CEILING){
+        if (state.get(FACE) == BlockFace.CEILING) {
             return TOP_SHAPE;
-        } else if (state.get(FACE) == BlockFace.FLOOR){
+        } else if (state.get(FACE) == BlockFace.FLOOR) {
             return BOTTOM_SHAPE;
         } else {
             return switch ((Direction) state.get(FACING)) {

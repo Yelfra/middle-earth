@@ -21,7 +21,6 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.tick.ScheduledTickView;
 
@@ -29,7 +28,6 @@ public class DroopingIciclesBlock extends Block {
     public static final MapCodec<DroopingIciclesBlock> CODEC = createCodec(DroopingIciclesBlock::new);
     protected static final VoxelShape SHAPE = Block.createCuboidShape(2.0, 10.0, 2.0, 14.0, 16.0, 14.0);
     public static final EnumProperty<DoubleBlockHalf> HALF = Properties.DOUBLE_BLOCK_HALF;
-
 
     public DroopingIciclesBlock(Settings settings) {
         super(settings);
@@ -55,9 +53,9 @@ public class DroopingIciclesBlock extends Block {
         DoubleBlockHalf doubleBlockHalf = state.get(HALF);
         BlockState upState = world.getBlockState(pos.up());
 
-        if(!upState.isOf(this) && !upState.isSideSolidFullSquare(world, pos, Direction.DOWN)){
+        if (!upState.isOf(this) && !upState.isSideSolidFullSquare(world, pos, Direction.DOWN)) {
             return Blocks.AIR.getDefaultState();
-        } else if (doubleBlockHalf == DoubleBlockHalf.UPPER && world.getBlockState(pos.down()).isAir()){
+        } else if (doubleBlockHalf == DoubleBlockHalf.UPPER && world.getBlockState(pos.down()).isAir()) {
             return state.with(HALF, DoubleBlockHalf.LOWER);
         } else {
             return super.getStateForNeighborUpdate(state, world, tickView, pos, direction, neighborPos, neighborState, random);
@@ -66,18 +64,18 @@ public class DroopingIciclesBlock extends Block {
 
     public void onPlaced(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack) {
         BlockState upState = world.getBlockState(pos.up());
-        if (upState.isOf(this)){
+        if (upState.isOf(this)) {
             world.setBlockState(pos.up(), upState.with(HALF, DoubleBlockHalf.UPPER));
-            world.setBlockState(pos, (BlockState)state.with(HALF, DoubleBlockHalf.LOWER), 3);
+            world.setBlockState(pos, (BlockState) state.with(HALF, DoubleBlockHalf.LOWER), 3);
         } else {
-            world.setBlockState(pos, (BlockState)state.with(HALF, DoubleBlockHalf.LOWER), 3);
+            world.setBlockState(pos, (BlockState) state.with(HALF, DoubleBlockHalf.LOWER), 3);
         }
     }
 
     protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        if (state.get(HALF) == DoubleBlockHalf.UPPER){
+        if (state.get(HALF) == DoubleBlockHalf.UPPER) {
             return super.getOutlineShape(state, world, pos, context);
-        } else  {
+        } else {
             return SHAPE;
         }
     }
@@ -86,7 +84,7 @@ public class DroopingIciclesBlock extends Block {
         if (!world.isClient) {
             BlockPos blockPos = hit.getBlockPos();
             if (world instanceof ServerWorld) {
-                ServerWorld serverWorld = (ServerWorld)world;
+                ServerWorld serverWorld = (ServerWorld) world;
                 if (projectile.canModifyAt(serverWorld, blockPos) && projectile.canBreakBlocks(serverWorld) && projectile instanceof TridentEntity && projectile.getVelocity().length() > 0.6) {
                     world.breakBlock(blockPos, true);
                 }

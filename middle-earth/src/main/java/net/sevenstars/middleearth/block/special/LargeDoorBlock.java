@@ -16,7 +16,10 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
-import net.minecraft.state.property.*;
+import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.EnumProperty;
+import net.minecraft.state.property.IntProperty;
+import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.BlockMirror;
@@ -76,7 +79,7 @@ public class LargeDoorBlock extends Block {
     }
 
     //Get the origin of the door based on the state and pos
-    private BlockPos getOrigin(BlockPos pos, BlockState state){
+    private BlockPos getOrigin(BlockPos pos, BlockState state) {
         BlockPos blockPos;
         int part = state.get(getPart());
 
@@ -89,9 +92,9 @@ public class LargeDoorBlock extends Block {
                 blockPos = blockPos.down();
             }
         } else {
-            if(state.get(HINGE) == DoorHinge.LEFT) {
+            if (state.get(HINGE) == DoorHinge.LEFT) {
                 blockPos = pos.offset(state.get(HORIZONTAL_FACING).rotateYCounterclockwise(), column);
-            }else{
+            } else {
                 blockPos = pos.offset(state.get(HORIZONTAL_FACING).rotateYClockwise(), column);
             }
             for (int i = 0; i < line; i++) {
@@ -99,7 +102,7 @@ public class LargeDoorBlock extends Block {
             }
         }
 
-       return blockPos;
+        return blockPos;
     }
 
     @Nullable
@@ -111,23 +114,23 @@ public class LargeDoorBlock extends Block {
         boolean canPlace = true;
 
         //Check space for placement
-        for (int j = 0; j < doorWidth; j++){
+        for (int j = 0; j < doorWidth; j++) {
             for (int k = 0; k < doorHeight; k++) {
-                if(!world.getBlockState(blockPos).canReplace(ctx)){
+                if (!world.getBlockState(blockPos).canReplace(ctx)) {
                     canPlace = false;
                 }
                 blockPos = blockPos.up();
             }
-            if(getHinge(ctx) == DoorHinge.LEFT) {
+            if (getHinge(ctx) == DoorHinge.LEFT) {
                 blockPos = blockPos1.offset(direction.rotateYClockwise(), j + 1);
-            }else{
+            } else {
                 blockPos = blockPos1.offset(direction.rotateYCounterclockwise(), j + 1);
             }
         }
 
-        if(canPlace){
+        if (canPlace) {
             return this.getDefaultState().with(HORIZONTAL_FACING, direction).with(OPEN, false).with(getPart(), 0).with(HINGE, this.getHinge(ctx));
-        } else{
+        } else {
             return null;
         }
     }
@@ -151,25 +154,25 @@ public class LargeDoorBlock extends Block {
         int j = direction.getOffsetX();
         int k = direction.getOffsetZ();
         Vec3d vec3d = ctx.getHitPos();
-        double d = vec3d.x - (double)blockPos.getX();
-        double e = vec3d.z - (double)blockPos.getZ();
+        double d = vec3d.x - (double) blockPos.getX();
+        double e = vec3d.z - (double) blockPos.getZ();
         return (j >= 0 || !(e < 0.5)) && (j <= 0 || !(e > 0.5)) && (k >= 0 || !(d > 0.5)) && (k <= 0 || !(d < 0.5)) ? DoorHinge.LEFT : DoorHinge.RIGHT;
     }
 
     public void onPlaced(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack) {
-        if (!world.isClient){
+        if (!world.isClient) {
             BlockPos blockPos = pos;
             //Places all additional blocks after placement is checked
-            for (int i = 0; i < doorWidth; i++){
+            for (int i = 0; i < doorWidth; i++) {
                 int partIndex = doorHeight * i;
                 for (int j = 0; j < doorHeight; j++) {
-                    world.setBlockState(blockPos, (BlockState)state.with(getPart(), partIndex), 3);
+                    world.setBlockState(blockPos, (BlockState) state.with(getPart(), partIndex), 3);
                     blockPos = blockPos.up();
                     partIndex++;
                 }
-                if(state.get(HINGE) == DoorHinge.LEFT) {
-                    blockPos = pos.offset((Direction)state.get(HORIZONTAL_FACING).rotateYClockwise(), i + 1);
-                }else {
+                if (state.get(HINGE) == DoorHinge.LEFT) {
+                    blockPos = pos.offset((Direction) state.get(HORIZONTAL_FACING).rotateYClockwise(), i + 1);
+                } else {
                     blockPos = pos.offset((Direction) state.get(HORIZONTAL_FACING).rotateYCounterclockwise(), i + 1);
                 }
             }
@@ -182,17 +185,17 @@ public class LargeDoorBlock extends Block {
         BlockPos blockPos1 = blockPos;
 
         //Breaks all blocks based on origin
-        for (int j = 0; j < doorWidth; j++){
+        for (int j = 0; j < doorWidth; j++) {
             for (int k = 0; k < doorHeight; k++) {
                 world.breakBlock(blockPos, j == 0 && k == 0 && !player.isCreative());
                 blockPos = blockPos.up();
             }
-            if(state.get(OPEN)){
-                blockPos = blockPos1.offset((Direction)state.get(HORIZONTAL_FACING), j + 1);
-            } else if(state.get(HINGE) == DoorHinge.LEFT) {
-                blockPos = blockPos1.offset((Direction)state.get(HORIZONTAL_FACING).rotateYClockwise(), j + 1);
-            }else {
-                blockPos = blockPos1.offset((Direction)state.get(HORIZONTAL_FACING).rotateYCounterclockwise(), j + 1);
+            if (state.get(OPEN)) {
+                blockPos = blockPos1.offset((Direction) state.get(HORIZONTAL_FACING), j + 1);
+            } else if (state.get(HINGE) == DoorHinge.LEFT) {
+                blockPos = blockPos1.offset((Direction) state.get(HORIZONTAL_FACING).rotateYClockwise(), j + 1);
+            } else {
+                blockPos = blockPos1.offset((Direction) state.get(HORIZONTAL_FACING).rotateYCounterclockwise(), j + 1);
             }
         }
 
@@ -205,17 +208,17 @@ public class LargeDoorBlock extends Block {
         BlockPos blockPos1 = blockPos;
 
         //Breaks all blocks based on origin
-        for (int j = 0; j < doorWidth; j++){
+        for (int j = 0; j < doorWidth; j++) {
             for (int k = 0; k < doorHeight; k++) {
                 world.breakBlock(blockPos, j == 0 && k == 0);
                 blockPos = blockPos.up();
             }
-            if(state.get(OPEN)){
-                blockPos = blockPos1.offset((Direction)state.get(HORIZONTAL_FACING), j + 1);
-            } else if(state.get(HINGE) == DoorHinge.LEFT) {
-                blockPos = blockPos1.offset((Direction)state.get(HORIZONTAL_FACING).rotateYClockwise(), j + 1);
-            }else {
-                blockPos = blockPos1.offset((Direction)state.get(HORIZONTAL_FACING).rotateYCounterclockwise(), j + 1);
+            if (state.get(OPEN)) {
+                blockPos = blockPos1.offset((Direction) state.get(HORIZONTAL_FACING), j + 1);
+            } else if (state.get(HINGE) == DoorHinge.LEFT) {
+                blockPos = blockPos1.offset((Direction) state.get(HORIZONTAL_FACING).rotateYClockwise(), j + 1);
+            } else {
+                blockPos = blockPos1.offset((Direction) state.get(HORIZONTAL_FACING).rotateYCounterclockwise(), j + 1);
             }
         }
 
@@ -226,23 +229,23 @@ public class LargeDoorBlock extends Block {
     private boolean canToggle(BlockPos origin, BlockState state, World world) {
         BlockPos blockPos = origin;
         BlockPos blockPos1 = blockPos;
-        for (int j = 0; j < doorWidth; j++){
+        for (int j = 0; j < doorWidth; j++) {
             for (int k = 0; k < doorHeight; k++) {
-                if(j != 0){
-                    if(!world.getBlockState(blockPos).isReplaceable()){
+                if (j != 0) {
+                    if (!world.getBlockState(blockPos).isReplaceable()) {
                         return false;
                     }
                 }
                 blockPos = blockPos.up();
             }
-            if(state.get(OPEN)){
-                if(state.get(HINGE) == DoorHinge.LEFT) {
-                    blockPos = blockPos1.offset((Direction)state.get(HORIZONTAL_FACING).rotateYClockwise(), j + 1);
+            if (state.get(OPEN)) {
+                if (state.get(HINGE) == DoorHinge.LEFT) {
+                    blockPos = blockPos1.offset((Direction) state.get(HORIZONTAL_FACING).rotateYClockwise(), j + 1);
                 } else {
                     blockPos = blockPos1.offset((Direction) state.get(HORIZONTAL_FACING).rotateYCounterclockwise(), j + 1);
                 }
             } else {
-                blockPos = blockPos1.offset((Direction)state.get(HORIZONTAL_FACING), j + 1);
+                blockPos = blockPos1.offset((Direction) state.get(HORIZONTAL_FACING), j + 1);
             }
         }
         return true;
@@ -253,20 +256,20 @@ public class LargeDoorBlock extends Block {
         BlockPos blockPos = getOrigin(pos, state);
         BlockPos blockPos1 = blockPos;
 
-        if(canToggle(blockPos,state,world)){
+        if (canToggle(blockPos, state, world)) {
             //Remove blocks
-            for (int j = 0; j < doorWidth; j++){
+            for (int j = 0; j < doorWidth; j++) {
                 for (int k = 0; k < doorHeight; k++) {
-                    world.setBlockState(blockPos, (BlockState)Blocks.AIR.getDefaultState(), 3);
+                    world.setBlockState(blockPos, (BlockState) Blocks.AIR.getDefaultState(), 3);
                     blockPos = blockPos.up();
                 }
-                if(state.get(OPEN)) {
-                    blockPos = blockPos1.offset((Direction)state.get(HORIZONTAL_FACING), j + 1);
-                }else {
+                if (state.get(OPEN)) {
+                    blockPos = blockPos1.offset((Direction) state.get(HORIZONTAL_FACING), j + 1);
+                } else {
                     if (state.get(HINGE) == DoorHinge.LEFT) {
-                        blockPos = blockPos1.offset((Direction)state.get(HORIZONTAL_FACING).rotateYClockwise(), j + 1);
-                    }else{
-                        blockPos = blockPos1.offset((Direction)state.get(HORIZONTAL_FACING).rotateYCounterclockwise(), j + 1);
+                        blockPos = blockPos1.offset((Direction) state.get(HORIZONTAL_FACING).rotateYClockwise(), j + 1);
+                    } else {
+                        blockPos = blockPos1.offset((Direction) state.get(HORIZONTAL_FACING).rotateYCounterclockwise(), j + 1);
                     }
                 }
             }
@@ -274,10 +277,10 @@ public class LargeDoorBlock extends Block {
             blockPos = blockPos1;
 
             //Place Blocks
-            for (int i = 0; i < doorWidth; i++){
+            for (int i = 0; i < doorWidth; i++) {
                 int partIndex = doorHeight * i;
                 for (int j = 0; j < doorHeight; j++) {
-                    if(state.get(OPEN)){
+                    if (state.get(OPEN)) {
                         world.setBlockState(blockPos, state.with(OPEN, false).with(getPart(), partIndex), 3);
                     } else {
                         world.setBlockState(blockPos, state.with(OPEN, true).with(getPart(), partIndex), 3);
@@ -285,19 +288,19 @@ public class LargeDoorBlock extends Block {
                     blockPos = blockPos.up();
                     partIndex++;
                 }
-                if(!state.get(OPEN)){
-                    blockPos = blockPos1.offset((Direction)state.get(HORIZONTAL_FACING), i + 1);
-                }else{
-                    if(state.get(HINGE) == DoorHinge.LEFT){
-                        blockPos = blockPos1.offset((Direction)state.get(HORIZONTAL_FACING).rotateYClockwise(), i + 1);
+                if (!state.get(OPEN)) {
+                    blockPos = blockPos1.offset((Direction) state.get(HORIZONTAL_FACING), i + 1);
+                } else {
+                    if (state.get(HINGE) == DoorHinge.LEFT) {
+                        blockPos = blockPos1.offset((Direction) state.get(HORIZONTAL_FACING).rotateYClockwise(), i + 1);
 
                     } else {
-                        blockPos = blockPos1.offset((Direction)state.get(HORIZONTAL_FACING).rotateYCounterclockwise(), i + 1);
+                        blockPos = blockPos1.offset((Direction) state.get(HORIZONTAL_FACING).rotateYCounterclockwise(), i + 1);
 
                     }
                 }
             }
-            this.playOpenCloseSound(player, world, pos, (Boolean)state.get(OPEN));
+            this.playOpenCloseSound(player, world, pos, (Boolean) state.get(OPEN));
             world.emitGameEvent(player, this.isOpen(state) ? GameEvent.BLOCK_OPEN : GameEvent.BLOCK_CLOSE, pos);
         } else {
             player.sendMessage(Text.translatable("alert.%s.large_door.blocked".formatted(MiddleEarth.MOD_ID)), true);
@@ -311,15 +314,15 @@ public class LargeDoorBlock extends Block {
     }
 
     public boolean isOpen(BlockState state) {
-        return (Boolean)state.get(OPEN);
+        return (Boolean) state.get(OPEN);
     }
 
     protected BlockState rotate(BlockState state, BlockRotation rotation) {
-        return (BlockState)state.with(HORIZONTAL_FACING, rotation.rotate((Direction)state.get(HORIZONTAL_FACING)));
+        return (BlockState) state.with(HORIZONTAL_FACING, rotation.rotate((Direction) state.get(HORIZONTAL_FACING)));
     }
 
     protected BlockState mirror(BlockState state, BlockMirror mirror) {
-        return mirror == BlockMirror.NONE ? state : (BlockState)state.rotate(mirror.getRotation((Direction)state.get(HORIZONTAL_FACING)));
+        return mirror == BlockMirror.NONE ? state : (BlockState) state.rotate(mirror.getRotation((Direction) state.get(HORIZONTAL_FACING)));
     }
 
     public int getDoorHeight() {

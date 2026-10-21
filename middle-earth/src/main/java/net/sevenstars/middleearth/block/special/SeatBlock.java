@@ -42,8 +42,7 @@ public class SeatBlock extends Block {
     @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
         Quaternionf quaternion = state.get(FACING).getOpposite().getRotationQuaternion().normalize();
-        Vector3f eulerAngles = new Vector3f(0, 0, 0);
-        eulerAngles = quaternion.getEulerAnglesXYZ(eulerAngles);
+        Vector3f eulerAngles = quaternion.getEulerAnglesXYZ(new Vector3f(0, 0, 0));
         float yaw = (float) Math.atan2(eulerAngles.x, eulerAngles.z);
 
         SeatEntity seat = new SeatEntity(EntitiesME.SEAT_ENTITY, world);
@@ -54,20 +53,20 @@ public class SeatBlock extends Block {
         seat.setInvisible(true);
         seat.setInvulnerable(true);
 
-        if(world.isClient) {
+        if (world.isClient) {
             return ActionResult.CONSUME;
-        } else if(player.isSneaking() || player.isSpectator() || player.hasVehicle()) {
+        } else if (player.isSneaking() || player.isSpectator() || player.hasVehicle()) {
             return ActionResult.FAIL;
         } else if (player.shouldCancelInteraction()) {
             return ActionResult.SUCCESS;
-        } else if (world.getBlockState(pos.up()).isOpaque()){
+        } else if (world.getBlockState(pos.up()).isOpaque()) {
             player.sendMessage(Text.translatable("alert.%s.seat.space_not_empty".formatted(MiddleEarth.MOD_ID)), true);
             return ActionResult.SUCCESS;
-        }else if (state.get(OCCUPIED)){
-        player.sendMessage(Text.translatable("alert.%s.seat.occupied".formatted(MiddleEarth.MOD_ID)), true);
+        } else if (state.get(OCCUPIED)) {
+            player.sendMessage(Text.translatable("alert.%s.seat.occupied".formatted(MiddleEarth.MOD_ID)), true);
             return ActionResult.SUCCESS;
         } else {
-            if(world.spawnEntity(seat)) {
+            if (world.spawnEntity(seat)) {
                 player.startRiding(seat, true);
                 player.setYaw(yaw);
                 player.setHeadYaw(yaw);

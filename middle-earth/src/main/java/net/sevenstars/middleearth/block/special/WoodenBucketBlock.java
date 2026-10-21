@@ -29,7 +29,7 @@ import net.sevenstars.middleearth.block.registration.ModDecorativeBlocks;
 import org.jetbrains.annotations.Nullable;
 
 public class WoodenBucketBlock extends Block implements Waterloggable {
-    private static final EnumProperty<Direction> HORIZONTAL_FACING= Properties.HORIZONTAL_FACING;
+    private static final EnumProperty<Direction> HORIZONTAL_FACING = Properties.HORIZONTAL_FACING;
     public static final BooleanProperty HANGING = Properties.HANGING;
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 
@@ -66,12 +66,12 @@ public class WoodenBucketBlock extends Block implements Waterloggable {
 
     @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-        if (player.getStackInHand(player.getActiveHand()).isEmpty() && !player.isInCreativeMode()){
+        if (player.getStackInHand(player.getActiveHand()).isEmpty() && !player.isInCreativeMode()) {
             world.setBlockState(pos, Blocks.AIR.getDefaultState());
-            player.equipStack(EquipmentSlot.MAINHAND,  new ItemStack(ModDecorativeBlocks.WOODEN_BUCKET.asItem()));
+            player.equipStack(EquipmentSlot.MAINHAND, new ItemStack(ModDecorativeBlocks.WOODEN_BUCKET.asItem()));
             world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.ENTITY_CHICKEN_EGG, SoundCategory.BLOCKS, 0.5f, world.random.nextFloat() * 0.1f - 1.0f);
             return ActionResult.PASS;
-        } else{
+        } else {
             return super.onUse(state, world, pos, player, hit);
         }
     }
@@ -81,7 +81,7 @@ public class WoodenBucketBlock extends Block implements Waterloggable {
         Direction[] var3 = ctx.getPlacementDirections();
         int var4 = var3.length;
 
-        for(int var5 = 0; var5 < var4; ++var5) {
+        for (int var5 = 0; var5 < var4; ++var5) {
             Direction direction = var3[var5];
             if (direction.getAxis() == Direction.Axis.Y) {
                 return this.getDefaultState().with(HANGING, direction == Direction.UP).with(HORIZONTAL_FACING, ctx.getHorizontalPlayerFacing()).with(WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER);
@@ -98,7 +98,7 @@ public class WoodenBucketBlock extends Block implements Waterloggable {
 
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        if(state.get(HANGING)){
+        if (state.get(HANGING)) {
             return Block.createCuboidShape(4, 0, 4, 12, 16, 12);
         } else {
             return Block.createCuboidShape(4, 0, 4, 12, 10, 12);

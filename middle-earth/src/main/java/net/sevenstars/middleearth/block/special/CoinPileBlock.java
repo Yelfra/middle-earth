@@ -7,7 +7,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 
-public class CoinPileBlock extends RocksBlock {
+public class CoinPileBlock extends RocksBlock { // TODO: @Yelfra | Extending RocksBlock here seems counter-intuitive, create interface for both and upcoming similar blocks
 
     public CoinPileBlock(Settings settings) {
         super(settings);

@@ -18,7 +18,6 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.tick.ScheduledTickView;
 import org.jetbrains.annotations.Nullable;
@@ -41,9 +40,9 @@ public class RocksBlock extends HorizontalFacingBlock implements Waterloggable {
     @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
         if (!world.isClient && player.getAbilities().allowModifyWorld) {
-            if (player.getMainHandStack().isOf(this.asItem()) && state.get(STAGE) < 3){
+            if (player.getMainHandStack().isOf(this.asItem()) && state.get(STAGE) < 3) {
                 world.setBlockState(pos, state.cycle(STAGE));
-                if(!player.isInCreativeMode()){
+                if (!player.isInCreativeMode()) {
                     player.getMainHandStack().decrement(1);
                 }
             }
@@ -61,7 +60,7 @@ public class RocksBlock extends HorizontalFacingBlock implements Waterloggable {
         builder.add(FACING, STAGE, WATERLOGGED);
     }
 
-    @Nullable
+    @Override @Nullable
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         return this.getDefaultState().with(Properties.HORIZONTAL_FACING, ctx.getHorizontalPlayerFacing().getOpposite()).with(WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER).with(STAGE, 0);
     }
@@ -82,11 +81,13 @@ public class RocksBlock extends HorizontalFacingBlock implements Waterloggable {
 
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        // @formatter:off
         return switch (state.get(STAGE)) {
-            case 3 -> Block.createCuboidShape(0, 0, 0, 16, 10, 16);
-            case 2 -> Block.createCuboidShape(0, 0, 0, 16, 8, 16);
-            case 1 -> Block.createCuboidShape(0, 0, 0, 16, 4, 16);
-            default -> Block.createCuboidShape(0, 0, 0, 16, 3, 16);
+            case 3  -> Block.createCuboidShape(0, 0, 0, 16, 10, 16);
+            case 2  -> Block.createCuboidShape(0, 0, 0, 16, 8,  16);
+            case 1  -> Block.createCuboidShape(0, 0, 0, 16, 4,  16);
+            default -> Block.createCuboidShape(0, 0, 0, 16, 3,  16);
         };
+        // @formatter:on
     }
 }

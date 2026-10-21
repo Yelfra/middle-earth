@@ -10,7 +10,6 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.tick.ScheduledTickView;
 
@@ -21,7 +20,7 @@ public class LayersBlock extends SnowBlock implements Waterloggable {
 
     public LayersBlock(Settings settings, Block fullBlockIn) {
         super(settings);
-        this.setDefaultState((BlockState)((BlockState)this.stateManager.getDefaultState()).with(LAYERS, 1).with(WATERLOGGED, false));
+        this.setDefaultState((BlockState) ((BlockState) this.stateManager.getDefaultState()).with(LAYERS, 1).with(WATERLOGGED, false));
 
         fullBlock = fullBlockIn;
     }
@@ -30,18 +29,18 @@ public class LayersBlock extends SnowBlock implements Waterloggable {
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         BlockState blockState = ctx.getWorld().getBlockState(ctx.getBlockPos());
         if (blockState.isOf(this)) {
-            int i = (Integer)blockState.get(LAYERS);
-            if(i == 7){
+            int i = (Integer) blockState.get(LAYERS);
+            if (i == 7) {
                 return fullBlock.getDefaultState();
             } else {
-                if (blockState.get(WATERLOGGED)){
-                    return (BlockState)blockState.with(LAYERS, Math.min(8, i + 1)).with(WATERLOGGED, true);
+                if (blockState.get(WATERLOGGED)) {
+                    return (BlockState) blockState.with(LAYERS, Math.min(8, i + 1)).with(WATERLOGGED, true);
                 } else {
-                    return (BlockState)blockState.with(LAYERS, Math.min(8, i + 1));
+                    return (BlockState) blockState.with(LAYERS, Math.min(8, i + 1));
                 }
             }
         } else {
-            if(blockState.isOf(Blocks.WATER)){
+            if (blockState.isOf(Blocks.WATER)) {
                 return super.getPlacementState(ctx).with(WATERLOGGED, true);
             } else {
                 return super.getPlacementState(ctx);

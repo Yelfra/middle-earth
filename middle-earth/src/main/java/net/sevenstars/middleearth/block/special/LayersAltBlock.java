@@ -10,7 +10,6 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.tick.ScheduledTickView;
 
@@ -19,21 +18,21 @@ public class LayersAltBlock extends SnowBlock implements Waterloggable {
 
     public LayersAltBlock(Settings settings) {
         super(settings);
-        this.setDefaultState((BlockState)((BlockState)this.stateManager.getDefaultState()).with(LAYERS, 1).with(WATERLOGGED, false));
+        this.setDefaultState((BlockState) ((BlockState) this.stateManager.getDefaultState()).with(LAYERS, 1).with(WATERLOGGED, false));
     }
 
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         BlockState blockState = ctx.getWorld().getBlockState(ctx.getBlockPos());
         if (blockState.isOf(this)) {
-            int i = (Integer)blockState.get(LAYERS);
-            if (blockState.get(WATERLOGGED)){
-                return (BlockState)blockState.with(LAYERS, Math.min(8, i + 1)).with(WATERLOGGED, true);
+            int i = (Integer) blockState.get(LAYERS);
+            if (blockState.get(WATERLOGGED)) {
+                return (BlockState) blockState.with(LAYERS, Math.min(8, i + 1)).with(WATERLOGGED, true);
             } else {
-                return (BlockState)blockState.with(LAYERS, Math.min(8, i + 1));
+                return (BlockState) blockState.with(LAYERS, Math.min(8, i + 1));
             }
         } else {
-            if(blockState.isOf(Blocks.WATER)){
+            if (blockState.isOf(Blocks.WATER)) {
                 return super.getPlacementState(ctx).with(WATERLOGGED, true);
             } else {
                 return super.getPlacementState(ctx);

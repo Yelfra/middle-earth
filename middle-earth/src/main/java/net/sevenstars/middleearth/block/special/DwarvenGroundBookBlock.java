@@ -33,7 +33,7 @@ public class DwarvenGroundBookBlock extends Block {
 
     @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-        if(!world.isClient && player.getAbilities().allowModifyWorld){
+        if (!world.isClient && player.getAbilities().allowModifyWorld) {
             world.setBlockState(pos, state.cycle(OPEN), 2 | 3);
         }
         return ActionResult.SUCCESS;
@@ -71,17 +71,17 @@ public class DwarvenGroundBookBlock extends Block {
 
     @Override
     protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        if(state.get(OPEN)){
-            return switch(state.get(Properties.HORIZONTAL_FACING)) {
+        if (state.get(OPEN)) {
+            return switch (state.get(Properties.HORIZONTAL_FACING)) {
                 case WEST, EAST -> Block.createCuboidShape(2, 0, 0, 14, 5, 16);
                 case SOUTH, NORTH -> Block.createCuboidShape(0, 0, 2, 16, 5, 14);
-                default -> VoxelShapes.cuboid(1,1,1,1,1,1);
+                default -> VoxelShapes.cuboid(1, 1, 1, 1, 1, 1);
             };
-        }else {
-            return switch(state.get(Properties.HORIZONTAL_FACING)) {
+        } else {
+            return switch (state.get(Properties.HORIZONTAL_FACING)) {
                 case WEST, EAST -> Block.createCuboidShape(2, 0, 3, 14, 5, 13);
                 case SOUTH, NORTH -> Block.createCuboidShape(3, 0, 2, 13, 5, 14);
-                default -> VoxelShapes.cuboid(1,1,1,1,1,1);
+                default -> VoxelShapes.cuboid(1, 1, 1, 1, 1, 1);
             };
         }
 

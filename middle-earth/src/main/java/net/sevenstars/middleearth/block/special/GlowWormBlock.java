@@ -1,8 +1,6 @@
 package net.sevenstars.middleearth.block.special;
 
 import com.mojang.serialization.MapCodec;
-import net.sevenstars.middleearth.block.registration.ModNatureBlocks;
-import net.sevenstars.middleearth.item.ResourceItemsME;
 import net.minecraft.block.AbstractPlantBlock;
 import net.minecraft.block.AbstractPlantStemBlock;
 import net.minecraft.block.Block;
@@ -19,6 +17,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.World;
+import net.sevenstars.middleearth.block.registration.ModNatureBlocks;
+import net.sevenstars.middleearth.item.ResourceItemsME;
 
 public class GlowWormBlock extends AbstractPlantBlock {
     public static final MapCodec<GlowWormBlock> CODEC = GlowWormBlock.createCodec(GlowWormBlock::new);
@@ -41,7 +41,7 @@ public class GlowWormBlock extends AbstractPlantBlock {
             } else if (!player.getInventory().insertStack(new ItemStack(ResourceItemsME.GLOWWORM_BOTTLE))) {
                 player.dropItem(new ItemStack(ResourceItemsME.GLOWWORM_BOTTLE), false);
             }
-            world.removeBlock(pos,false);
+            world.removeBlock(pos, false);
         }
         return ActionResult.SUCCESS;
     }

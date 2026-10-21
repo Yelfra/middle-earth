@@ -14,7 +14,6 @@ import net.minecraft.util.BlockRotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.tick.ScheduledTickView;
 import org.jetbrains.annotations.Nullable;
@@ -27,9 +26,10 @@ public class CornerCobwebBlock extends CobwebBlock {
         super(settings);
         this.setDefaultState(this.getDefaultState().with(HANGING, false).with(FACING, Direction.EAST));
     }
+
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add (HANGING).add(FACING);
+        builder.add(HANGING).add(FACING);
         super.appendProperties(builder);
     }
 
@@ -39,7 +39,7 @@ public class CornerCobwebBlock extends CobwebBlock {
         BlockPos blockPos = ctx.getBlockPos();
         return this.getDefaultState()
                 .with(FACING, ctx.getHorizontalPlayerFacing())
-                .with(HANGING, !(direction != Direction.DOWN && (direction == Direction.UP || !(ctx.getHitPos().y - (double)blockPos.getY() > 0.5))));
+                .with(HANGING, !(direction != Direction.DOWN && (direction == Direction.UP || !(ctx.getHitPos().y - (double) blockPos.getY() > 0.5))));
     }
 
     @Override

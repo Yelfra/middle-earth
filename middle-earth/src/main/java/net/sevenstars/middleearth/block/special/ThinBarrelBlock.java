@@ -20,17 +20,17 @@ public class ThinBarrelBlock extends BarrelBlock {
 
     @Override
     protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return switch (state.get(FACING)){
-            case UP,DOWN -> Block.createCuboidShape(1, 0, 1, 15, 16, 15);
-            case NORTH,SOUTH -> Block.createCuboidShape(1, 0, 0, 15, 14, 16);
-            case EAST,WEST -> Block.createCuboidShape(0, 0, 1, 16, 14, 15);
+        return switch (state.get(FACING)) {
+            case UP, DOWN -> Block.createCuboidShape(1, 0, 1, 15, 16, 15);
+            case NORTH, SOUTH -> Block.createCuboidShape(1, 0, 0, 15, 14, 16);
+            case EAST, WEST -> Block.createCuboidShape(0, 0, 1, 16, 14, 15);
         };
     }
 
     @Nullable
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new BarrelBlockEntity(pos, state){
+        return new BarrelBlockEntity(pos, state) {
             @Override
             protected Text getContainerName() {
                 return Text.translatable("container.%s.thin_barrel".formatted(MiddleEarth.MOD_ID));

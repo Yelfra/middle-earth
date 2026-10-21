@@ -15,7 +15,6 @@ import net.minecraft.state.property.Property;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.tick.ScheduledTickView;
 
@@ -25,13 +24,13 @@ public class DecorativeRodBlock extends RodBlock implements Waterloggable {
 
     public DecorativeRodBlock(Settings settings) {
         super(settings);
-        this.setDefaultState((BlockState)((BlockState)this.stateManager.getDefaultState()).with(FACING, Direction.UP).with(WATERLOGGED, false));
+        this.setDefaultState((BlockState) ((BlockState) this.stateManager.getDefaultState()).with(FACING, Direction.UP).with(WATERLOGGED, false));
     }
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
         boolean bl = fluidState.getFluid() == Fluids.WATER;
-        return (BlockState)((BlockState)this.getDefaultState().with(FACING, ctx.getSide())).with(WATERLOGGED, bl);
+        return (BlockState) ((BlockState) this.getDefaultState().with(FACING, ctx.getSide())).with(WATERLOGGED, bl);
     }
 
     @Override
@@ -52,7 +51,9 @@ public class DecorativeRodBlock extends RodBlock implements Waterloggable {
         builder.add(new Property[]{FACING, WATERLOGGED});
     }
 
-    protected MapCodec<? extends DecorativeRodBlock> getCodec(){
+    protected MapCodec<? extends DecorativeRodBlock> getCodec() {
         return CODEC;
-    };
+    }
+
+    ;
 }

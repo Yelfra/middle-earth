@@ -27,10 +27,10 @@ public class StoneMyceliumBlock extends Block {
             if (world.getLightLevel(pos.up()) <= 9) {
                 BlockState blockState = this.getDefaultState();
 
-                for(int i = 0; i < 4; ++i) {
+                for (int i = 0; i < 4; ++i) {
                     BlockPos blockPos = pos.add(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
                     if (world.getBlockState(blockPos).isOf(Blocks.STONE) && canSpread(blockState, world, blockPos)) {
-                        world.setBlockState(blockPos, (BlockState)blockState);
+                        world.setBlockState(blockPos, blockState);
                     }
                 }
             }
@@ -41,14 +41,14 @@ public class StoneMyceliumBlock extends Block {
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
         super.randomDisplayTick(state, world, pos, random);
         if (random.nextInt(10) == 0) {
-            world.addParticleClient(ParticleTypes.MYCELIUM, (double)pos.getX() + random.nextDouble(), (double)pos.getY() + 1.1, (double)pos.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
+            world.addParticleClient(ParticleTypes.MYCELIUM, (double) pos.getX() + random.nextDouble(), (double) pos.getY() + 1.1, (double) pos.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
         }
     }
 
     private static boolean canSurvive(BlockState state, WorldView world, BlockPos pos) {
         BlockPos blockPos = pos.up();
         BlockState blockState = world.getBlockState(blockPos);
-        if (blockState.isOf(Blocks.SNOW) && (Integer)blockState.get(SnowBlock.LAYERS) == 1) {
+        if (blockState.isOf(Blocks.SNOW) && blockState.get(SnowBlock.LAYERS) == 1) {
             return true;
         } else if (blockState.getFluidState().getLevel() == 8) {
             return false;

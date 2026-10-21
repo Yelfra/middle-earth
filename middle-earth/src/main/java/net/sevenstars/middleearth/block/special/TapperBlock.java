@@ -86,22 +86,21 @@ public class TapperBlock extends HorizontalFacingBlock {
             BlockState behindBlock = world.getBlockState(pos.offset(state.get(FACING).getOpposite()));
 
             Item result = Items.RESIN_CLUMP;
-            if(behindBlock.getBlock() == WoodBlockSets.MAPLE_SET.logBlocks.log() || behindBlock.getBlock() == WoodBlockSets.SILVER_MAPLE_SET.logBlocks.log()) {
+            if (behindBlock.getBlock() == WoodBlockSets.MAPLE_SET.logBlocks.log() || behindBlock.getBlock() == WoodBlockSets.SILVER_MAPLE_SET.logBlocks.log()) {
                 result = FoodItemsME.MAPLE_SYRUP;
             } else if (behindBlock.getBlock() == Blocks.BIRCH_LOG) {
                 result = FoodItemsME.BIRCH_WATER;
             }
 
             ItemStack stackResult = new ItemStack(result);
-            if(result.equals(Items.RESIN_CLUMP)) {
+            if (result.equals(Items.RESIN_CLUMP)) {
                 if (!player.getInventory().insertStack(stackResult)) {
                     player.dropItem(stackResult, false);
                 }
                 world.emitGameEvent(player, GameEvent.FLUID_PICKUP, pos);
                 emptyBucket(state, world, pos);
-            }
-            else if (stack.isOf(Items.GLASS_BOTTLE)) {
-                if(result != Items.RESIN_CLUMP) stack.decrement(1);
+            } else if (stack.isOf(Items.GLASS_BOTTLE)) {
+                if (result != Items.RESIN_CLUMP) stack.decrement(1);
                 world.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.BLOCKS, 1.0F, 1.1F);
 
                 if (stack.isEmpty()) {
@@ -128,7 +127,7 @@ public class TapperBlock extends HorizontalFacingBlock {
     }
 
     private void emptyBucket(BlockState state, World world, BlockPos pos) {
-        if(world instanceof ServerWorld serverWorld) {
+        if (world instanceof ServerWorld serverWorld) {
             serverWorld.setBlockState(pos, state.with(TAP_LEVEL, 0), 2);
         }
     }

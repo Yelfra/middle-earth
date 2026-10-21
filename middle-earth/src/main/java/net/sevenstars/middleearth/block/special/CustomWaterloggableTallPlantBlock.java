@@ -14,7 +14,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.tick.ScheduledTickView;
 
@@ -22,10 +21,11 @@ public class CustomWaterloggableTallPlantBlock extends TallPlantBlock implements
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 
     private final boolean randomBoneMeal;
+
     public CustomWaterloggableTallPlantBlock(Settings settings, boolean random) {
         super(settings);
         this.randomBoneMeal = random;
-        this.setDefaultState((BlockState)((BlockState)this.stateManager.getDefaultState()).with(HALF, DoubleBlockHalf.LOWER).with(WATERLOGGED, false));
+        this.setDefaultState((BlockState) ((BlockState) this.stateManager.getDefaultState()).with(HALF, DoubleBlockHalf.LOWER).with(WATERLOGGED, false));
     }
 
     @Override
@@ -33,7 +33,7 @@ public class CustomWaterloggableTallPlantBlock extends TallPlantBlock implements
         if (state.get(WATERLOGGED)) {
             tickView.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
         }
-        DoubleBlockHalf doubleBlockHalf = (DoubleBlockHalf)state.get(HALF);
+        DoubleBlockHalf doubleBlockHalf = (DoubleBlockHalf) state.get(HALF);
         if (direction.getAxis() == Direction.Axis.Y && doubleBlockHalf == DoubleBlockHalf.LOWER == (direction == Direction.UP) && (!neighborState.isOf(this) || neighborState.get(HALF) == doubleBlockHalf)) {
             return Blocks.AIR.getDefaultState();
         } else {
@@ -46,10 +46,10 @@ public class CustomWaterloggableTallPlantBlock extends TallPlantBlock implements
         BlockPos blockPos = ctx.getBlockPos();
         BlockState blockState = ctx.getWorld().getBlockState(ctx.getBlockPos());
         World world = ctx.getWorld();
-        if(blockPos.getY() < world.getTopYInclusive() - 1 && world.getBlockState(blockPos.up()).canReplace(ctx)){
-            if(blockState.isOf(Blocks.WATER)){
+        if (blockPos.getY() < world.getTopYInclusive() - 1 && world.getBlockState(blockPos.up()).canReplace(ctx)) {
+            if (blockState.isOf(Blocks.WATER)) {
                 return this.getDefaultState().with(WATERLOGGED, true);
-            } else{
+            } else {
                 return this.getDefaultState();
             }
         } else {
@@ -77,9 +77,9 @@ public class CustomWaterloggableTallPlantBlock extends TallPlantBlock implements
     }
 
     public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
-        if(this.randomBoneMeal) {
+        if (this.randomBoneMeal) {
             float val = random.nextFloat();
-            if(val > 0.90f){
+            if (val > 0.90f) {
                 dropStack(world, pos, new ItemStack(this));
             }
         } else {

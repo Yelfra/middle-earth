@@ -29,14 +29,14 @@ public class CrateBlock extends BarrelBlock {
     protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return switch (state.get(FACING)) {
             case DOWN, UP, NORTH, SOUTH -> Block.createCuboidShape(0, 0, 3, 16, 7, 13);
-            case WEST,EAST -> Block.createCuboidShape(3, 0, 0, 13, 7, 16);
+            case WEST, EAST -> Block.createCuboidShape(3, 0, 0, 13, 7, 16);
         };
     }
 
     @Nullable
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new BarrelBlockEntity(pos, state){
+        return new BarrelBlockEntity(pos, state) {
             @Override
             protected Text getContainerName() {
                 return Text.translatable("container.%s.small_crate".formatted(MiddleEarth.MOD_ID));
