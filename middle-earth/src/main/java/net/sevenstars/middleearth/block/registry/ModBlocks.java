@@ -27,6 +27,7 @@ import static net.sevenstars.middleearth.block.utils.form.BasicBlockForm.*;
 public class ModBlocks {
     public static final float DIRT_STRENGTH = 0.6f;
 
+    // TODO: @Yelfra | Scatter blocks from this class to different categories (a DirtBlocks class might be helpful) - ModBlocks isn't descriptive
     public static void register() {
         MiddleEarth.LOGGER.logDebugMsg("Registering ModBlocks for " + MiddleEarth.MOD_ID);
 

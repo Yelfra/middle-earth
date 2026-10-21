@@ -58,7 +58,7 @@ public class ItemGroupsME {
     }
 
 
-    public static final List<ItemStack> STONE_BLOCKS_CONTENTS = new LinkedList<>();
+    public static final List<ItemStack> STONE_BLOCKS_CONTENTS = new LinkedList<>(); // TODO: @Yelfra | Should probably switch to LinkedHashSet to avoid duplicates
     public static final ItemGroup STONE_BLOCKS = FabricItemGroup.builder()
             .displayName(Text.translatable("itemGroup." + MiddleEarth.MOD_ID + ".stone_blocks"))
             .icon(() -> new ItemStack(StoneBlockSets.CALCITE_SET.brickBlocks.base().asItem()))

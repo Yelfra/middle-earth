@@ -8,6 +8,7 @@ import net.minecraft.util.StringIdentifiable;
 import net.minecraft.util.function.ValueLists;
 import java.util.function.IntFunction;
 
+// TODO: @Yelfra | Return to this later - might not even be a block related class if used for item purposes too
 public enum BlockAuthor implements StringIdentifiable {
     BOENNDAL(0, "Boenndal"),
     SCOSHER(1, "Scosher"),
